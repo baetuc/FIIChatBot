@@ -1,0 +1,163 @@
+ain't --- am not
+amn't --- am not
+aren't --- are not
+can't --- cannot
+cap'm or cap'n --- captain
+could've --- could have
+couldn't --- could not
+couldn't've --- could not have
+didn't --- did not
+doesn't --- does not
+don't --- do not
+e'er --- ever
+gonna --- going to
+gotta --- got to
+hadn't --- had not
+hadn't've --- had not have
+hasn't --- has not
+haven't --- have not
+he'd --- he had
+he'dn't --- he had not
+he'dn't've --- he had not have
+he'd've --- he would have
+he'll --- he shall
+he's --- he has
+he'sn't --- he has not
+how'd --- how did
+how'll --- how will
+how's --- how has
+i'd --- i had
+i'dn't --- i had not
+i'dn't've --- i had not have
+i'd've --- i would have
+i'll --- i shall
+i'm --- i am
+i've --- i have
+i'ven't --- i have not
+isn't --- is not
+it'd --- it had
+it'dn't --- it had not
+it'dn't've --- it had not have
+it'd've --- it would have
+it'll --- it shall
+it's --- it has
+it'sn't --- it has not
+let's --- let us
+ma'am --- madam
+mightn't --- might not
+mightn't've --- might not have
+might've --- might have
+mustn't --- must not
+mustn't've --- must not have
+must've --- must have
+needn't --- need not
+ne'er --- never
+not've --- not have
+o'clock --- of the clock
+o'er --- over
+ol' --- old
+oughtn't --- ought not
+shan't --- shall not
+she'd --- she had
+she'dn't --- she had not
+she'dn't've --- she had not have
+she'd've --- she would have
+she'll --- she shall
+she's --- she has
+she'sn't --- she has not
+should've --- should have
+shouldn't --- should not
+shouldn't've --- should not have
+somebody'd --- somebody had
+somebody'dn't --- somebody had not
+somebody'd've --- somebody would have
+somebody'dn't've --- somebody had not have
+somebody'll --- somebody shall
+somebody's --- somebody has
+someone'd --- someone had
+someone'dn't --- someone had not
+someone'dn't've --- someone had not have
+someone'd've --- someone would have
+someone'll --- someone shall
+someone's --- someone has
+something'd --- something had
+something'dn't --- something had not
+something'dn't've --- something had not have
+something'd've --- something would have
+something'll --- something shall
+something's --- something has
+s'pose --- suppose
+'sup --- what's up
+that'll --- that will
+that's --- that has
+that'd --- that would
+there'd --- there had
+there'dn't --- there had not
+there'dn't've --- there had not have
+there'd've --- there would have
+there're --- there are
+there's --- there has
+they'd --- they had
+they'dn't --- they had not
+they'dn't've --- they had not have
+they'd've --- they would have
+they'd'ven't --- they would have not
+they'll --- they shall
+they'lln't've --- they will not have
+they'll'ven't --- they will have not
+they're --- they are
+they've --- they have
+they'ven't --- they have not
+'tis --- it is
+'twas --- it was
+wanna --- want to
+wasn't --- was not
+we'd --- we had
+we'd've --- we would have
+we'dn't --- we had not
+we'dn't've --- we had not have
+we'll --- we will
+we'lln't've --- we will not have
+we're --- we are
+we've --- we have
+weren't --- were not
+what'd --- what did
+what'll --- what shall
+what're --- what are
+what's --- what has
+what've --- what have
+when's --- when has
+where'd --- where did
+where's --- where has
+where've --- where have
+who'd --- who would
+who'd've --- who would have
+who'll --- who shall
+who're --- who are
+who's --- who has
+who've --- who have
+why'd --- why did
+why'll --- why will
+why're --- why are
+why's --- why has
+won't --- will not
+won't've --- will not have
+would've --- would have
+wouldn't --- would not
+wouldn't've --- would not have
+y'all --- you all
+ya'll --- you all
+y'all'd've --- you all would have
+y'all'dn't've --- you all would not have
+y'all'll --- you all will
+y'all'on't --- you all will not
+y'all'll've --- you all will have
+y'all're --- you all are
+y'all'll'ven't --- you all will have not
+you'd --- you had
+you'd've --- you would have
+you'll --- you shall
+you're --- you are
+you'ren't --- you are not
+you've --- you have
+you'ven't --- you have not
