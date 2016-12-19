@@ -10,7 +10,6 @@ from bs4 import BeautifulSoup
 
 
 
-
 caps = "([A-Z])"
 prefixes = "(Mr|St|Mrs|Ms|Dr)[.]"
 suffixes = "(Inc|Ltd|Jr|Sr|Co)"
