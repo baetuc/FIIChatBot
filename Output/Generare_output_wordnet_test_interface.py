@@ -1,3 +1,6 @@
+"""
+Modul creat de Andrei Iacob grupa 3A5
+"""
 import Generare_output_wordnet
 import Tkinter as tk
 from idlelib.WidgetRedirector import WidgetRedirector
