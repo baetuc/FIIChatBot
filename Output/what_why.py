@@ -5,6 +5,8 @@ Modulul se ocupa de doua feluri de intrebari:
 2. Why is X your favorite?
 Singurul motiv pentru care sunt puse in acelasi fisier e ca sa nu ne complicam asa mult la integrare
 """
+
+PORT = 8000
 import re
 import random
 class FavoriteHandler:
@@ -105,10 +107,9 @@ class FavoriteHandler:
             if domain:
                 return "I don't think I have a favorite %s"%(domain)
             else:
-                print 107
                 return "Honestly, I don't know what to say"
 
-    def is_what_question(self, question):
+    def is_why_question(self, question):
         if "why" in question.lower() and "favorite" in question.lower():
             return True
         return False
@@ -121,7 +122,7 @@ class FavoriteHandler:
         return None
 
     def answer_why(self, question):
-        if not self.is_what_question(question):
+        if not self.is_why_question(question):
             return "Honestly, I don't know what to say"
         query = self._get_query_from_what_question(question)
         if query:
@@ -142,4 +143,33 @@ class FavoriteHandler:
             return given_reason
         return "I don't really have a favorite"
 
-    
+if __name__ == "__main__":
+    import subprocess
+    from bottle import run, post, request, response, get, route, Bottle
+    fh = FavoriteHandler()
+
+    @route('/', method='POST')
+    def process():
+        x = request.body.read().decode("utf-8") 
+        import json
+        x = json.loads(x)
+        if x.get("action") == "answer_why":
+            r = fh.answer_why(x.get("question"))
+            print(r)
+            return {"ans" : r}
+        elif x.get("action") == "is_why_question":
+            r = fh.is_why_question(x.get("question"))
+            print(r)
+            return {"ans" : r}
+
+        elif x.get("action") == "answer_what":
+            r = fh.answer_what(x.get("question"))
+            print(r)
+            return {"ans" : r}
+        elif x.get("action") == "is_favorite_question":
+            r = fh.is_favorite_question(x.get("question"))
+            print(r)
+            return {"ans" : r}
+        else:
+            return {"ans" : "Unknown action"}
+    run(host='localhost', port=PORT, debug=True)
