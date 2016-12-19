@@ -29,11 +29,15 @@ def parse_url_path(path):
         for arg in arguments:
             if "=" in arg:
                 key, value = arg.split("=")
+                key = key.rstrip().lstrip()
+                value = value.lstrip().lstrip()
                 items[key] = value
     else:
         # single argument
         if "=" in path:
             key, value = path.split("=")
+            key = key.rstrip().lstrip()
+            value = value.rstrip().lstrip()
             items[key] = value
 
     if items == dict():
@@ -44,18 +48,28 @@ def parse_url_path(path):
 
 
 def get_input(arguments):
+    """
+        Retrieves input from arguments if possible
+    :param arguments: http GET arguments
+    :return: value of input or None if it does not exist
+    """
     if "input" in arguments:
         return arguments["input"]
     return None
 
 
 def sanitize(text):
+    """Used to decode spaces from http get requests."""
     return text.replace("%20", " ")
 
 
 def build_error_report():
+    """
+        Build a dictionary to serve as an error message in case something bad happens.
+    :return: report a dictionary with an error message stored in key "exception"
+    """
     report = dict()
-    report["exception"] = "[TextProcessing] invalid input! Should be '/?input=user's input'"
+    report["exception"] = '[TextProcessing] invalid input! Should be "/?input=user\'s input"'
     return report
 
 
@@ -79,8 +93,11 @@ class TextProcessingHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             message = json.dumps(process_text(text))
 
+        # send http headers
         self.send_header('Content-type', 'application/json')
         self.end_headers()
+
+        # send output of text-processing module
         self.wfile.write(bytes(message, "utf8"))
         return
 
@@ -94,5 +111,6 @@ def run(ip="127.0.0.1", port=8081):
     httpd = HTTPServer(server_address, TextProcessingHandler)
     print('[TextProcessing] running server...')
     httpd.serve_forever()
+
 
 # run("127.0.0.1", 8081)
