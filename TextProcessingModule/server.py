@@ -62,13 +62,13 @@ def build_error_report():
 class TextProcessingHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         # get arguments from request
-        arguments = parse_url_path(self.path)
+        path = sanitize(self.path)
+        arguments = parse_url_path(path)
 
         # get input if possible
         text = None
         if arguments is not None:
             text = get_input(arguments)
-            text = sanitize(text)
 
         if text is None:
             # invalid input
@@ -94,6 +94,5 @@ def run(ip="127.0.0.1", port=8081):
     httpd = HTTPServer(server_address, TextProcessingHandler)
     print('[TextProcessing] running server...')
     httpd.serve_forever()
-
 
 # run("127.0.0.1", 8081)
