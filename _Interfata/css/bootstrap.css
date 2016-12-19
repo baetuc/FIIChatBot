@@ -1949,12 +1949,22 @@ pre code {
   .col-md-7 {
     width: 58.33333333%;
   }
+/*   @media (min-width:700px){
+	.col-md-5{
+		width:40vw;
+	}
+}
+@media (max-width:700px){
+	.col-md-5{
+		width:40vw;
+	}
+} */
   .col-md-6 {
-    width: 50%;
+    width: 45%;
   }
-  .col-md-5 {
+  /* .col-md-5 {
     width: 41.66666667%;
-  }
+  } */
   .col-md-4 {
     width: 33.33333333%;
   }
@@ -1988,9 +1998,9 @@ pre code {
   .col-md-pull-6 {
     right: 50%;
   }
-  .col-md-pull-5 {
+  /* .col-md-pull-5 {
     right: 41.66666667%;
-  }
+  } */
   .col-md-pull-4 {
     right: 33.33333333%;
   }

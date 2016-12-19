@@ -19,11 +19,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //Custom Theme files -->
 <!-- font-awesome icons -->
 <link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="css/font-awesome.css" rel="stylesheet"> 
 <link href="css/chat-box.css" type="text/css" rel="stylesheet"> 
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"> -->
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all"> 
 
 <script src="js/jquery-2.2.3.min.js"></script> 
+<script src="js/home.js"></script> 
 </head>
 <body>
 
@@ -31,8 +33,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<h1><a href="index.html">FII Bot </a></h1>
 	</div>
 	<div class="row" style="display: flex; height:90vh;">
-	<div class="container" style="margin: 0 auto;width:40vw;">
-		<div class="col-md-5">
+	<!-- <div class="container"> -->
+		<div class="col-md-5"  id="leLeft">
             <div class="panel panel-primary">
                 <div class="panel-heading" id="accordion">
                     <span class="glyphicon glyphicon-comment"></span> Chat
@@ -52,7 +54,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</span>
 							<div class="chat-body clearfix">
 								<div class="header">
-									<strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+									<strong class="primary-font">Chat Bot</strong> <small class="pull-right text-muted">
 										<span class="glyphicon glyphicon-time"></span>12 mins ago</small>
 								</div>
 								<p>
@@ -80,7 +82,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</span>
 							<div class="chat-body clearfix">
 								<div class="header">
-									<strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+									<strong class="primary-font">Chat Bot</strong> <small class="pull-right text-muted">
 										<span class="glyphicon glyphicon-time"></span>14 mins ago</small>
 								</div>
 								<p>
@@ -109,63 +111,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="input-group">
 						<input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
 						<span class="input-group-btn">
-							<button class="btn btn-warning btn-sm" id="btn-chat">
+							<button class="btn btn-warning btn-sm" id="btn-chat" onClick="SendMessage()">
 								Send</button>
 						</span>
 					</div>
 				</div>
 			</span>
-		</div>
+		<!-- </div> -->
 	</div>	
-		<div class="col-md-7"><div class="overlay"></div>
-			<div class="banner">
-			<!-- header -->
-			
-			<!-- //header -->
-			<!-- banner-text -->
-			<div class="banner-text"> 
-				<div class="contentContainer">
-					<div class="flexslider">
-						<ul class="slides">
-							<li>
-								<div class="banner-w3lstext">
-									<h3>Hello </h3>
-									<p>I am FII Bot and I'm always ready for an interesting and a nice conversation with you &#x263A;. </p>
-								</div>
-							</li>
-							<li>
-								<div class="banner-w3lstext">
-									<h3>My purpose ... </h3>
-									<p>I want that A5 group to pass the Artificial Intelligence and for that you have to make a conversation with me and discover new things.</p>
-								</div>
-							</li>
-							<li>
-								<div class="banner-w3lstext">
-									<h3>Do you have questions? </h3>
-									<p>Contact Dan Nastasa for more information.</p>
-								</div>
-							</li>
-						</ul> 
-					</div> 	
-					<!-- FlexSlider --> 
-						<script defer src="js/jquery.flexslider.js"></script>
-						<script type="text/javascript">
-						$(window).load(function(){
-						  $('.flexslider').flexslider({
-							animation: "slide",
-							start: function(slider){
-							  $('body').removeClass('loading');
-							}
-						  });
-						});
-					  </script>
-					<!-- End-slider-script -->
-				</div>
-			</div>
-			<!-- //banner-text -->
+		<div id="leRight" class="col-md-6"><!-- <div class="overlay"></div> -->
+			<iframe width=100%; height=95%; src="robot.html"></iframe>
 		</div>
+
+
 </div>
-	</div>
 
 <div class="welcome">
 	<div class="contentContainer">
