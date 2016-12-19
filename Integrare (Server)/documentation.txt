@@ -2,3 +2,4 @@
 
 Server: localhost:1000
 Text-Processing: localhost:2000
+Output: localhost:7000
