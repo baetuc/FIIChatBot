@@ -351,7 +351,9 @@ def get_google_citeations(question):
     return urls
             
 def answer_question(question):
-    text=get_google_summary(question)
+    text=get_google_answer(question)
+    if text==None:
+        text=get_google_summary(question)
     if text==None:
         text=get_google_links(question)
     keywords=get_keywords(question)
