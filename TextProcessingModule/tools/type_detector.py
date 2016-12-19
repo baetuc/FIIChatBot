@@ -39,9 +39,10 @@ def detect_statement(input_string):
 
 # detect negation
 def detect_negation(input_string):
-    if re.search('\s*(?i)no(?i)\s*', input_string) \
-            or re.search('\s*(?i)not(?i)\s*', input_string) \
-            or re.search('[a-zA-Z]+(?i)n\'t(?i)\s*', input_string):
+    if re.search('(?:\s+|$)no(?i)(?:\s+|$)', input_string) \
+            or re.search('^no(?i)(?:\s+|$)', input_string) \
+            or re.search('(?:\s+|$)not(?i)(?:\s+|$)', input_string) \
+            or re.search('^not(?i)(?:\s+|$)',input_string):
         return True
     else:
         return False
