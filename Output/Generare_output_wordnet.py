@@ -508,6 +508,5 @@ def modify(inputStr):
     return ' '.join([t[0] for t in tagged])
     
 start= time.time()
-#print(replace_with_synonyms("Paris 8766, France's 5th capital, is a major European city and a global center for art, fashion, gastronomy and culture."))
 print(answer_question("what the capital of france"))
 print(str(time.time()-start)+" seconds")
