@@ -223,7 +223,7 @@ def lemmatize(words):
     return lemmas
 
 def generate_output(text,keywords):
-    sentences=split_into_sentences(text)
+    sentences=split_into_sentences(text+'.')
     lemmatzr = WordNetLemmatizer()
     for sentence in sentences:
         tokenized_text = nltk.word_tokenize(sentence)
