@@ -1,5 +1,6 @@
 """
 Modul creat de Andrei Iacob grupa 3A5
+Pentru testare
 """
 import Generare_output_wordnet
 import Tkinter as tk
