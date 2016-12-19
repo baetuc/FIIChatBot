@@ -1,0 +1,4 @@
+//Initialize these servers
+
+Server: localhost:1000
+Text-Processing: localhost:2000
