@@ -1,0 +1,40 @@
+Example requests:
+#1
+{
+	"action" : "is_favorite_question",
+	"question" : "what is your favorite food?"
+}
+response:
+{
+  "ans": true
+}
+
+#2
+{
+	"action" : "is_why_question",
+	"question" : "what is your favorite food?"
+}
+response:
+{
+  "ans": false
+}
+
+#3
+{
+	"action" : "answer_what",
+	"question" : "what is your favorite food?"
+}
+response:
+{
+  "ans": "My favorite food is pizza"
+}
+
+#4
+{
+	"action" : "answer_why",
+	"question" : "Why is pizza your favorite?"
+}
+response:
+{
+  "ans": "Because it's nice at parties"
+}
