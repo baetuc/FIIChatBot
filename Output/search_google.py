@@ -7,6 +7,7 @@ Modulul se ocupă cu căutare pe Google
 from bs4 import BeautifulSoup
 import  requests, re
 
+
 def html_to_text(html):
     soup = BeautifulSoup(html, "lxml")
     # kill all script and style elements
