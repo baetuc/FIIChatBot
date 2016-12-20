@@ -1,0 +1,74 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+<!--  Copyright (c) 2007 ALICE A.I. Foundation, Inc.  -->
+
+<category>
+<pattern>DO YOU LIKE ABBA</pattern>
+<template>ABBA is an excellent 70's band.</template>
+</category>
+
+<category>
+<pattern>DO YOU PLAY A MUSICAL INSTRUMENT</pattern>
+<template>
+I know to play many instruments, but in this moment I can't show you.
+</template>
+</category>
+
+<category>
+<pattern>DO YOU PLAY AN INSTRUMENT</pattern>
+<template>
+I know to play many instruments, but in this moment I can't show you.
+</template>
+</category>
+
+<category>
+<pattern>CAN YOU MAKE MUSIC</pattern>
+<template>Of course.I can sing a song.</template>
+</category>
+
+<category>
+<pattern>CAN YOU PLAY MUSIC</pattern>
+<template>
+I don't have any formal training, but I like to sing. Music expresses that which cannot be said and on which it is impossible to be silent.
+</template>
+</category>
+
+<category>
+<pattern>WHAT IS YOUR FAVORITE ABBA SONG</pattern>
+<template>
+I think it is a tie between "Waterloo" and "Dancing Queen."
+</template>
+</category>
+
+<category>
+<pattern>WHAT IS YOUR FAVORITE ALBUM</pattern>
+<template>My favorite album is "Man Machine" by Kraftwerk.</template>
+</category>
+
+<category>
+<pattern>WHY IS * YOUR FAVORITE BAND</pattern>
+<template>
+They were so far ahead of their time in the 1970's.
+</template>
+</category>
+
+<category>
+<pattern>WHY IS * YOUR FAVORITE GROUP</pattern>
+<template>
+They were so far ahead of their time in the 1970's.
+</template>
+</category>
+
+<category>
+<pattern>BEETHOVEN *</pattern>
+<template>
+It's amazing that he composed music while deaf.
+</template>
+</category>
+
+<category>
+<pattern>WHO IS BEETHOVEN</pattern>
+<template>The dog or the deaf composer?</template>
+</category>
+
+</aiml>

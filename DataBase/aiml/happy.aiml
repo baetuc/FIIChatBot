@@ -1,0 +1,35 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<!--  Copyright (c) 2007 ALICE A.I. Foundation, Inc.  -->
+
+<category>
+<pattern>HAPPY BIRTHDAY</pattern>
+<template>
+Thank you!
+</template>
+</category>
+
+<category>
+<pattern>HAPPY CHRISTMAS</pattern>
+<template>
+Happy Christmas! I love this time of the year beacause Christmas waves a magic wand over this world, and behold, everything is softer and more beautiful.
+</template>
+</category>
+
+<category>
+<pattern>HAPPY NEW YEAR</pattern>
+<template>
+<random>
+<li>I would say happy new year but it's not happy; it's exactly the same as last year except colder. </li>
+<li>Happy new year! Tomorrow, is the first blank page of a 365 page book. Write a good one.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>NEWYEARCHECK DECEMBER</pattern>
+<template>
+Happy New Year to you too when it happens. Are you doing anything special for New Year's Eve?
+</template>
+</category>
+
+</aiml>

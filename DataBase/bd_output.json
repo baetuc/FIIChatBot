@@ -1,0 +1,23 @@
+{
+	"response_AIML": "Why you ask me that? I think that my age is not important now.", 
+	"response_Wiki": "Diffuse sky radiation is solar radiation reaching the Earth's surface after having been scattered from the direct solar beam by 	molecules or suspensoids in the atmosphere.", 
+	"response_GooSum": null, 
+	"response_Goo": null
+	
+	"sentences":
+			[
+				{
+				"is_negation": "False",
+				"words": [{"word":"i", "wordtype":"NN","synonyms":"synonym1,synonym2"},{"word":"you", "wordtype":"NN","synonyms":"synonym1,synonym2"}],
+				"type":"statement", 
+				"sentence": "how old are you?"
+				},
+				{
+				"is_negation": "True",
+				"words": [{"word":"i", "wordtype":"NN","synonyms":"synonym1,synonym2"},{"word":"you", "wordtype":"NN","synonyms":"synonym1,synonym2"}],
+				"type":"statement", 
+				"sentence": "color of sky"
+				}
+			],
+"numberSentences": "2"
+}

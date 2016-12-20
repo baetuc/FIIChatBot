@@ -1,0 +1,4 @@
+{"is_negation": "False",
+  "words": [["i", "NN", ["iodine", "iodin", "atomic_number_53"]], ["real world", "N", []], ["dancer", "NN", ["professional_dancer", "terpsichorean", "social_dancer"]]],
+  "type": "statement",
+  "sentence": "i'm a real world dancer."}
