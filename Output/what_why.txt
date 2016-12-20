@@ -1,0 +1,15 @@
+What why: how to use:
+
+A) As python module (import what_why):
+use the functions from the FavoriteHandler class:
+is_favorite_question(str) -> boolean
+is_why_question(str) -> boolean
+answer_why(str) -> str
+answer_what(str) -> str
+
+B) As HTTP server (python what_why.py)
+Send a JSON with the following fields
+"action" : string, one of the function names mentioned above
+"question" : string, the parameter of the functions mentioned above
+
+Recieve a JSON with a field "ans", with the same values as described before
