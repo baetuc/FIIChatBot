@@ -23,7 +23,7 @@ def process_text(user_input):
         output = {
             "sentence": the original sentence
             "type": type of sentence (statement, question or exclamation)
-            "is_negation": True if sentence is a negation, False otherwise
+            "is_negation": "true" if sentence is a negation, "false" otherwise
             "words": contains a list of tuples, each tuple representing a word/idiom, it's part
                 of speech and a tuple of synonyms
         }
