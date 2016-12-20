@@ -1,0 +1,28 @@
+Documentatie modul Ontology.py
+
+Limbaj: Python 2.7
+
+Librarii / module folosite: json, sqlite3
+
+Mod de functionare:
+	Incepem prin a declara o lista de cuvinte ce determina daca propozitia contine informatii despre utilizator (de genul: my, mine, I'm etc).
+	Construim apoi o baza de date (denumita ontology) in care cream un tabel in care vom stoca cuvintele necesare. Acest tabel contine 3 campuri:
+		1) id
+		2) word
+		3) type
+	Urmeaza sa definim cele 3 metode pe care le folosim in acest modul.
+	
+	Metoda stringifyJson:
+		Aceasta metoda primeste ca parametru un fisier json dat prin calea absoluta si returneaza un string ce contine datele din json-ul respectiv
+		
+	Metoda jsonConverterAndInserter:
+		Metoda primeste ca parametru un string JSON (provenit de la metoda definita anterior) si o alta metoda ce va fi apelata in cadrul unei bucle.
+		In cadrul metodei, se va incarca string-ul JSON, se va parcurge propozitia de pe campul "sentence" si, in cazul in care aceasta contine unul
+		dintre cuvintele declarate la inceputul modulului, se vor insera toate cuvintele din campul "words", folosind metoda insertWord.
+	
+	Metoda insertWord:
+		Numele functiei clarifica in mare parte ceea ce se intampla. Metoda primeste ca argument un cuvant, respectiv tipul sau si insereaza aceasta
+		pereche in tabelul "words" din baza de date "ontology"
+	
+	La finalul modulului, efectuam un test pentru a testa functionalitatea.
+	

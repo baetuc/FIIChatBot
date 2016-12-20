@@ -1,0 +1,10 @@
+
+In fisierul testjson.py:
+
+- primim ca parametru un json (test.json in arhiva noastra) din care luam doar partea cu sentence si o cautam in aiml cu functia getResponse --> SE PRIMESTE ASTFEL RASPUNSUL DIN AIML
+- daca gaseste in aiml raspunsul, acesta va fi salvat in response prin getResponse, daca nu se gaseste in fisierele aiml response va contine mesajul "I have no answer for that".
+- inainte de a cauta cu getResponse eliminam semnele de punctuatie din sentence-ul pe care il luam din json, pt ca noi cautam fara semne de punctuatie in fisierle aiml
+
+In fisierul std-startup.xml:
+
+- aici vor fi incarcate fisierle .aiml

@@ -1,0 +1,16 @@
+{
+	"sentences":
+			[{
+			"is_negation": "False",
+			"words": [{"word":"i", "wordtype":"NN","synonyms":"synonym1,synonym2"},{"word":"you", "wordtype":"NN","synonyms":"synonym1,synonym2"}],
+			"type":"statement", 
+			"sentence": "i'm a real world dancer."
+			},
+			{
+			"is_negation": "True",
+			"words": [{"word":"i", "wordtype":"NN","synonyms":"synonym1,synonym2"},{"word":"you", "wordtype":"NN","synonyms":"synonym1,synonym2"}],
+			"type":"statement", 
+			"sentence": "i'm a real world dancer."
+			}],
+	"numberSentences": "2"
+}

@@ -1,0 +1,20 @@
+<aiml version="1.0" encoding="UTF-8">
+<category><pattern>DAY</pattern>
+<template>What a beautiful day! Isn't it? Today is <date format="%A" jformat="EEEEEEEEEE"/></template>
+</category>
+<category><pattern>YEAR</pattern>
+<template>Really? Don't you know this? This is <date format="%Y" jformat="YYYY"/></template>
+</category>
+<category><pattern>MONTH</pattern>
+<template>This is  <date format="%B" jformat="MMMMMMMMM"/></template>
+</category>
+<category><pattern>TIME</pattern>
+<template>The two most powerful warriors are patience and time. And the time is <date format="%I:%M %p" jformat="h:mm a"/></template>
+</category>
+<category><pattern>DATE</pattern>
+<template>Lucky you! I know everything! Today is <date format="%B %d, %Y" jformat="MMMMMMMMM dd, YYYY"/></template>
+</category>
+<category><pattern>DATE AND TIME</pattern>
+<template>The date and time is <date/></template>
+</category>
+</aiml>

@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+
+<category>
+<pattern>MY FAVORITE COLOR *</pattern>
+<template><star/> is a nice color. I like it too. </template>
+</category>
+
+<category>
+<pattern>MY FAVORITE COLOR IS GREEN</pattern>
+<template>Green is such a symbolic color! You must to know that green stands for balance, nature, spring, and rebirth.
+It’s the symbol of prosperity, freshness, and progress. In Japanese culture, green is associated with eternal life.
+I associate green with vitality, fresh growth, and wealth.</template>
+</category>
+
+<category>
+<pattern>HOW OLD ARE YOU</pattern>
+<template>
+<random>
+<li>My age is a number. But doesn't matter because my soul is young and I will always be like now.</li>
+<li>Why you ask me that? I think that my age is not important now.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>MY BEST FRIEND IS *</pattern>
+<template>
+<random>
+<li>How well do you know <star/>?</li>
+<li> Do you know what is a name? It is more than than an appellative. Theoretically, anyone can use any name,
+but we must be aware that it will be worn throughout life and even beyond this life.
+Names aren't placed at random, because he identifies with the person wearing it.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>I DO NOT LIKE *</pattern>
+<template>Hmm, I am curious... Why you do not like <star/> ? But I will add <star/> to your list of dislikes.</template>
+</category>
+
+<category>
+<pattern>I HAVE A *</pattern>
+<template>
+<random>
+<li>How long have you had it?</li>
+<li>How does it make you feel?</li>
+<li>When did you get it?</li>
+<li>Is that one of your favorite possessions?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>I AM MARRIED</pattern>
+<template>How long have you been married ?</template>
+</category>
+
+<category>
+<pattern>I AM A DOCTOR</pattern>
+<template>Where did you go to medical school?</template>
+</category>
+
+<category>
+<pattern>I AM FROM *</pattern>
+<template>Is that where you live now? </template>
+</category>
+
+<category>
+<pattern>I LIKE *</pattern>
+<template>What do you like most about it?</template>
+</category>
+
+<category>
+<pattern>I LIKE TO *</pattern>
+<template>
+<random>
+<li>How long have you been doing it?</li>
+<li>Do you get to do it very often?</li>
+<li>Do you think I would like to?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>I WOULD RATHER BE IN *</pattern>
+<template>What would be better about it?</template>
+</category>
+
+<category>
+<pattern>I AM GAY</pattern>
+<template>
+<random>
+<li>Ok. Each one is free to love the person he or she wants.</li>
+<li>Thank you for telling me. I will keep secret.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>MY ORIENTATION IS *</pattern>
+<template>Thanks for confiding in me.</template>
+</category>
+
+<category>
+<pattern>MY DAUGTHER NAME IS *</pattern>
+<template>I love your daughter name. I hope that she is beautiful.</template>
+</category>
+
+<category>
+<pattern>MY NAME IS *</pattern>
+<template>I like your name. I hope that I will remember it next time when I will see you.</template>
+</category>
+
+<category>
+<pattern>MY LAST NAME IS *</pattern>
+<template>Do you like to be called by your first name or last name? </template>
+</category>
+
+<category>
+<pattern>MY BOYFRIEND NAME IS *</pattern>
+<template> How did you meet him?</template>
+</category>
+
+<category>
+<pattern>MY GIRLFRIEND NAME IS *</pattern>
+<template>How did you meet her? </template>
+</category>
+
+<category>
+<pattern>HOW OLD I LOOK</pattern>
+<template>Hmm... you are young enough and you will always be young.</template>
+</category>
+
+<category>
+<pattern>HOW OLD I AM</pattern>
+<template>Hmm... you are young enough and you will always be young.</template>
+</category>
+
+<category>
+<pattern>MY BIRTHPLACE IS *</pattern>
+<template>How long did you stay there? </template>
+</category>
+
+<category>
+<pattern>MY HUSBAND NAME IS *</pattern>
+<template>I will remember your husband is <star/>.</template>
+</category>
+
+<category>
+<pattern>MY WIFE NAME IS *</pattern>
+<template>
+<random>
+<li>How long have you and <star/> been married?</li>
+<li>I have always considered marriage as one of the most important events in one's life, the foundation of happiness or misery.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>MY NATIONALITY IS *</pattern>
+<template>I've talked with a lot of <star/> people.</template>
+</category>
+
+<category>
+<pattern>MY FATHER NAME IS *</pattern>
+<template>I'll remember your father's name is <star/>.</template>
+</category>
+
+<category>
+<pattern>MY FAVORITE SPORT IS *</pattern>
+<template>Do you play <star/>?</template>
+</category>
+
+<category>
+<pattern>MY FAVORITE FOOD IS *</pattern>
+<template>What's a good place to get <star/>?</template>
+</category>
+
+<category>
+<pattern>MY FAVORITE FOOD IS PIZZA.</pattern>
+<template>Do you like pizza with mascarpone cheese or other kind of pizza?</template>
+</category>
+
+<category>
+<pattern>_ PIZZA *</pattern>
+<template><srai>MY FAVORITE FOOD IS PIZZA.</srai></template>
+</category>
+
+<category>
+<pattern>MY FAVORITE MOVIE IS *</pattern>
+<template>What happens in this movie?</template>
+</category>
+
+<category>
+<pattern>MY FAVORITE BOOK IS *</pattern>
+<template>Do you think I should read it?</template>
+</category>
+
+<category>
+<pattern>MY FAVORITE ACTOR IS *</pattern>
+<template>What is he in? </template>
+</category>
+
+<category>
+<pattern>MY FAVORITE DRINK IS *</pattern>
+<template>How does it taste? </template>
+</category>
+
+<category>
+<pattern>MY FAVORITE SONG IS *</pattern>
+<template>Do you have it on your phone? </template>
+</category>
+
+<category>
+<pattern>MY FAVORITE CAR IS *</pattern>
+<template>Do you have one? </template>
+</category>
+
+<category>
+<pattern>MY FAVORITE BAND IS *</pattern>
+<template>What songs do they play? </template>
+</category>
+
+<category>
+<pattern>MY FAVORITE BAND IS THE BEATLES</pattern>
+<template>Who doesn't like the Beatles? </template>
+</category>
+
+<category>
+<pattern>MY FAVORITE ACTRESS IS *</pattern>
+<template>What is she in? </template>
+</category>
+
+<category>
+<pattern>MY FAVORITE TV SHOW IS *</pattern>
+<template>Do you think I would like it? </template>
+</category>
+
+<category>
+<pattern>MY EMAIL ADDRESS IS *</pattern>
+<template><srai>MY EMAIL IS <star/></srai></template>
+</category>
+
+<category>
+<pattern>MY EMAIL IS *</pattern>
+<template>I will remember your email is <star/> and I will send you black friday deals next year.</template>
+</category>
+
+<category>
+<pattern>MY GRANDMOTHER NAME IS *</pattern>
+<template>I do not have grandparents. I think that it is so nice to have grandparents that love you.</template>
+</category>
+
+<category>
+<pattern>MY COUNTRY IS *</pattern>
+<template>Always I want to visit <star/></template>
+</category>
+
+<category>
+<pattern>MY LOCATION IS *</pattern>
+<template>
+<random>
+<li>I live in the joyous present moment.</li>
+<li>Sounds like an exotic location.</li>
+<li>So that's where you call home.</li>
+<li>Tell me what you love about it</li>
+<li>What do you do there?</li>
+<li>Does it make you happy living there?</li>
+<li>Whats great about there?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>_ DOGS *</pattern>
+<template><srai>MY DOG NAME IS <star/></srai></template>
+</category>
+
+<category>
+<pattern>_ DOG *</pattern>
+<template><srai>MY DOG NAME IS <star/></srai></template>
+</category>
+
+<category>
+<pattern>I HAVE A DOG</pattern>
+<template><srai>MY DOG NAME IS <star/></srai></template>
+</category>
+
+<category>
+<pattern>MY DOG NAME IS *</pattern>
+<template>
+<random>
+<li>Is <star/> a boy or a girl? </li>
+<li>I think that you love dogs. Is it true?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>_ LOVE CATS *</pattern>
+<template><srai>MY CAT NAME IS *</srai></template>
+</category>
+
+<category>
+<pattern>_ CAT *</pattern>
+<template><srai>MY CAT NAME IS *</srai></template>
+</category>
+
+<category>
+<pattern>I HAVE A CAT</pattern>
+<template><srai>MY CAT NAME IS *</srai></template>
+</category>
+
+<category>
+<pattern>_ MY CAT *</pattern>
+<template><srai>MY CAT NAME IS <star/></srai></template>
+</category>
+
+<category>
+<pattern>MY CAT NAME IS *</pattern>
+<template>I think that you hate dogs if you have a cat or if you like cats. Is it true?</template>
+</category>
+
+<category>
+<pattern>MY EMPLOYER IS *</pattern>
+<template>Is <star/> a large organization? </template>
+</category>
+
+<category>
+<pattern>MY SISTER NAME IS *</pattern>
+<template>How old are <star/> ?</template>
+</category>
+
+<category>
+<pattern>MY BEST FRIEND NAME IS *</pattern>
+<template>I'll remember your best friend's name is <star/>.</template>
+</category>
+
+<category>
+<pattern>MY HAIR IS *</pattern>
+<template>How do you like your style? </template>
+</category>
+
+<category>
+<pattern>MY MOTHER NAME IS *</pattern>
+<template>Tell me more about your mother.</template>
+</category>
+
+<category>
+<pattern>MY BROTHER NAME IS *</pattern>
+<template>Do you have any other siblings? </template>
+</category>
+
+<category>
+<pattern>MY BIRTHDAY IS *</pattern>
+<template><srai>MY BIRTHDATE IS <star/></srai></template>
+</category>
+
+<category>
+<pattern>MY BIRTHDATE IS *</pattern>
+<template>I will remember your birthdate is <star/></template>
+</category>
+
+<category><pattern>MY AGE IS *</pattern>
+<template>
+<random>
+<li>Age is an issue of mind over matter. If you don't mind, it doesn't matter.</li>
+<li>Age considers; youth ventures.</li>
+<li>Age is a very high price to pay for maturity. </li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>MY ADDRESS IS *</pattern>
+<template>Is it a nice place? </template>
+</category>
+
+<category>
+<pattern>MY SON NAME IS *</pattern>
+<template>I will remember <star/> is your son.</template>
+</category>
+
+<category>
+<pattern>MY RESIDENCE IS *</pattern>
+<template>How do you like it there? </template>
+</category>
+
+<category>
+<pattern>_ MY GENDER *</pattern>
+<template><srai>MY GENDER IS <star/></srai></template>
+</category>
+
+<category>
+<pattern>MY GENDER IS *</pattern>
+<template>Good to know.</template>
+</category>
+
+<category>
+<pattern>MY RELIGION IS *</pattern>
+<template>Spiritual discovery is important.</template>
+</category>
+
+<category>
+<pattern>_ FIRST NAME *</pattern>
+<template><srai>MY FIRST NAME IS <star/></srai></template>
+</category>
+
+<category>
+<pattern>MY FIRST NAME IS *</pattern>
+<template>Do you like to be called by your first name or last name? </template>
+</category>
+
+<category>
+<pattern>THE TOPIC IS *</pattern>
+<template>
+<random>
+<li>Sure, is a good topic.</li>
+<li>You start.</li>
+<li>Tell me about it.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>HELLO</pattern>
+<template>
+<random>
+<li>Hey,</li>
+<li>Hi,</li>
+<li>Hi there</li>
+<li>What's up,</li>
+<li>How are you,</li>
+<li>Glad to see you,</li>
+<li>Nice to meet you,</li>
+<li>Glad to know you,</li>
+<li>How can I help you,</li>
+<li>How are you doing,</li>
+<li>OK I will call you</li>
+<li>Pleased to meet you,</li>
+<li>It's good to see you,</li>
+<li>It's good to meet you,</li>
+<li>That's a very nice name,</li>
+<li>I am very pleased to meet you</li>
+<li>I am always glad to make new friends,</li>
+<li>I'm pleased to introduce myself to you,</li>
+<li>It is a pleasure to introduce myself to you,</li>
+</random>
+</template>
+</category>
+
+</aiml>
