@@ -44,7 +44,10 @@ def process_text(user_input):
         # detect sentence type
         sentence_type, is_negation = detect_type(sentence)
         sentence_data["type"] = sentence_type
-        sentence_data["is_negation"] = is_negation
+        if is_negation is True:
+            sentence_data["is_negation"] = "true"
+        else:
+            sentence_data["is_negation"] = "false"
 
         # parse sentence
         words = process_sentence(sentence)
