@@ -1,3 +1,10 @@
+"""
+Modul creat de Andrei Iacob grupa 3A5
+
+Modulul se ocupă cu generarea unui topic bazat pe hipernime.
+"""
+from nltk.corpus import wordnet as wn
+
 class topic:
     def __init__(self,decay=0.9,synset_decay=0.5,hypernym_decay=0.8,max_level = None):
         self.used_synsets=[]
