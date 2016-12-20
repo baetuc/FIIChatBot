@@ -59,15 +59,16 @@ def get_input(arguments):
 
 
 def sanitize(text):
-    """Used to decode spaces from http get requests."""
+    """Used to decode invalid characters from http get requests. WIP"""
     sanitized_text = text.replace("%20", " ")
     sanitized_text = sanitized_text.replace("%27", "\'")
     return sanitized_text
 
+
 def build_error_report():
     """
-        Build a dictionary to serve as an error message in case something bad happens.
-    :return: report a dictionary with an error message stored in key "exception"
+        Builds a dictionary to serve as an error message in case something bad happens.
+    :return: report: a dictionary with an error message stored in key "exception"
     """
     report = dict()
     report["exception"] = '[TextProcessing] invalid input! Should be "/?input=user\'s input"'
@@ -105,15 +106,11 @@ class TextProcessingHandler(BaseHTTPRequestHandler):
 
 
 def run(ip="127.0.0.1", port=8081):
-    server_ip = ip
-    server_port = port
-
     print('[TextProcessing] starting server...')
-    server_address = (server_ip, server_port)
+    server_address = (ip, port)
     httpd = HTTPServer(server_address, TextProcessingHandler)
-    print('[TextProcessing] running server...')
+    print('[TextProcessing] running server at {}:{}'.format(ip, port))
     httpd.serve_forever()
 
 
-run("127.0.0.1", 8081)
-# TODO: doesn't work with '
+# run("127.0.0.1", 8081)
