@@ -100,7 +100,7 @@ def get_google_correction(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url)
-    content = r.text
+    content = r.text.encode('UTF-8')
     correction=re.findall('<a class="spell".*?<[/]a>',content)
     return html_to_text(correction[0])
 
@@ -111,7 +111,7 @@ def get_google_questions(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url,headers=headers)
-    content = r.text
+    content = r.text.encode('UTF-8')
     questions=re.findall('<div class="_rhf">.*?<[/]div>',content)
     return [(html_to_text(q)) for q in questions]
 
