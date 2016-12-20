@@ -60,8 +60,9 @@ def get_input(arguments):
 
 def sanitize(text):
     """Used to decode spaces from http get requests."""
-    return text.replace("%20", " ")
-
+    sanitized_text = text.replace("%20", " ")
+    sanitized_text = sanitized_text.replace("%27", "\'")
+    return sanitized_text
 
 def build_error_report():
     """
@@ -78,6 +79,7 @@ class TextProcessingHandler(BaseHTTPRequestHandler):
         # get arguments from request
         path = sanitize(self.path)
         arguments = parse_url_path(path)
+        print(self.path, path)
 
         # get input if possible
         text = None
@@ -113,4 +115,5 @@ def run(ip="127.0.0.1", port=8081):
     httpd.serve_forever()
 
 
-# run("127.0.0.1", 8081)
+run("127.0.0.1", 8081)
+# TODO: doesn't work with '
