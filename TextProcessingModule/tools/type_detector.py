@@ -16,6 +16,8 @@ import re
 def detect_question(input_string):
     if re.search("((!)*(\?)+)+", input_string):
         return "question"
+    elif r.search("^(when|where|why|how|who|whom)",input_string.lower()):
+        return "question"
     else:
         return -1
 
