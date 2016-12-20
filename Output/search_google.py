@@ -96,6 +96,24 @@ def get_google_citeations(question):
         urls.append(html_to_text(cite))
     return urls
 
+def get_google_correction(question):
+    question=question.replace('+','%2B')
+    url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
+    r = requests.get(url)
+    content = r.text
+    correction=re.findall('<a class="spell".*?<[/]a>',content)
+    return html_to_text(correction[0])
+
+def get_google_questions(question):
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    # header variable
+    headers = { 'User-Agent' : user_agent }
+    question=question.replace('+','%2B')
+    url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
+    r = requests.get(url,headers=headers)
+    content = r.text
+    questions=re.findall('<div class="_rhf">.*?<[/]div>',content)
+    return [(html_to_text(q)) for q in questions]
 
 '''    
 from HTMLParser import HTMLParser
