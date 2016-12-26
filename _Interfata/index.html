@@ -26,6 +26,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <script src="js/jquery-2.2.3.min.js"></script> 
 <script src="js/home.js"></script> 
+
+
+<link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" src="js/jquery.emojipicker.js"></script>
+
+  <!-- Emoji Data -->
+  <link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.tw.css">
+  <script type="text/javascript" src="js/jquery.emojis.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(e) {
+
+     $('#input-left-position').emojiPicker({
+        position: 'left'
+      });
+    });
+  </script>
+
+
 </head>
 <body>
 
@@ -109,12 +129,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="panel-footer">
 					<div class="input-group">
-						<input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+					<input type="text" id="input-left-position" class="emojiable-option" placeholder="Type your message here..." />
 						<span class="input-group-btn">
 							<button class="btn btn-warning btn-sm" id="btn-chat" onClick="SendUserMessage()">
 								Send</button>
 						</span>
 					</div>
+					
 				</div>
 			</span>
 		<!-- </div> -->
@@ -199,6 +220,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		});
 	});
 	</script>
+
+
 	<!-- //Hidden Navi Menu -->	  
 	<!-- Bootstrap core JavaScript
     ================================================== -->
