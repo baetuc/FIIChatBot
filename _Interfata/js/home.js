@@ -38,7 +38,7 @@ function SendBotMessage(message){
 }
 
 function SendUserMessage(){
-	var inputBox = $('#btn-input')[0];
+	var inputBox = $('#input-left-position')[0];
 	var message = inputBox.value;
 	
 	 $('.chat').append('<li class=\"right clearfix\"><span class=\"chat-img pull-right\">\
