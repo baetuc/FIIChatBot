@@ -46,18 +46,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       });
     });
 	
-	<!-- var logStatus = function() { -->
-		<!-- console.log('annyang.isListening()', annyang.isListening()); -->
-	  <!-- }; -->
-	  <!-- if (annyang) { -->
-		<!-- var commands = { -->
-		  <!-- 'Hello': function() { -->
-			<!-- alert('Hello there, let\'s start a conversation!'); -->
-		  <!-- } -->
-		<!-- } -->
-		<!-- annyang.addCommands(commands); -->
-		<!-- annyang.start(); -->
-	  <!-- } -->
+	$('body').keypress(function (e) {
+    if (e.which == '76') {
+        annyang.start();
+    }
+	});
+	
+	   if (annyang) { 
+		 var commands = { 
+		   'Hello': function() {
+			 alert('Hello there! Let\'s start a conversation!'); 
+			 annyang.pause();
+		   } ,
+		   'Who are you': function() {
+			 window.open("https://www.google.ro/#q=chat+bot", '_blank');
+			 annyang.pause();
+		   }
+		 } 
+		 annyang.addCommands(commands); 
+		 annyang.start(); 
+	   }
   </script>
   
 
