@@ -258,17 +258,20 @@ h3.w3ls-title {
   }
   .welcome-grid-right {
       float: none;
-      width: 44%;
+      width: 40vw;
+	  height:40vw;
       margin: 0 auto;
   }
 }
 
-.welcome-grid-right img.img-responsive {
-    width: 100%;
-    height: 173.781px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -o-border-radius: 50%;
-    -ms-border-radius: 50%;
-    border-radius: 50%; 
+@media(max-width:700px){
+	.welcome-grid-right img.img-responsive {
+		width: 30vw;
+		height: 30vw;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		-o-border-radius: 50%;
+		-ms-border-radius: 50%;
+		border-radius: 50%; 
+	}
 }

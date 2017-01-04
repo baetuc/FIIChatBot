@@ -28,6 +28,15 @@
 	margin-top:-20px;
 }
 
+.emojiPickerIconWrap{
+	width:100%;
+}
+
+#input-left-position{
+	width:80%;
+	margin-left:50px;
+}
+
 @media (min-width:700px){
 	.btn-group{
 		display:none;
