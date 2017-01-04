@@ -4,7 +4,7 @@
       defaults = {
         width: '200',
         height: '350',
-        position: 'right',
+        position: 'left',
         fadeTime: 100,
         iconColor: 'black',
         iconBackgroundColor: '#eee',
@@ -102,6 +102,7 @@
         this.$icon = $('<div class="emojiPickerIcon"></div>')
           .height(iconHeight)
           .width(iconHeight)
+		  .css('left','0')
           .addClass(this.settings.iconColor)
           .css('backgroundColor', this.settings.iconBackgroundColor);
           this.$wrapper.append( this.$icon );
@@ -209,7 +210,7 @@
       // Step 3
       var diffOffset = {
         top: (elOffset.top - parentOffset.top),
-        left: (elOffset.left - parentOffset.top)
+        left: (elOffset.left - parentOffset.top-50)
       };
 
       this.$picker.css({
