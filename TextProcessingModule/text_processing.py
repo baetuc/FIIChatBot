@@ -36,12 +36,21 @@ def process_text(user_input):
     user_input = correct(user_input)
     sentences = split_sentences(user_input)
 
-    output = list()
+    # start building output
+    output = dict()
+
+    # add number of sentences
+    output["number_of_sentences"] = str(len(sentences))
+
+    # start adding data for each sentence
+    sentences_output = list()
     for sentence in sentences:
         sentence_data = dict()
+
+        # add original sentence
         sentence_data["sentence"] = sentence
 
-        # detect sentence type
+        # add sentence type
         sentence_type, is_negation = detect_type(sentence)
         sentence_data["type"] = sentence_type
         if is_negation is True:
@@ -49,28 +58,34 @@ def process_text(user_input):
         else:
             sentence_data["is_negation"] = "false"
 
-        # parse sentence
+        # parse sentence, removing stop words and generating synonyms
         words = process_sentence(sentence)
-
-        # eliminarea stop words
         words = remove_stop_words(words)
-
-        # generate synonyms for each word
         words = get_synonyms(words)
 
-        # do some final retouching
-        final_words = list()
+        # prepare words for output
+        aux = list()
         for item in words:
-            # replace "_" with " " in synonyms
-            final_synonyms = list()
+            # replace "_" with " " in idioms and synonyms
+            sanitized_synonyms = list()
             for synonym in item[2]:
-                final_synonyms.append(synonym.replace("_", " "))
+                sanitized_synonyms.append(synonym.replace("_", " "))
+            sanitized_word = item[0].replace("_", " ")
 
-            # build final words list replacing "_" with " " for each idiom
-            final_words.append((item[0].replace("_", " "), item[1], tuple(final_synonyms)))
+            # build information dictionary for current word
+            word_info = dict()
+            word_info["word"] = sanitized_word
+            word_info["part_of_speech"] = item[1]
+            word_info["synonyms"] = sanitized_synonyms
+
+            # add built dictionary to words list
+            aux.append(word_info)
 
         # add result into dictionary
-        sentence_data["words"] = final_words
-        output.append(sentence_data)
+        sentence_data["words"] = aux
 
+        # add sentence information to output
+        sentences_output.append(sentence_data)
+
+    output["sentences"] = sentences_output
     return output

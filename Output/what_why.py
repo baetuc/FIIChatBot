@@ -39,7 +39,7 @@ class FavoriteHandler:
             "team" : ["Manchester United", "Real Madrid", "NY Yankers"],
             "holiday" : ["Christmas", "New Year", "Easter"],
             "number" : ["1","3","7","9","13"],
-            "soda" : ["Cocal Cola", "7Up", "Mountan Dew"],
+            "soda" : ["Cocal Cola", "7Up", "Mountain Dew"],
             "video game|computer game" : ["Counter Strike", "Overwatch", "Half Life"],
             "author|writer|poet" : ["Edgar Allan Poe", "J.R.R. Tolkien","J.K. Rowling"]
         }
@@ -60,8 +60,49 @@ class FavoriteHandler:
             },
             "car" : {
                 "Ford" : ["They are really cheap and good", "They have both average-Joe cars, and things like the Mustang", "I really like how the gears change"],
-                "Mercedes" : ["I think they are really luxurious", "I think they are really well build", "I think the rear-wheel drive it's a big plus"]
-                #to be continued
+                "Mercedes" : ["I think they are really luxurious", "I think they are really well build", "I think the rear-wheel drive it's a big plus"],
+                "Ferrari" : ["I like fast cars","Why wouldn't I? ","I allways wanted a Ferrari"],
+                "Dacia" : ["I like romanian cars","I think it is affordable and suited for our roads"],
+                "BMW" : ["I like fast and good looking cars","It represents the perfect harmony between elegance, comfort and dynamism"],
+                "Honda" : ["They have a low fuel consumption and a lot a systems","I like Asian cars"],
+            },
+            "song" : {
+                "You make me wanna" : ["I got married to this song", "It gives me energy"],
+                "We are young" : ["I have a young spirit and this song describes me (wink)", "It is a song full of energy"],
+                "Rainbow in the Dark" : ["This is my rock side", "I think it is the best rock/heavy metal voice ever"],
+                "Stayin alive" :["This would be the first song on my mixtape for a zombie apocalypse", "I think it is a great funeral song (joke)"],
+            },
+            "band|artist" : {
+                "Iron Maiden" : ["Who doesn't like them?!", "I really like heavy metal"],
+                "Eminem" : ["I like his style", "I like the lyrics"],
+                "The Beatles" : ["I like good music", "Probably the best band of all time"],
+                "ABBA" : ["The best music was from the good old days","I sing their songs in the shower, every word"],
+            },
+            "drink" : {
+                "Water" :["It keeps me alive!", "I can'y live without it"],
+                "Beer" :["Beer it's just Beer, what is not to love about it?", "I like the taste"],
+                "Wine" :["I like the taste", "It helps you travel the World in a bottle"],
+                "Vodka" :["Nothing like a good old bottle of Rubinoff or Zelcos.", "It helps me reset my memory"],
+            },
+            "book" : {
+                "The Lord of The Rings" : ["I like the story", "I like the characters", "I really like how the places are described"],
+                "The Da Vinci Code" : ["I like how it chalanges religion", "I really like the main character", "I like how Dan Brown writes"], 
+                "Harry Potter": ["I loved the book when I was a kid", "I like both the book and the movie", "I love the author"], 
+                "50 Shades of Grey" : ["You don't want to know", "I hope I'll find a Mr. Grey some day", "It's a spicy book"],
+            "soda" : {
+            	"Coca Cola" : ["I prefer to drink it instead of coffee", "I like the pretty bottle", "It's nice to cool off in the summer"],
+            	"7Up" : ["It's better than Sprite", "I like that it's not that sweet", "It's really bubbly"],
+            	"Mountain Dew" : ["It's yellow", "It's better than Coke", "It has a really nice taste"]
+            }
+            "video game|computer game" : {
+            	"Counter Strike" : ["It's a game that is still good after all these years", "Everyone who likes games has played CS at least once", "I love how a mod came so far"],
+            	"Overwatch" : ["It combines the MOBA and FPS genres", "The characters are really balanced", "I like to play with my team"],
+            	"Half Life" : ["I think it revolutionized the genre", "It had really good graphics for it's age", "I like the story"]
+            }
+            "author|writer|poet" : {
+            	"Edgar Allan Poe" : ["I like poetry", "I really like 'The Raven'", "I really like his symbolism"],
+            	"J.R.R. Tolkien" : ["I really like The Hobbit!", "I love The Lord of the Rings", "I like how he created a huge world by writing"],
+            	"J.K. Rowling" : ["I grew up with Harry Potter", "I really like her style of writing", "Everyone loves Harry Potter!"]
             }
         }
     
