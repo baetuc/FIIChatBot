@@ -2,4 +2,5 @@
 
 Server: localhost:1000
 Text-Processing: localhost:2000
+Database: localhost:4000
 Output: localhost:7000
