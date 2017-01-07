@@ -22,7 +22,7 @@ import nltk
 def get_res(sentence):
     nlp = StanfordCoreNLP('http://localhost:9000')
     res = nlp.annotate(sentence,
-                       properties={"annotators":"tokenize,ssplit,pos,parse,natlog,openie",
+                       properties={"annotators":"tokenize,ssplit,pos,parse,natlog,openie,coref",
                                     "outputFormat": "json"
                                     })
     return (res)
@@ -64,3 +64,121 @@ for s in res["sentences"]:
     for dep in s['enhancedDependencies']:
         print(dep)
 print(get_clauses(s))    
+
+def replace_with_coreference(res,text):
+    sentences = split_into_sentences(text)
+    tokeniezd_text=[]
+    tags = []
+    for sentence in sentences:
+        tokenized_sentence = nltk.word_tokenize(sentence)
+        tokeniezd_text.append(tokenized_sentence)
+        tags.append(nltk.pos_tag(tokenized_sentence))
+    for s in res["corefs"]:
+        print(res["corefs"][s])  
+        corefs = res["corefs"][s]
+        i=0
+        while i<len(corefs):
+            if tags[corefs[i]['sentNum']-1][corefs[i]['startIndex']-1][1]== 'NNP': 
+                i+=1
+            else:
+                for j in range(i-1,-1,-1):
+                    if tags[corefs[j]['sentNum']-1][corefs[j]['startIndex']-1][1]== 'NNP': 
+                        if corefs[j]['gender']==corefs[i]['gender'] and corefs[j]['animacy']==corefs[i]['animacy'] and corefs[j]['number']==corefs[i]['number']:
+                            tokeniezd_text[corefs[i]['sentNum']-1][corefs[i]['startIndex']-1]=corefs[j]['text']
+                            for j in range(corefs[i]['startIndex'],corefs[i]['endIndex']-1):
+                                del tokeniezd_text[corefs[i]['sentNum']-1][j]
+                            break
+    
+                i+=1
+        result = ""
+        for sentence in tokeniezd_text:
+            if(sentence[0]!='.'):
+                result+=(untokenize(sentence))
+        return result
+            
+def replace_with_coreference2(res,text):
+    sentences = split_into_sentences(text)
+    tokeniezd_text=[]
+    for sentence in sentences:
+        tokeniezd_text.append(nltk.word_tokenize(sentence))
+    for s in res["corefs"]:
+        print(res["corefs"][s])  
+        corefs = res["corefs"][s]
+        i=0
+        while i<len(corefs):
+            if corefs[i]['isRepresentativeMention'] == True: 
+                i+=1
+            else:
+                for j in range(i-1,-1,-1):
+                    if corefs[j]['isRepresentativeMention'] == True: 
+                        if corefs[j]['gender']==corefs[i]['gender'] and corefs[j]['animacy']==corefs[i]['animacy'] and corefs[j]['number']==corefs[i]['number']:
+                            tokeniezd_text[corefs[i]['sentNum']-1][corefs[i]['startIndex']-1]=corefs[j]['text']
+                            for j in range(corefs[i]['startIndex'],corefs[i]['endIndex']-1):
+                                del tokeniezd_text[corefs[i]['sentNum']-1][j]
+                            break
+    
+                i+=1
+        result = ""
+        for sentence in tokeniezd_text:
+            if(sentence[0]!='.'):
+                result+=(untokenize(sentence))
+        return result
+
+ caps = "([A-Z])"
+prefixes = "(Mr|St|Mrs|Ms|Dr)[.]"
+suffixes = "(Inc|Ltd|Jr|Sr|Co)"
+starters = "(Mr|Mrs|Ms|Dr|He\s|She\s|It\s|They\s|Their\s|Our\s|We\s|But\s|However\s|That\s|This\s|Wherever)"
+acronyms = "([A-Z][.][A-Z][.](?:[A-Z][.])?)"
+websites = "[.](com|net|org|io|gov)"
+    
+def split_into_sentences(text):
+    text = " " + text + ".  "
+    text = text.replace("\n"," ")
+    text = re.sub(prefixes,"\\1<prd>",text)
+    text = re.sub(websites,"<prd>\\1",text)
+    if "Ph.D" in text: text = text.replace("Ph.D.","Ph<prd>D<prd>")
+    text = re.sub("\s" + caps + "[.] "," \\1<prd> ",text)
+    text = re.sub(acronyms+" "+starters,"\\1<stop> \\2",text)
+    text = re.sub(caps + "[.]" + caps + "[.]" + caps + "[.]","\\1<prd>\\2<prd>\\3<prd>",text)
+    text = re.sub(caps + "[.]" + caps + "[.]","\\1<prd>\\2<prd>",text)
+    text = re.sub(" "+suffixes+"[.] "+starters," \\1<stop> \\2",text)
+    text = re.sub(" "+suffixes+"[.]"," \\1<prd>",text)
+    text = re.sub(" " + caps + "[.]"," \\1<prd>",text)
+    if '"' in text: text = text.replace('."','".')
+    if "\"" in text: text = text.replace(".\"","\".")
+    if "!" in text: text = text.replace("!\"","\"!")
+    if "?" in text: text = text.replace("?\"","\"?")
+    text = text.replace(".",".<stop>")
+    text = text.replace("?","?<stop>")
+    text = text.replace("!","!<stop>")
+    text = text.replace("<prd>",".")
+    sentences = text.split("<stop>")
+    sentences = sentences[:-1]
+    sentences = [s.strip() for s in sentences]
+    return sentences
+    
+def untokenize(words):
+    """
+    Untokenizing a text undoes the tokenizing operation, restoring
+    punctuation and spaces to the places that people expect them to be.
+    Ideally, `untokenize(tokenize(text))` should be identical to `text`,
+    except for line breaks.
+    """
+    text = ' '.join(words)
+    step1 = text.replace("`` ", '"').replace(" ''", '"').replace('. . .',  '...')
+    step2 = step1.replace(" ( ", " (").replace(" ) ", ") ")
+    step3 = re.sub(r' ([.,:;?!%]+)([ \'"`])', r"\1\2", step2)
+    step4 = re.sub(r' ([.,:;?!%]+)$', r"\1", step3)
+    step5 = step4.replace(" '", "'").replace(" n't", "n't").replace(
+         "can not", "cannot")
+    step6 = step5.replace(" ` ", " '")
+    return step6.strip()
+
+#text = "Barack Obama was born in Hawaii.  He is the president. Obama was elected in 2008."
+text = "Barack Obama was born in Hawaii. He's the president. Donald Trump won 2016 election. He is made of chocolate."
+res = get_res(text)
+
+
+        
+
+print(replace_with_coreference(res,text))
