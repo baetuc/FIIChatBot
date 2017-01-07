@@ -10,7 +10,7 @@ install:
     source:    http://stackoverflow.com/questions/32879532/stanford-nlp-for-python
     
 start server cmd:
-    cd corenlp-python\stanford-corenlp-full-2016-10-31
+    cd C:\Windows\System32\corenlp-python\stanford-corenlp-full-2016-10-31
     java -mx5g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer
 '''
 
