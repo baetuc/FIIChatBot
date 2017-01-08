@@ -9,6 +9,86 @@ from nltk.stem import WordNetLemmatizer
 from unidecode import unidecode
 import re
 import random
+import urllib
+import urllib2
+import time
+
+
+def generate_question(cuvant):
+
+    url = 'http://answerthepublic.com/seeds'
+
+    hdr = {
+
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Encoding': 'gzip, deflate',
+        'Accept-Language': 'ro-RO,ro;q=0.8,en-US;q=0.6,en;q=0.4',
+        'Cache-Control': 'max-age=0',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Host': 'answerthepublic.com',
+        'Origin': 'http://answerthepublic.com',
+        'Referer': 'http://answerthepublic.com/',
+        'Upgrade-Insecure-Requests': '1',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+        'Cookie': '_google_suggest_session=OENEWm9SUlVzaEt3OXZmWnZVNVgrL0dqOVZmanpJS3I3b1hDL21pMHp5T0pZeEl1RlVUdzhFb3hpK1kxaEFhUUMwWSs3dHNDNjRONkpzSjdEVnZ5cS82bHlVK04wZWNPdXA0ZlBkb3lFMUdmZEJlTUtNRWUrQTJ3b3k5WE9aYkk4bzRraXZVbFdjZzhyYlBoRUxyV2hiSCtQK0dEWEhBSEloQ01lV3FnbldYZURGU0NLZFN4OEg0UndVc2p3Y0hBT3NYM2ttSGcrdSttakpseno4US9HN1NjRlhic2grQitnK1I3V2NLdS9WaWQ0NitWYmo1cDd2aGZSd3g4aTUyVmg3enJSUS9ZNEhNQlY4Q0hGcGQxem5XOGQwN3JIRmNjeDRaKzc1ZDRJQWs9LS1mQUtZVXc4WWpWNTduT2U5RXllT2lnPT0=--b56df51a14730a303007f0b306ea5b94e03c554c; request_method=POST'
+    }
+
+    hdr2 = {
+
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Encoding': 'gzip, deflate',
+        'Accept-Language': 'ro-RO,ro;q=0.8,en-US;q=0.6,en;q=0.4',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+    }
+
+    # Prepare the data
+    values = {
+        'utf8': r'%E2%9C%93',
+        'authenticity_token': 'jNJDcx2WdmVhihkdDST+cPUkdqMip2MrUmB5d20YOusYcbE8PmE3gOsQfd/wKf42OsjmxDHyVQi4nzyifkocuA==',
+        'seed[keyword]': cuvant,
+        'seed[country]': 'UK',
+        'commit': 'Get questions'
+    }
+
+    data = urllib.urlencode(values)
+
+    # data = """utf8=%E2%9C%93&authenticity_token=jNJDcx2WdmVhihkdDST%2BcPUkdqMip2MrUmB5d20YOusYcbE8PmE3gOsQfd%2FwKf42OsjmxDHyVQi4nzyifkocuA%3D%3D&seed%5Bkeyword%5D=dresses&seed%5Bcountry%5D=UK&commit=Get+questions"""
+    # print data
+    # Send HTTP POST request
+    req = urllib2.Request(url, data, headers=hdr)
+    response = urllib2.urlopen(req)
+
+    html = response.read()
+    hdr2['Cookie'] = response.headers['Set-Cookie']
+
+    regex = """data-seed-id=\"(.*?)\""""
+
+    m = re.search(regex, html)
+    print m.group(1)
+
+    listamea = list()
+    url = "http://answerthepublic.com/seeds/" + m.group(1)
+    time.sleep(2)
+    i = 0
+    while i is 0:
+        print i
+        req = urllib2.Request(url, headers=hdr2)
+        response = urllib2.urlopen(req)
+        html = response.read()
+
+        stop = """<h2 id="prepositions" data-magellan-destination="prepositions" class="text-center"><strong>.*?</strong> <strong id="prepositions-heading-count" class="text-cta">.*?</strong> Prepositions</h2>"""
+        html = re.split(stop, html)[0]
+
+        regex = r"""<li class="suggestion">.*?<a target="_blank" href=".*?">(.*?)</a>.*?</li>"""
+
+        for a in re.finditer(regex, html, flags=re.DOTALL):
+            i = 5
+            listamea.append(a.group(1))
+    # Print the result
+
+    return random.choice(listamea)
+
 
 def get_keywords(question):
     tokenized_text = nltk.word_tokenize(question.lower())
@@ -281,7 +361,7 @@ def generate_output(text, keywords):
                                 words_found[index] = True
                                 if words_found_count == len(keywords):
                                     sentence = replace_with_synonyms(sentence)
-                                    while random.random() < 0.1:
+                                    while random.random() < 0.2:
                                         sentence = typo(sentence)
                                     return sentence
     text = replace_with_synonyms(text)
@@ -350,9 +430,9 @@ def parseJson(data):
                 ret_text += generate_output(dict[u'AIML']) + ". "
             if dict[u'WEB']:
                 ret_text += generate_output(dict[u'WEB']) + ". "
-    response = data[u'topic']
+    response = data[u'ontologii']
     if response:
-        ret_text = generate_output(response)
+        ret_text = generate_question(response[u'noun'][0])
 
     return ret_text
     #print dict(data)
