@@ -3,9 +3,9 @@ import json
 import searchWeb
 import AIML
 import Ontologii
-response= []
+
 def init(data):
-    
+    response= []
     numberS = int(data["number_of_sentences"])
     responsServ = " "
     for index in range(numberS):
@@ -14,10 +14,11 @@ def init(data):
         type = sentences["type"]
         is_negation = sentences["is_negation"]
         words = sentences["words"]
-        topic = sentences["topic"]
-        subtopic = sentences["subtopic"]
+        topic = sentences["topic"].lower()
+        subtopic = sentences["subtopic"].lower()
         
         Ontologii.jsonConverterAndInserter(data)
+        
         print 'AIML'
         responseAIMLsentence = AIML.getResponse(sentence)
 
@@ -41,7 +42,9 @@ def init(data):
                     responsetopic = None 
 
         print 'web'
-        if responsetopic is None:
+
+        responseWeb = None
+        if responseAIML is None:
             gooAnswer = searchWeb.get_google_answer(sentence)
             
             if gooAnswer is not None:
@@ -65,11 +68,9 @@ def init(data):
         print 'ont'
 
         responseOntologii = None
-        if responseWeb is None:
-
-            responseOntologiiTopic = Ontologii.getWords(topic, subtopic)
-            if responseOntologiiTopic is not None:
-                responseOntologii = responseOntologiiTopic
+        responseOntologiiTopic = Ontologii.getWords(topic, subtopic)
+        if responseOntologiiTopic is not None:
+            responseOntologii = responseOntologiiTopic
 
         r = {"question":sentence, "AIML":responseAIML, "WEB":responseWeb}
         response.insert(index, r);
