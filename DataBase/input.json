@@ -1,0 +1,75 @@
+{
+  "sentences": [
+    {
+      "sentence": "i"m a real world dancer!",
+      "words": [
+        {
+          "part_of_speech": "NN",
+          "synonyms": [
+            "iodine",
+            "iodin",
+            "atomic number 53"
+          ],
+          "word": "i"
+        },
+        {
+          "part_of_speech": "N",
+          "synonyms": [
+            "real life"
+          ],
+          "word": "real world"
+        },
+        {
+          "part_of_speech": "NN",
+          "synonyms": [
+            "professional dancer",
+            "terpsichorean",
+            "social dancer"
+          ],
+          "word": "dancer"
+        },
+      ],
+	  "topic": "dance",
+	  "subtopic": "sport",
+      "is_negation": "false",
+      "type": "exclamation"
+    },
+    {
+      "sentence": "i fell out of the blue.",
+      "words": [
+        {
+          "part_of_speech": "NN",
+          "synonyms": [
+            "iodine",
+            "iodin",
+            "atomic number 53"
+          ],
+          "word": "i"
+        },
+        {
+          "part_of_speech": "VBD",
+          "synonyms": [
+            "hide",
+            "felled seam",
+            "drop"
+          ],
+          "word": "fell"
+        },
+        {
+          "part_of_speech": "J",
+          "synonyms": [
+            "unanticipated",
+            "unforeseen",
+            "unlooked-for"
+          ],
+          "word": "out of the blue"
+        }
+      ],
+	  "topic": "abstract",
+	  "subtopic": "sport",
+      "is_negation": "false",
+      "type": "statement"
+    }
+  ],
+  "number_of_sentences": "2"
+}

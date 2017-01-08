@@ -14,40 +14,67 @@ def init(data):
         type = sentences["type"]
         is_negation = sentences["is_negation"]
         words = sentences["words"]
-        #topic = sentences["topic"]
-
-        #Ontologii.jsonConverterAndInserter(data)
-        responseAIML = AIML.getResponse(sentence)
-        #responseAIMLtopic = AIML.getResponseForTopic(topic)
-
-        data["response_AIML"] = responseAIML
-        #data["response_AIMLtopic"] = responseAIMLtopic  
-
-        gooAnswer = searchWeb.get_google_answer(sentence)
+        topic = sentences["topic"]
+        subtopic = sentences["subtopic"]
         
-        if gooAnswer is not None:
-            data["response_Goo"] = gooAnswer
-            responseAI = gooAnswer
+        Ontologii.jsonConverterAndInserter(data)
+        print 'AIML'
+        responseAIMLsentence = AIML.getResponse(sentence)
+
+        print 'AIML topic'
+
+        if responseAIMLsentence != 'I have no answer for that.':
+            responseAIML = responseAIMLsentence
         else:
-            gooAnswerSumm = searchWeb.get_google_summary(sentence)
-            if gooAnswerSumm is not None:
-                responseAI = gooAnswerSumm
+            responseAIML = None
+        
+        if responseAIML is None:  
+            responseAIMLtopic = AIML.getResponseForTopic(topic)
+            responseAIMLsubtopic = AIML.getResponseForTopic(subtopic)
+
+            if responseAIMLtopic != 'I have no answer for that.':
+                responsetopic = responseAIMLtopic
             else:
-                try:
-                    wikiAnswer = searchWeb.Wiki(sentence)
-                except:
-                    wikiAnswer = None
-
-                if wikiAnswer:    
-                    responseAI = wikiAnswer
+                if responseAIMLsubtopic != 'I have no answer for that.':
+                    responsetopic = responseAIMLsubtopic
                 else:
-                    responseAI  = None
+                    responsetopic = None 
 
+        print 'web'
+        if responsetopic is None:
+            gooAnswer = searchWeb.get_google_answer(sentence)
+            
+            if gooAnswer is not None:
+                responseWeb = gooAnswer
+            else:
+                gooAnswerSumm = searchWeb.get_google_summary(sentence)
+                if gooAnswerSumm is not None:
+                    responseWeb = gooAnswerSumm
+                else:
+                    try:
+                        wikiAnswer = searchWeb.Wiki(sentence)
+                    except:
+                        wikiAnswer = None
 
-        r = {"question":sentence, "AIML":responseAIML, "AI":responseAI, "index":index}
+                    if wikiAnswer:    
+                        responseWeb = wikiAnswer
+                    else:
+                        responseWeb  = None
+                        
+            
+        print 'ont'
+
+        responseOntologii = None
+        if responseWeb is None:
+
+            responseOntologiiTopic = Ontologii.getWords(topic, subtopic)
+            if responseOntologiiTopic is not None:
+                responseOntologii = responseOntologiiTopic
+
+        r = {"question":sentence, "AIML":responseAIML, "WEB":responseWeb}
         response.insert(index, r);
 
 
-    dictionaryToJson = json.dumps({"response":response})
+    dictionaryToJson = json.dumps({"response":response, "ontologii": responseOntologii, "topic": responsetopic})
 
     return dictionaryToJson
