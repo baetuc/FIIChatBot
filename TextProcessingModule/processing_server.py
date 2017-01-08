@@ -2,11 +2,6 @@ from bottle import request, post, run, route
 import json
 import text_processing
 
-
-@route('/correct', method='POST')
-def handle_processing():
-    return text_processing.correct_text(request.json["input"])
-
 @route('/processor', method='POST')
 def handle_processing():
     return text_processing.correct_text(request.json["input"])
