@@ -16,6 +16,13 @@ from tools.synonym_finder import get_synonyms
 from tools.stop_words import remove_stop_words
 
 
+def correct_text(user_input):
+    user_input = user_input.lower()
+    user_input = correct(user_input)
+
+    return user_input
+
+
 def process_text(user_input):
     """
         Processes the input and returns a list of dictionaries, one for each sentence, with the
@@ -32,8 +39,6 @@ def process_text(user_input):
     """
 
     # prepare sentences for processing
-    user_input = user_input.lower()
-    user_input = correct(user_input)
     sentences = split_sentences(user_input)
 
     # start building output
