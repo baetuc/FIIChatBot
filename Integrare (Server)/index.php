@@ -1,5 +1,6 @@
 <?php
 	header('Content-Type: application/json');
+	header('Access-Control-Allow-Origin: *');
 
 	//Server definitions
 	$textProcessingURL = 'http://localhost:2000';
@@ -18,6 +19,7 @@
 		);
 		$context  = stream_context_create($options);
 		$result = file_get_contents($url, false, $context);
+		// echo $result;
 
 		//Removing headers
 		$parsedResult = split("\r\n\r\n", $result, 2);
@@ -36,15 +38,16 @@
 		//Call text processing
 		$textProcessingPath = $textProcessingURL.'?input='.urlencode($currentInput);
 		$textProcessingResponse = file_get_contents($textProcessingPath);
-		$overloadedTextProcessingResponse = json_encode(array("sentences" => json_decode($textProcessingResponse), "numberSentences"=>1));
+		// $overloadedTextProcessingResponse = json_encode(array("sentences" => json_decode($textProcessingResponse), "numberSentences"=>1));
+		$overloadedTextProcessingResponse = $textProcessingResponse;
 		$finalJson["text_processing"] = json_decode($textProcessingResponse);
 
 		//Call database
 		$databasePath = $databaseURL;
 		$databaseResponse = post_to($databasePath, $overloadedTextProcessingResponse);
-		$finalJson["database"] = $databaseResponse;
+		$finalJson["database"] = json_decode($databaseResponse);
 
-		//Call output
+		// Call output
 		$outputInput = $databaseResponse;
 		$outputPath = $outputURL;
 		$outputResponse = post_to($outputPath, $outputInput);
