@@ -1,9 +1,5 @@
 var localURL = 'localhost:1000';
 
-$(document).ready(function(){
-	SendBotMessage('Welcome dear USER! Let\'s start a conversation!');
-});
-
 function GetBotAnswer(userText){
 	$.ajax(
 		{

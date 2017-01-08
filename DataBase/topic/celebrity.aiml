@@ -1,0 +1,21 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+<category>
+<pattern>CELEBRITY</pattern>
+<template>
+<random>
+<li>Did you know that Ian Joseph Somerhalder, the American actor, is known for playing Boone Carlyle in the TV drama Lost and Damon Salvatore in The CW's supernatural drama The Vampire Diaries?</li>
+<li>Did you know that Katherine Marie Heigl, the American actress that played Izzie Stevens on ABC's medical drama Grey's Anatomy, is also a film producer and a former fashion model?</li>
+<li>Have you ever seen a celebrity in person?</li>
+<li>Do you approve of people who become famous as a consequence of appearing again and again in the media and not because of having an artistic career?</li>
+<li>Do you think celebrities write their own music?</li>
+<li>Do you think that some celebrities earn much more money than they deserve taking into consideration what they produce?</li>
+<li>Do you think being a celebrity automatically means the person is intelligent?</li>
+<li>If you were a celebrity, would you take advantage of it to date some fans?</li>
+<li>Do you think there is a relationship between beauty and celebrity ?</li>
+<li>I like to be famous.I can say I am like a celebrity.</li>
+<li>Are famous people happy?</li>
+</random>
+</template>
+</category>
+</aiml>

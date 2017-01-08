@@ -17,4 +17,7 @@
 <category><pattern>DATE AND TIME</pattern>
 <template>The date and time is <date/></template>
 </category>
+<category><pattern>WHAT TIME IS</pattern>
+<template>Time is the longest distance between two places.<date/></template>
+</category>
 </aiml>

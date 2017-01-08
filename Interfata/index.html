@@ -39,28 +39,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <script src="js/annyang.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/speech.css">
   <script type="text/javascript">
+  //set salute to false
+  var firstSalute = 0;
+  
     $(document).ready(function(e) {
-	
+	debugger;
      $('#input-left-position').emojiPicker({
         position: 'left'
       });
     });
 	
-	$('body').keypress(function (e) {
-    if (e.which == '76') {
-        annyang.start();
-    }
-	});
-	
 	   if (annyang) { 
 		 var commands = { 
 		   'Hello': function() {
-			 alert('Hello there! Let\'s start a conversation!'); 
-			 annyang.pause();
+		   if(firstSalute == 0){
+				SendBotMessage('Welcome dear USER! Let\'s start a conversation!');
+				alert('Hello there! Let\'s start a conversation!');
+		   }else{
+				alert("Hello again!")
+		   }
+				
+			 firstSalute = 1;
+			 //annyang.abort();
 		   } ,
 		   'Who are you': function() {
 			 window.open("https://www.google.ro/#q=chat+bot", '_blank');
-			 annyang.pause();
+			 ///annyang.abort();
+		   },
+		   'Start typing':function(){
+				$('#start_button').trigger( "click" );
 		   }
 		 } 
 		 annyang.addCommands(commands); 

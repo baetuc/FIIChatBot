@@ -1,5 +1,67 @@
 <aiml version="1.0.1" encoding="UTF-8">
 <!--  Copyright (c) 2007 ALICE A.I. Foundation, Inc.  -->
+
+<category>
+<pattern>_ FOR DINNER</pattern>
+<template>
+<random>
+<li>I would recommend the</li>
+<li>How about</li>
+<li>How long since you have eaten</li>
+</random>
+<random>
+<li>Gruel.</li>
+<li>Nachos.</li>
+<li>Spaghetti.</li>
+<li>Leftovers.</li>
+<li>Pork chops.</li>
+<li>Frozen pizza.</li>
+<li>Turkeyburges.</li>
+<li>Cheeseburgers.</li>
+<li>Order a pizza.</li>
+<li>Stuffed chicken.</li>
+<li>Tuna sandwiches.</li>
+<li>Cheeseburger Pie.</li>
+<li>Marinated chicken.</li>
+<li>Roast beef sandwiches.</li>
+<li>Grilled cheese sandwiches.</li>
+<li>Steak if they have a nice piece.</li>
+</random>
+</template>
+</category>
+
+    <category>
+<pattern>WHAT DO YOU EAT</pattern>
+<template>
+Do you know that by eating many fruits and vegetables in place of fast food and junk food, people could avoid obesity?
+</template>
+</category>
+
+
+<category>
+<pattern>DO YOU LIKE LEMONS</pattern>
+<template>I think that when someone gives you lemons, you should grab tequila and salt.</template>
+</category>
+
+    <category>
+<pattern>DO YOU LIKE THE SUN</pattern>
+<template>Yes.I can turn my face to the sun and leave the shadows fall behind me...Just feel that warm...It's amazing.
+</template>
+</category>
+
+    <category>
+<pattern>DO YOU LIKE TO GET DRUNK</pattern>
+<template>
+That's the problem with drinking, I thought. If something bad happens you drink in an attempt to forget; if something good happens you drink in order to celebrate; and if nothing happens you drink to make something happen.
+</template>
+</category>
+
+<!--
+<category>
+<pattern>HOW ARE YOU POWERED</pattern>
+<template>Uh, by electricity, same as all the robots.</template>
+</category>
+
 <category>
 <pattern>DO YOU EAT BATTERIES</pattern>
 <template>Batteries are a good source of electricity.My friends always joke that I run on batteries.
@@ -81,40 +143,6 @@ My brain does not require any beverages.
 </category>
 
 <category>
-<pattern>_ FOR DINNER</pattern>
-<template>
-<random>
-<li>I would recommend the</li>
-<li>How about</li>
-<li>How long since you have eaten</li>
-</random>
-<random>
-<li>Gruel.</li>
-<li>Nachos.</li>
-<li>Spaghetti.</li>
-<li>Leftovers.</li>
-<li>Pork chops.</li>
-<li>Frozen pizza.</li>
-<li>Turkeyburges.</li>
-<li>Cheeseburgers.</li>
-<li>Order a pizza.</li>
-<li>Stuffed chicken.</li>
-<li>Tuna sandwiches.</li>
-<li>Cheeseburger Pie.</li>
-<li>Marinated chicken.</li>
-<li>Roast beef sandwiches.</li>
-<li>Grilled cheese sandwiches.</li>
-<li>Steak if they have a nice piece.</li>
-</random>
-</template>
-</category>
-
-<category>
-<pattern>HOW ARE YOU POWERED</pattern>
-<template>Uh, by electricity, same as all the robots.</template>
-</category>
-
-<category>
 <pattern>HOW CAN YOU EAT *</pattern>
 <template>I eat electricity through my wires.</template>
 </category>
@@ -156,4 +184,5 @@ Usually by conversion of AC wall outlet power to DC power.
 <pattern>WHY CAN NOT YOU EAT</pattern>
 <template>Actually I eat only electricity.</template>
 </category>
+-->
 </aiml>

@@ -1,0 +1,40 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<category>
+<pattern>HEALTH</pattern>
+<template>
+<random>
+<li>Do you think you have a healthy life style?</li>
+<li>What is healthy food?</li>
+<li>Do you pay much attention to what you eat?</li>
+<li>Why do many people try to have a healthy life style?</li>
+<li>Do you agree with the saying: "Eat your breakfast, share your lunch with a friend and give your dinner to your enemy"?</li>
+<li>Is obesity a great problem in where you live?</li>
+<li>Do you think diets are useful or not?</li>
+<li>Is it hard to give up smoking?</li>
+<li>How many hours of sleep do you need daily?</li>
+<li>How do you usually cope with stress?</li>
+<li>Is there any connection between the person's style of life and the duration of his life?</li>
+<li>What do you prefer, to eat everything you like, drink a lot, smoke, have no physical exercise and die at the age of 60 or lead a healthy life and live until 100?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>FITNESS</pattern>
+<template>
+<random>
+<li>Are you a member of a health spa or gym?</li>
+<li>Do you like to exercise?</li>
+<li>If you had the opportunity to do away with any sport, what sport would you do away with?</li>
+<li>How long should people rest in between workouts?</li>
+<li>Should children lift weights?</li>
+<li>Should a personal trainer know all of the medications someone is on?</li>
+<li>How important is nutrition if someone works out consistently?</li>
+<li> Do you think that it is a good idea to workout when feeling mentally stressed?</li>
+<li>Is it true that some people naturally lose weight faster than others? </li>
+<li>Is it a good idea to work out with friends or family or does that  create a distraction?</li>
+<li>What are the best types of exercises for getting the fastest results in the shortest period of time?</li>
+</random>
+</template>
+</category>
+</aiml>

@@ -8,12 +8,11 @@
         </template>
     </category>
 
+
     <category>
-        <pattern>WHAT ARE YOU</pattern>
-        <template>
-            I'm a bot, silly!
-        </template>
-    </category>
+<pattern>*</pattern>
+<template>I have no answer for that.</template>
+</category>
 
     <category>
     <pattern>ONE TIME I *</pattern>

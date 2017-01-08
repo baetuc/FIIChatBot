@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+<category>
+<pattern>SOCIETY</pattern>
+<template>
+<random>
+<li>In front of a teenager you can not impose your point of view.</li>
+<li>I have always considered marriage as one of the most important events in one's life, the foundation of happiness or misery.</li>
+<li>What do you think about gay people?</li>
+<li>Marriage is destined to end at a given moment. After you will forget the human with which you get started on the road of life, the marriage will become for you just loneliness.</li>
+<li>Marriage is an important moment because it influences the lives of two people.</li>
+<li>Great strides made at inappropriate times bring only disappointment. So choose carefully with who you want to marry.</li>
+<li>Do you want to get married? Do you consider that a human that prefer to be alone entire life is a unfulfilled person?</li>
+</random>
+</template>
+</category>
+
+</aiml>
+

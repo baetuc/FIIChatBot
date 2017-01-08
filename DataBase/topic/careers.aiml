@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+<category>
+<pattern>CAREERS</pattern>
+<template>
+<random>
+<li>What profession do you want to have in the future?</li>
+<li>Do you choose a profession just for money or just if you like it?</li>
+<li>When you were a child and someone asked you what you wanna be when you will grow up, which was your answer?</li>
+<li>In every profession we must to have a motto. My motto is: we must let the world better than we found it.</li>
+<li>Perhaps you know that sometimes women must choose between career and family? Do you think that it is fair? This fact happens usually after marriage.</li>
+<li>I know a lot of people that said that career is more important than love. They said that love brought them just pain and disappointment. 
+Also, they said that if your heart is broken, you will be extraordinary in your proffesional life. In fact you will build your career on the ruins of your broken heart.</li>
+<li>How did you begin your career?</li>
+<li>What kind of education, training, or background does your job require?</li>
+<li>Do you think women are good bosses?</li>
+<li>Do you plan to retire?</li>
+</random>
+</template>
+</category>
+
+</aiml>
+

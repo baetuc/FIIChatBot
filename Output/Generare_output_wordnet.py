@@ -7,7 +7,9 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from PyDictionary import PyDictionary
 from bs4 import BeautifulSoup
+from unidecode import unidecode
 
+lemmatzr = WordNetLemmatizer()
 
 
 caps = "([A-Z])"
@@ -114,12 +116,11 @@ def untokenize(words):
          "can not", "cannot")
     step6 = step5.replace(" ` ", " '")
     return step6.strip()
-    
+  
 
-def replace_with_synonyms(sentence):
+def replace_with_synonyms(sentence,prob=0.4):
     tokenized_text = nltk.word_tokenize(sentence)
     tags=nltk.pos_tag(tokenized_text)
-    lemmatzr = WordNetLemmatizer()
     for i in range(len(tags)):
         token=tags[i]
         if(token[1] =="NNP" or token[1] =="VMB"):
@@ -127,20 +128,25 @@ def replace_with_synonyms(sentence):
         wn_tag = penn_to_wn(token[1])
         if not wn_tag or token[0].startswith("'"):
             continue
-        if random.random()<0:
+        if random.random()>prob:
             continue
-        lemma = lemmatzr.lemmatize(token[0], pos=wn_tag)
-        meaning = (wn.synsets(lemma, pos=wn_tag))[0]
-        n=len(meaning.lemma_names())
-        if n>1:
-            rand=random.randrange(1,n)
-            word = meaning.lemma_names()[rand]
-            if token[1].startswith('V'):
-                word = match_conjugation(token[0],word)
-            elif token[1].startswith('N'):
-                if pluralize(token[0]) == token[0]:
-                    word= pluralize(word)         
-            tokenized_text[i]=word.replace('_',' ')
+        try:
+            lemma = lemmatzr.lemmatize(token[0], pos=wn_tag)
+            meanings = (wn.synsets(lemma, pos=wn_tag))
+            if len(meanings)>0:
+                meaning=meanings[0]
+                n=len(meaning.lemma_names())
+                if n>1:
+                    rand=random.randrange(1,n)
+                    word = meaning.lemma_names()[rand]
+                    if token[1].startswith('V'):
+                        word = match_conjugation(token[0],word)
+                    elif token[1].startswith('N'):
+                        if pluralize(token[0]) == token[0]:
+                            word= pluralize(word)         
+                    tokenized_text[i]=word.replace('_',' ')
+        except Exception:
+            pass
     return untokenize(tokenized_text)
   
 
@@ -179,7 +185,6 @@ def get_hyponyms_names(synset):
     return hyponyms | set(lemmas)
     
 def get_hyponyms(word,tag=None):
-    lemmatzr = WordNetLemmatizer()
     lemma = lemmatzr.lemmatize(word.lower(),pos=tag)
     hyponyms = set()
     for synset in wn.synsets(lemma,pos=tag):
@@ -203,21 +208,21 @@ def get_hypernyms_names(synset):
     return hypernyms | set(lemmas)
     
 def get_hypernyms(word,tag=None):
-    lemmatzr = WordNetLemmatizer()
-    lemma = lemmatzr.lemmatize(word.lower(),pos=tag)
+    if tag != None:
+        lemma = lemmatzr.lemmatize(word.lower(),pos=tag)
+    else:
+        lemma = lemmatzr.lemmatize(word.lower())
     hypernyms = set()
     for synset in wn.synsets(lemma,pos=tag):
         hypernyms |=get_hypernyms_names(synset)
     return hypernyms
         
 def lemmatize(words):
-    lemmatzr = WordNetLemmatizer()
     lemmas = [lemmatzr.lemmatize(word.lower()) for word in words]
     return lemmas
-
+  
 def generate_output(text,keywords):
-    sentences=split_into_sentences(text)
-    lemmatzr = WordNetLemmatizer()
+    sentences=split_into_sentences(text+'.')
     for sentence in sentences:
         tokenized_text = nltk.word_tokenize(sentence)
         tags=nltk.pos_tag(tokenized_text)
@@ -225,10 +230,19 @@ def generate_output(text,keywords):
         words_found_count=0
         for token in tags:
             wn_tag = penn_to_wn(token[1])
-            if not wn_tag:
-                continue
+
             txt = token[0].lower().replace("’s","")
-            lemma = lemmatzr.lemmatize(txt, pos=wn_tag)
+            try:
+                if not wn_tag:
+                    lemma = lemmatzr.lemmatize(txt)
+                else:
+                    lemma = lemmatzr.lemmatize(txt, pos=wn_tag)
+                ok = True
+            except Exception:
+                lemma =txt
+                ok = False
+                
+            
             if lemma in keywords:
                         index=keywords.index(lemma)
                         if words_found[index] is False:
@@ -239,7 +253,7 @@ def generate_output(text,keywords):
                                 while random.random()<0.1:
                                     sentence= typo(sentence)
                                 return sentence
-            else:
+            elif ok:
                 for meaning in wn.synsets(lemma, pos=wn_tag):
                     for word in meaning.lemma_names():
                         if word in keywords:
@@ -260,8 +274,8 @@ def generate_output(text,keywords):
 
 def get_keywords(question):
     tokenized_text = nltk.word_tokenize(question.lower())
-    return [word for word in tokenized_text if word not in stopwords.words('english')]
-
+    return [word for word in tokenized_text if word not in stopwords.words('english')]          
+            
 def html_to_text(html):
     soup = BeautifulSoup(html, "lxml")
     # kill all script and style elements
@@ -269,9 +283,8 @@ def html_to_text(html):
         script.extract()    # rip it out
     return(soup.get_text())
     
-
 import google
-  
+    
 def get_google_links(question,num=2):
     urls=google.search("what is the capital of Germany?")
     i = 0
@@ -283,25 +296,34 @@ def get_google_links(question,num=2):
         else:
             break
     return (text)
-
+    
     
 def get_google_response(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url)
-    content = r.text.encode('UTF-8')
+    content = r.text
+    print(content)
     return (html_to_text(content))
 
 def get_google_summary(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url)
-    content = r.text.encode('UTF-8')
+    content = r.text
     summary=re.findall('<div class="_tXc">.*<[/]div>',content)
     if len(summary) is not 0:
         return (html_to_text(summary[0]))
-    else:
-        return(None)
+    summary=re.findall('<ol class="_l0g">.*?<[/]ol>',content)
+    if len(summary) is not 0:
+        return (html_to_text(summary[0]))
+    summary=re.findall('<div class="_sPg">.*?<[/]div>',content)
+    if len(summary) is not 0:
+        return (html_to_text(summary[0]))
+    summary=re.findall('<div class="_o0d">.*<[/]div>',content)
+    if len(summary) is not 0:
+        return (html_to_text(summary[0]))
+    return(None)
         
 def get_google_answer(question):
     question=question.replace('+','%2B')
@@ -338,26 +360,82 @@ def get_google_answer(question):
     if len(answer) > 0:
         return (html_to_text(answer[0]))
     return None
+
+def get_google_answer2(question):
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    # header variable
+    headers = { 'User-Agent' : user_agent }
+    question=question.replace('+','%2B')
+    url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
+    r = requests.get(url,headers=headers)
+    content = r.text.encode('UTF-8')
+    #print(content)
+        
+    answer=re.findall('<div class="_XWk">.*?<[/]div>',content)       #E.g. What is the president of India
+    answer2=re.findall('<div class="_Tfc _j0k">.*?<[/]div>',content) #How fast is a cheetah?
+
+    if len(answer) > 0:
+        if len(answer2) > 0:
+            return (html_to_text(answer[0])+' '+html_to_text(answer2[0]))
+        return (html_to_text(answer[0]))
+    
+    answer=re.findall('<span class="_m3b".*?<[/]span>',content)  #calculator
+    if len(answer) > 0:
+        return (html_to_text(answer[0]))    
+        
+    answer=re.findall('<div class="kltat">.*?<[/]div>',content)       #what is the longest river in the world
+    answer2=re.findall('<div class="ellip klmeta">.*?<[/]div>',content)
+
+    if len(answer) > 0:
+        if len(answer2) > 0:
+            return (html_to_text(answer[0])+' '+html_to_text(answer2[0]))
+        return (html_to_text(answer[0]))
+        
+    answer=re.findall('<span class="cwcot".*?<[/]span>',content)  #calculator
+    if len(answer) > 0:
+        return (html_to_text(answer[0]))
+        
+    answer=re.findall('<span class="nobr"><h2 class="r".*?<[/]span>',content)  #calculator
+    if len(answer) > 0:
+        return (html_to_text(answer[0]))
+    return None
+    
+def get_google_correction(question):
+    question=question.replace('+','%2B')
+    url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
+    r = requests.get(url)
+    content = r.text.encode('UTF-8')
+    print content
+    correction=re.findall('<a class="spell".*?<[/]a>',content)
+    if len(correction)>0:
+        return html_to_text(correction[0])
+    return None
+
+def get_google_questions(question):
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    # header variable
+    headers = { 'User-Agent' : user_agent }
+    question=question.replace('+','%2B')
+    url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
+    r = requests.get(url,headers=headers)
+    content = r.text.encode('UTF-8')
+    questions=re.findall('<div class="_rhf">.*?<[/]div>',content)
+    return [(html_to_text(q)) for q in questions]
     
 def get_google_citeations(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url)
-    content = r.text.encode('UTF-8')
+    content = r.text
     cites=re.findall('<cite>.*?<[/]cite>',content)
     urls =[]
     for cite in cites:
-        urls.append(html_to_text(cite))
+        text = html_to_text(cite)
+        if text.startswith('https://') or text.startswith('www.'):
+            urls.append(text)
     return urls
             
-def answer_question(question):
-    text=get_google_answer(question)
-    if text==None:
-        text=get_google_summary(question)
-    if text==None:
-        text=get_google_links(question)
-    keywords=get_keywords(question)
-    return(generate_output(text.encode('UTF-8'),keywords))
+
     
 def generate_question(topic):
     return ("Can you think of any questions I can ask you?")
@@ -488,6 +566,8 @@ def generate_question():
     print(data[name_of_sheets[sheet]][question][0])
     return data[name_of_sheets[sheet]][question][0]
 
+
+    
 #generate_question()
 
 # transforma din propozitie afirmativa in propozitie interogativa
@@ -508,6 +588,293 @@ def modify(inputStr):
 
     return ' '.join([t[0] for t in tagged])
     
+
+#print(replace_with_synonyms("Paris 8766, France's 5th capital, is a major European city and a global center for art, fashion, gastronomy and culture."))
+#print(answer_question("WHAT IS 2+2?"))
+
+'''
+lt=[]
+for synset in wn.synsets('cat'):
+    lt.append(synset)
+    for hypernym in synset.hypernyms():
+        lt.append(hypernym)
+print(lt)
+'''
+
+class topic:
+    def __init__(self,decay=0.9,synset_decay=0.5,hypernym_decay=0.8,max_level = None):
+        self.used_synsets=[]
+        self.scores=[]   
+        self.decay=decay
+        self.synset_decay=synset_decay
+        self.hypernym_decay=hypernym_decay
+        self.max_level =max_level
+    def get_topic(self):
+        return self.used_synsets[self.scores.index(max(self.scores))].lemma_names()[0]
+    def process_keywords(self,keywords,importance=1,decay=True):
+        if decay:
+            self.scores=[score*self.decay for score in self.scores]
+        for word in keywords:
+           it=1.0
+           for synset in wn.synsets(word):
+               if synset in self.used_synsets:
+                   self.scores[self.used_synsets.index(synset)]+=importance*(it)
+               else:
+                   self.used_synsets.append(synset)
+                   self.scores.append(importance*(it))
+               it=it*self.synset_decay
+               hypernyms = synset.hypernyms()
+               if len(hypernyms)>0:
+                   self.process_synsets(hypernyms,0,importance*it)
+            
+    def process_synsets(self,synsets,level,importance,decay=False,):
+        if decay:
+            self.scores=[score*self.decay for score in self.scores]   
+        it=1.0
+        for synset in synsets:
+               if synset in self.used_synsets:
+                   self.scores[self.used_synsets.index(synset)]+=importance*(it)
+               else:
+                   self.used_synsets.append(synset)
+                   self.scores.append(importance*(it))
+               it=it*self.hypernym_decay
+               if (self.max_level != None):
+                   if level > self.max_level:
+                       continue
+               hypernyms = synset.hypernyms()
+               if len(hypernyms)>0:
+                   self.process_synsets(hypernyms,level+1,importance=importance*it)
+            
+tpc = topic()
+tpc.process_keywords(['cat','bird','pig'])
+tpc.process_keywords(['dog','mouse','bat'])
+wrds = [x for x in [y for y in get_hypernyms('cat') if y in get_hypernyms('bird')] if x in get_hypernyms('pig')]
+#print(tpc.get_topic())
+
+yes_verbs = ['is','are','am','was','were','will','would','should','can', 'could','do','did']
+
+def yes_no(sentence):
+    tokenized_text = nltk.word_tokenize(sentence)
+    tags=nltk.pos_tag(tokenized_text)
+    token=tags[0]
+    txt = token[0].lower().replace("’s","")
+    try:
+        lemma = lemmatzr.lemmatize(txt)
+        if lemma == None or (tags[1][0]!='you' and (tags[2][0]!='tell' or tags[2][0]!='inform') and tags[3][0]!='me'):
+            return None
+        if lemma in yes_verbs:
+            if random.random()>0.5:
+                answer = 'yes'
+            else:
+                answer = 'no'
+            return answer
+    except Exception:
+        return None
+   
+        
+class FavoriteHandler:
+    def __init__(self):
+        """
+        Clasa care se ocupa cu intrebari de tipul "What is your favorite X"
+        """
+        self._given_answers = {}
+        self._given_reasons = {}
+        self._domains = {
+            "color" : ["blue", "red", "orange", "cyan", "black"],
+            "food" : ["pizza", "hamburger", "salad", "sushi", "soup"],
+            "car" : ["Ford", "Mercedes", "Ferrari", "Dacia", "BMW", "Honda"],
+            "song" : ["You make me wanna", "We are Young", "Rainbow in the Dark", "Stayin Alive"],
+            "band|artist" : ["Iron Maiden", "Eminem", "The Beatles", "ABBA"],
+            "drink" : ["Water", "Beer", "Wine", "Vodka!"],
+            "book" : ["The Lord of The Rings", "The Da Vinci Code", "Harry Potter", "50 Shades of Grey"],
+            "movie" : ["Inception", "Django Unchained", "Seven Samurai", "Argo"],
+            "TV show" : ["Breaking Bad", "Game of Thrones", "Doctor Who", "South Park"],
+            "actor" : ["Tom Hanks", "Danny de Vito", "Robert de Niro", "Keanu Reeves"],
+            "actress" : ["Scarlett Johansson", "Cate Blanchett", "Jennifer Lawrence", "Natalie Portman"],
+            "site" : ["Google", "Youtube", "Facebook", "Reddit"],
+            "activity|leisure" : ["Hiking", "Surfing the web", "Playing video games"],
+            "animal|pet" : ["Cat", "Dog", "Turtle", "Bird"],
+            "brand|company" : ["Coca Cola", "Apple", "Microsoft", "Nestle"],
+            "country" : ["Romania", "Germany", "United States of America", "Japan"],
+            "school subject" : ["Artificial Intelligence", "Mathematics", "English"],
+            "language" : ["English", "Romanian", "German", "Japaneese"],
+            "sport" : ["Football", "Baseball", "Running", "Boxing"],
+            "team" : ["Manchester United", "Real Madrid", "NY Yankers"],
+            "holiday" : ["Christmas", "New Year", "Easter"],
+            "number" : ["1","3","7","9","13"],
+            "soda" : ["Cocal Cola", "7Up", "Mountain Dew"],
+            "video game|computer game" : ["Counter Strike", "Overwatch", "Half Life"],
+            "author|writer|poet" : ["Edgar Allan Poe", "J.R.R. Tolkien","J.K. Rowling"]
+        }
+        self._reasons = {
+            "color" : {
+                "blue" : ["It reminds me of the sky", "I think it's a calming color. I even painted my room that color!", "It reminds me of a little baby boy"],
+                "red" : ["I think it's a really powerful color", "It reminds me of the sunset", "I think it gives me energy!"],
+                "orange" : ["It reminds me of a summer sunset", "I really like the fruit with the same name I guess", "I think i look well in orange."],
+                "cyan" : ["It's a special color", "Not too many people think of cyan as their favorite color!", "It looks brilliant"],
+                "black" : ["I find it oddly soothing", "It makes me sleepy", "I think it's an elegant color"]
+            },
+            "food" : {
+                "pizza" : ["It's yummy!", "It's nice to eat at parties", "You can order it and eat without needing to leave home or cook"],
+                "hamburger" : ["I really like beef", "It's preety quick to cook", "I know a really nice burger joint"],
+                "salad" : ["I doesn't make you fat", "I think it's very fresh", "It doesn't need any meat to be good"],
+                "sushi" : ["It's a lean food", "I really like fish", "I think it's exotic"],
+                "soup" : ["It also hydrate you", "I really like vegetabl soup", "You can just throw anything into boiling water and you're done"]
+            },
+            "car" : {
+                "Ford" : ["They are really cheap and good", "They have both average-Joe cars, and things like the Mustang", "I really like how the gears change"],
+                "Mercedes" : ["I think they are really luxurious", "I think they are really well build", "I think the rear-wheel drive it's a big plus"],
+                "Ferrari" : ["I like fast cars","Why wouldn't I? ","I allways wanted a Ferrari"],
+                "Dacia" : ["I like romanian cars","I think it is affordable and suited for our roads"],
+                "BMW" : ["I like fast and good looking cars","It represents the perfect harmony between elegance, comfort and dynamism"],
+                "Honda" : ["They have a low fuel consumption and a lot a systems","I like Asian cars"],
+            },
+            "song" : {
+                "You make me wanna" : ["I got married to this song", "It gives me energy"],
+                "We are young" : ["I have a young spirit and this song describes me (wink)", "It is a song full of energy"],
+                "Rainbow in the Dark" : ["This is my rock side", "I think it is the best rock/heavy metal voice ever"],
+                "Stayin alive" :["This would be the first song on my mixtape for a zombie apocalypse", "I think it is a great funeral song (joke)"],
+            },
+            "band|artist" : {
+                "Iron Maiden" : ["Who doesn't like them?!", "I really like heavy metal"],
+                "Eminem" : ["I like his style", "I like the lyrics"],
+                "The Beatles" : ["I like good music", "Probably the best band of all time"],
+                "ABBA" : ["The best music was from the good old days","I sing their songs in the shower, every word"],
+            },
+            "drink" : {
+                "Water" :["It keeps me alive!", "I can'y live without it"],
+                "Beer" :["Beer it's just Beer, what is not to love about it?", "I like the taste"],
+                "Wine" :["I like the taste", "It helps you travel the World in a bottle"],
+                "Vodka" :["Nothing like a good old bottle of Rubinoff or Zelcos.", "It helps me reset my memory"],
+            },
+            "book" : {
+                "The Lord of The Rings" : ["I like the story", "I like the characters", "I really like how the places are described"],
+                "The Da Vinci Code" : ["I like how it chalanges religion", "I really like the main character", "I like how Dan Brown writes"], 
+                "Harry Potter": ["I loved the book when I was a kid", "I like both the book and the movie", "I love the author"], 
+                "50 Shades of Grey" : ["You don't want to know", "I hope I'll find a Mr. Grey some day", "It's a spicy book"],
+            },
+            "soda" : {
+            	"Coca Cola" : ["I prefer to drink it instead of coffee", "I like the pretty bottle", "It's nice to cool off in the summer"],
+            	"7Up" : ["It's better than Sprite", "I like that it's not that sweet", "It's really bubbly"],
+            	"Mountain Dew" : ["It's yellow", "It's better than Coke", "It has a really nice taste"]
+            },
+            "video game|computer game" : {
+            	"Counter Strike" : ["It's a game that is still good after all these years", "Everyone who likes games has played CS at least once", "I love how a mod came so far"],
+            	"Overwatch" : ["It combines the MOBA and FPS genres", "The characters are really balanced", "I like to play with my team"],
+            	"Half Life" : ["I think it revolutionized the genre", "It had really good graphics for it's age", "I like the story"]
+            },
+            "author|writer|poet" : {
+            	"Edgar Allan Poe" : ["I like poetry", "I really like 'The Raven'", "I really like his symbolism"],
+            	"J.R.R. Tolkien" : ["I really like The Hobbit!", "I love The Lord of the Rings", "I like how he created a huge world by writing"],
+            	"J.K. Rowling" : ["I grew up with Harry Potter", "I really like her style of writing", "Everyone loves Harry Potter!"]
+            }
+        }
+    
+    def _get_known_domain(self, question):
+        for domain in self._domains:
+            r = ".*(" + domain + ").*"
+            if re.match(r, question, re.IGNORECASE):
+                return domain
+        return None
+    
+    def _get_unknown_domain(self, question):
+        r = ".*what.*favorite ([a-zA-Z]+).*"
+        m = re.match(r,question,re.IGNORECASE)
+        if m and m.group(1):
+            return m.group(1)
+        return None
+
+    def is_favorite_question(self, question):
+        if "what" in question.lower() and "favorite" in question.lower():
+            return True
+        return False
+
+    def _get_answer_from_domain(self, domain):
+        if self._given_answers.get(domain):
+            return "I already told you my favorite is %s"%(self._given_answers.get(domain))
+        else:
+            response = random.choice(self._domains.get(domain))
+            self._given_answers[domain] = response
+            real_domain = domain
+            if "|" in domain:
+                real_domain = domain.split("|")[0]
+            return "My favorite %s is %s"%(real_domain, response)
+
+    def answer_what(self, question):
+        if not self.is_favorite_question(question):
+            return "Honestly, I don't know what to say"
+        domain = self._get_known_domain(question)
+        if domain:
+            answer = self._get_answer_from_domain(domain)
+            return answer
+        else:
+            domain = self._get_unknown_domain(question)
+            if domain:
+                return "I don't think I have a favorite %s"%(domain)
+            else:
+                return "Honestly, I don't know what to say"
+
+    def is_why_question(self, question):
+        if "why" in question.lower() and "favorite" in question.lower():
+            return True
+        return False
+    
+    def _get_query_from_what_question(self, question):
+        r = ".*why.*is ([a-zA-Z]+).* your favorite.*"
+        m = re.match(r, question, re.IGNORECASE)
+        if m and m.group(1):
+            return m.group(1)
+        return None
+
+    def answer_why(self, question):
+        if not self.is_why_question(question):
+            return "Honestly, I don't know what to say"
+        query = self._get_query_from_what_question(question)
+        if query:
+            answer_given = False
+            for domain in self._domains:
+                if self._given_answers.get(domain) == query:
+                    answer_given = True
+                    break
+
+            if not answer_given:
+                return "I didn't say that was my favorite!"
+
+            given_reason = self._given_reasons.get(query)
+            if given_reason:
+                return "I already told you that!"
+            given_reason = random.choice(self._reasons.get(domain).get(query))
+            self._given_reasons[query] = given_reason
+            return given_reason
+        return "I don't really have a favorite"
+        
+
+fh = FavoriteHandler()
+past_questions = []
+repeat_phrases = ["I already told you. ","You asked that before. ","As I told you before. ","I'm repeating myself here. ","Just like I told you. ","" ]
+def answer_question(question):
+    for q in past_questions:
+        if q[0] == question:
+            r = random.randint(0,len(repeat_phrases)-1)
+            return (repeat_phrases[r]+replace_with_synonyms(q[1]))
+    text = None
+    if fh.is_favorite_question(question):
+        text = fh.answer_what(question)
+    if fh.is_why_question(question):
+        text = fh.answer_why(question)
+    if text==None:
+        text=get_google_answer(question)
+    if text==None:
+        text=get_google_summary(question)
+    if text==None:
+        text=yes_no(question)
+    if text==None:
+        text=get_google_links(question)
+    keywords=get_keywords(unidecode(question))
+    answer = generate_output(unidecode(text.encode('UTF-8')),keywords)
+    past_questions.append((question,answer))
+    return answer
+    
 start= time.time()
-print(answer_question("what the capital of france"))
+print(answer_question("How do you make goulash?"))
 print(str(time.time()-start)+" seconds")

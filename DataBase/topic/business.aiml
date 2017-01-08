@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+<category>
+<pattern>BUSINESS</pattern>
+<template>
+<random>
+<li>In which domain do you think that is better to open a business?</li>
+<li>When you start a business you must risk everything.</li>
+<li>William J.H. Boetcker said: if your business keeps you busy all the time and you have no time for anything else, it is something wrong with you or  with your business.</li>
+<li>For make your business works you must be a specialist in motivation.</li>
+<li>Arround us are a lot of people that make business without respect the laws and other persons. 
+They use the blackmail and the ties with dangerous people for make money and for have important function in our society.</li>
+<li>Have you ever think to open your own business?</li>
+<li>What is business ethics? Describe its nature. Is business ethics a necessity?</li>
+<li>What are the major ethical issues that business faces today?</li>
+<li>How would you recognize an ethical organization? What are its characteristics?</li>
+</random>
+</template>
+</category>
+
+</aiml>
+

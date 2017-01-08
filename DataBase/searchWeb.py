@@ -87,8 +87,9 @@ def get_google_citeations(question):
     return urls
 
 def Wiki(text):
-    ny = wikipedia.page(text)
-    response = ny.content[:300]
-    response = response[:response.rfind('.')+1]
+    try:
+        response = wikipedia.summary(text, sentences=2)
+    except:
+        response = None
     return response
 
