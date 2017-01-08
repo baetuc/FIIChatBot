@@ -373,6 +373,12 @@ def generate_output(text):
     keywords = get_keywords(text)
     sentences = split_into_sentences(text + '.')
     for sentence in sentences:
+        print sentence
+        text = replace_with_synonyms(sentence)
+        while random.random() < 0.1:
+            text = typo(text)
+        return text
+
         tokenized_text = nltk.word_tokenize(sentence)
         tags = nltk.pos_tag(tokenized_text)
         words_found = [False] * len(keywords)
@@ -417,7 +423,7 @@ def generate_output(text):
     text = replace_with_synonyms(text)
     while random.random() < 0.1:
         text = typo(text)
-    return text
+    #return text
 
 
 def parseJson(data):
@@ -433,7 +439,9 @@ def parseJson(data):
     response = data[u'ontologii']
     if response:
         ret_text = generate_question(response[u'noun'][0])
-
+    response = data[u'topic']
+    if response:
+        ret_text += " " + response
     return ret_text
     #print dict(data)
 
