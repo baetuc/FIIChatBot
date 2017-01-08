@@ -4,6 +4,7 @@
 
 	//Server definitions
 	$textProcessingURL = 'http://localhost:2000';
+	$aiTopic = 'http://localhost:2500/topic';
 	$databaseURL = 'http://localhost:4000';
 	$outputURL = 'http://localhost:7000';
 
@@ -19,11 +20,11 @@
 		);
 		$context  = stream_context_create($options);
 		$result = file_get_contents($url, false, $context);
-		// echo $result;
 
 		//Removing headers
 		$parsedResult = split("\r\n\r\n", $result, 2);
-		return json_decode($parsedResult[1]);
+		$result = $parsedResult[1] ? json_decode($parsedResult[1]) : $parsedResult[0];
+		return $result;
 	}
 
 	//Parse message
@@ -36,15 +37,19 @@
 		$finalJson["input"] = $currentInput;
 
 		//Call text processing
-		$textProcessingPath = $textProcessingURL.'?input='.urlencode($currentInput);
-		$textProcessingResponse = file_get_contents($textProcessingPath);
+		$inputJSON = json_encode(array("input" => $currentInput));
+		$textProcessingPath = $textProcessingURL;
+		$textProcessingResponse = post_to($textProcessingPath, $inputJSON);
 		// $overloadedTextProcessingResponse = json_encode(array("sentences" => json_decode($textProcessingResponse), "numberSentences"=>1));
-		$overloadedTextProcessingResponse = $textProcessingResponse;
 		$finalJson["text_processing"] = json_decode($textProcessingResponse);
 
-		//Call database
+		//Call AI for topic
+		$aiResponse = post_to($aiTopic, $textProcessingResponse);
+		$finalJson["ai"] = json_decode($aiResponse);
+
+		// Call database
 		$databasePath = $databaseURL;
-		$databaseResponse = post_to($databasePath, $overloadedTextProcessingResponse);
+		$databaseResponse = post_to($databasePath, $aiResponse);
 		$finalJson["database"] = json_decode($databaseResponse);
 
 		// Call output
@@ -53,7 +58,7 @@
 		$outputResponse = post_to($outputPath, $outputInput);
 		$finalJson["output"] = $outputResponse;
 
-		// Final
+		// Final penis
 		echo json_encode($finalJson);
 	}
 ?>

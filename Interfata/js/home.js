@@ -76,7 +76,7 @@ function SendUserMessage(){
 			},
 			success: function(result){
 				console.log(result);
-				SendBotMessage(result.database.response[0].AI);
+				SendBotMessage(result.output);
 				// SendBotMessage(result);
 			},
 			error: function(result){

@@ -438,7 +438,9 @@ def parseJson(data):
                 ret_text += generate_output(dict[u'WEB']) + ". "
     response = data[u'ontologii']
     if response:
-        ret_text = generate_question(response[u'noun'][0])
+        for keys in response.keys():
+            ret_text += generate_question(response[keys][0]) + "? "
+            break
     response = data[u'topic']
     if response:
         ret_text += " " + response
@@ -452,4 +454,4 @@ def process():
     raspuns = parseJson(data)
     return raspuns
 
-run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=7000, debug=True)
