@@ -36,6 +36,6 @@ def getResponseForTopic(topic):
 
 #print(getResponse(eliminaSemne("Happy ,birthday")));
 #print(getResponse(topic));
-#print(getResponse(sentence));
+print(getResponseForTopic('sport'));
 
 
