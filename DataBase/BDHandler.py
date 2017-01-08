@@ -28,6 +28,8 @@ def init(data):
             responseAIML = responseAIMLsentence
         else:
             responseAIML = None
+            
+        responsetopic=None
         
         if responseAIML is None:  
             responseAIMLtopic = AIML.getResponseForTopic(topic)
