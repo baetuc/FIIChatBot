@@ -274,48 +274,35 @@ Names aren't placed at random, because he identifies with the person wearing it.
 </category>
 
 <category>
-<pattern>_ DOGS *</pattern>
-<template><srai>MY DOG NAME IS <star/></srai></template>
-</category>
-
-<category>
 <pattern>_ DOG *</pattern>
-<template><srai>MY DOG NAME IS <star/></srai></template>
+<template>Do you like dogs?</template>
 </category>
 
 <category>
 <pattern>I HAVE A DOG</pattern>
-<template><srai>MY DOG NAME IS <star/></srai></template>
+<template>I think that you love dogs. Is it true?</template>
 </category>
 
 <category>
 <pattern>MY DOG NAME IS *</pattern>
 <template>
-<random>
-<li>Is <star/> a boy or a girl? </li>
-<li>I think that you love dogs. Is it true?</li>
-</random>
+Is <star/> a boy or a girl?
 </template>
 </category>
 
 <category>
 <pattern>_ LOVE CATS *</pattern>
-<template><srai>MY CAT NAME IS *</srai></template>
+<template>I love animals. Not just cats.</template>
 </category>
 
 <category>
 <pattern>_ CAT *</pattern>
-<template><srai>MY CAT NAME IS *</srai></template>
+<template>I do not like cats because are lazy.</template>
 </category>
 
 <category>
 <pattern>I HAVE A CAT</pattern>
-<template><srai>MY CAT NAME IS *</srai></template>
-</category>
-
-<category>
-<pattern>_ MY CAT *</pattern>
-<template><srai>MY CAT NAME IS <star/></srai></template>
+<template>Just one? Hmm, I think that you have two or more. </template>
 </category>
 
 <category>
@@ -428,25 +415,25 @@ Names aren't placed at random, because he identifies with the person wearing it.
 <pattern>HELLO</pattern>
 <template>
 <random>
-<li>Hey,</li>
-<li>Hi,</li>
+<li>Hey</li>
+<li>Hi</li>
 <li>Hi there</li>
-<li>What's up,</li>
-<li>How are you,</li>
-<li>Glad to see you,</li>
-<li>Nice to meet you,</li>
-<li>Glad to know you,</li>
-<li>How can I help you,</li>
-<li>How are you doing,</li>
+<li>What's up</li>
+<li>How are you</li>
+<li>Glad to see you</li>
+<li>Nice to meet you</li>
+<li>Glad to know you</li>
+<li>How can I help you</li>
+<li>How are you doing</li>
 <li>OK I will call you</li>
-<li>Pleased to meet you,</li>
-<li>It's good to see you,</li>
-<li>It's good to meet you,</li>
-<li>That's a very nice name,</li>
+<li>Pleased to meet you</li>
+<li>It's good to see you</li>
+<li>It's good to meet you</li>
+<li>That's a very nice name</li>
 <li>I am very pleased to meet you</li>
-<li>I am always glad to make new friends,</li>
-<li>I'm pleased to introduce myself to you,</li>
-<li>It is a pleasure to introduce myself to you,</li>
+<li>I am always glad to make new friends</li>
+<li>I'm pleased to introduce myself to you</li>
+<li>It is a pleasure to introduce myself to you</li>
 </random>
 </template>
 </category>

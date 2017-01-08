@@ -1,0 +1,20 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<category>
+<pattern>RELIGION</pattern>
+<template>
+<random>
+<li>Is religion important to you?</li>
+<li>What is the main religion in your country?</li>
+<li>Do you have a religion?</li>
+<li>What comes to mind when you hear the word "religion"?</li>
+<li>With all the religions in the world, how do we know which one is best or true?</li>
+<li>If religion is all about love and peace, why are many of the world’s conflicts and wars caused by religion?</li>
+<li>What would the world be like without religion?</li>
+<li>How does religion give hope to so many people?</li>
+<li>Do you think people will eventually stop believing in religion?</li>
+<li>Do you think there’ll ever be a single world religion?</li>
+<li>Do you believe in God?</li>
+</random>
+</template>
+</category>
+</aiml>

@@ -1,12 +1,12 @@
 import simplejson
-
+import json
 import searchWeb
 import AIML
-#import Ontologii
-
+import Ontologii
+response= []
 def init(data):
     
-    numberS = int(data["numberSentences"])
+    numberS = int(data["number_of_sentences"])
     responsServ = " "
     for index in range(numberS):
         sentences = data["sentences"][index]
@@ -14,34 +14,40 @@ def init(data):
         type = sentences["type"]
         is_negation = sentences["is_negation"]
         words = sentences["words"]
-        
+        #topic = sentences["topic"]
+
+        #Ontologii.jsonConverterAndInserter(data)
         responseAIML = AIML.getResponse(sentence)
+        #responseAIMLtopic = AIML.getResponseForTopic(topic)
 
-        if responseAIML != "I have no answer for that.":
-            data["response_AIML"] = responseAIML     
+        data["response_AIML"] = responseAIML
+        #data["response_AIMLtopic"] = responseAIMLtopic  
+
+        gooAnswer = searchWeb.get_google_answer(sentence)
+        
+        if gooAnswer is not None:
+            data["response_Goo"] = gooAnswer
+            responseAI = gooAnswer
         else:
-            gooAnswer = searchWeb.get_google_answer(sentence)
-            if gooAnswer is not None:
-                data["response_Goo"] = gooAnswer 
+            gooAnswerSumm = searchWeb.get_google_summary(sentence)
+            if gooAnswerSumm is not None:
+                responseAI = gooAnswerSumm
             else:
-                wikiAnswer = searchWeb.Wiki(sentence)
-                gooAnswerSumm = searchWeb.get_google_summary(sentence)
-                data["response_GooSum"] = gooAnswerSumm
-                data["response_Wiki"] = wikiAnswer 
+                try:
+                    wikiAnswer = searchWeb.Wiki(sentence)
+                except:
+                    wikiAnswer = None
+
+                if wikiAnswer:    
+                    responseAI = wikiAnswer
+                else:
+                    responseAI  = None
 
 
-                
-            #links -n
-            #print searchWeb.get_google_links(sentence)
-            #response -n
-            #print searchWeb.get_google_response(sentence)
-            #responce from summary - k
-            #print searchWeb.get_google_summary(sentence)
-            #specific answers - k - "None"
-            #print searchWeb.get_google_answer(sentence)
-            #google references
-            #print searchWeb.get_google_citeations(sentence)
-            #wiki answer - porsonality - k
-            #print searchWeb.Wiki(sentence)
-    simplejson.dumps(data)
-    return data
+        r = {"question":sentence, "AIML":responseAIML, "AI":responseAI, "index":index}
+        response.insert(index, r);
+
+
+    dictionaryToJson = json.dumps({"response":response})
+
+    return dictionaryToJson

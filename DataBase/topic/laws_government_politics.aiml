@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+<category>
+<pattern>LAW AND GOVERNMENT AND POLITICS</pattern>
+<template>
+<random>
+<li>Do you know the laws from your country?</li>
+<li>What is your opinion about politics from your country?</li>
+<li>What do you think about immigration?</li>
+<li>Who is the president of your country in this moment? He/ she deserved this function?</li>
+<li>Are you prepared to make something illegal for protect a friend?</li>
+<li>Law is one of the central products of politics and the prize over which many political struggles are waged.</li>
+<li>Law is the principal instrument by which the government exerts its will on society.</li>
+</random>
+</template>
+</category>
+
+</aiml>
+

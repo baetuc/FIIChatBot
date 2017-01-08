@@ -17,11 +17,41 @@
             <learn>aiml/music.aiml</learn>
             <learn>aiml/salut.aiml</learn>
             <learn>aiml/update.aiml</learn>
+            <learn>aiml/happy.aiml</learn>
+            <learn>aiml/food.aiml</learn>
+            <learn>aiml/sport.aiml</learn>
+            <learn>aiml/humor.aiml</learn>
             <learn>aiml/client_profile.aiml</learn>
             <learn>aiml/bot_profile.aiml</learn>
             <learn>aiml/emotion.aiml</learn>
             <learn>aiml/interjection.aiml</learn>
-            <!--<learn>aiml/bot_profile.aiml</learn>-->
+
+             <learn>topic/automotive.aiml</learn>
+             <learn>topic/celebrity.aiml</learn>
+             <learn>topic/education.aiml</learn>
+             <learn>topic/healthFitness.aiml</learn>
+             <learn>topic/hobbiesInterest.aiml</learn>
+             <learn>topic/humor.aiml</learn>
+             <learn>topic/movies.aiml</learn>
+             <learn>topic/news.aiml</learn>
+             <learn>topic/pets.aiml</learn>
+             <learn>topic/religionSpirituality.aiml</learn>
+             <learn>topic/science.aiml</learn>
+             <learn>topic/sports.aiml</learn>
+             <learn>topic/technologyComputing.aiml</learn>
+             <learn>topic/travel.aiml</learn>
+             <learn>topic/books_and_literature.aiml</learn>
+             <learn>topic/business.aiml</learn>
+             <learn>topic/careers.aiml</learn>
+             <learn>topic/family_and_parenting.aiml</learn>
+             <learn>topic/fine_art.aiml</learn>
+             <learn>topic/food_and_drink.aiml</learn>
+             <learn>topic/laws_government_politics.aiml</learn>
+             <learn>topic/music.aiml</learn>
+             <learn>topic/society.aiml</learn>
+             <learn>topic/television.aiml</learn>
+             
+           
 
             <!-- You can add more aiml files here -->
             <!--<learn>more_aiml.aiml</learn>-->

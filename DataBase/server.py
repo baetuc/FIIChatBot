@@ -4,6 +4,7 @@ import httplib,socket, urllib
 import simplejson
 import BDHandler
 
+
 class myHandler(BaseHTTPRequestHandler):
     def _set_headers(self):
         self.send_response(200)
@@ -40,7 +41,7 @@ class myHandler(BaseHTTPRequestHandler):
 
 PORT_NUMBER = 8080
 try:
-    server = HTTPServer(('192.168.0.108', PORT_NUMBER), myHandler)
+    server = HTTPServer(('127.0.0.1', PORT_NUMBER), myHandler)
     print 'Started server on port ', PORT_NUMBER
 
     server.serve_forever()
