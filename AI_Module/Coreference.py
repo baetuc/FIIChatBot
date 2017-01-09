@@ -1,7 +1,7 @@
 from pycorenlp import StanfordCoreNLP
 
 nlp = StanfordCoreNLP('http://localhost:9000')
-input_sentence = "I like the movies with Johhny Depp. They are nice ."
+input_sentence = "I like the movies with Johhny Depp. Do you like him?"
 
 history = []
 MAX_HISTORY_BUFFER_SIZE = 5
@@ -9,7 +9,6 @@ MAX_HISTORY_BUFFER_SIZE = 5
 
 def resolution_last_message(message):
     message = str(message)
-    print('###',message)
     res = nlp.annotate(message,
                        properties={
                            'annotators': 'coref',
@@ -20,20 +19,22 @@ def resolution_last_message(message):
     for coreferences in res["corefs"].values():
         for item in coreferences:
             if item["isRepresentativeMention"]:
-                representative = item["text"]
+                representative = res["sentences"][item["sentNum"] - 1]["tokens"][
+                                 item["startIndex"] - 1:item["endIndex"] - 1]
 
         for item in coreferences:
             if item["sentNum"] == len(res["sentences"]):
+                if item["text"] == "you":
+                    continue
                 # Item is in the last sentence
                 tokens = res["sentences"][-1]["tokens"]
-                for tokens_id in range(item["startIndex"] - 1, item["endIndex"] - 1):
-                    try:
-                        del tokens[tokens_id]
-                    except:
-                        print (tokens_id)
+                del tokens[item["startIndex"] - 1:item["endIndex"] - 1]
 
                 if representative is not None:
-                    tokens.insert(item["startIndex"] - 1, {"originalText": representative})
+                    index = item["startIndex"] - 1
+                    for element in representative:
+                        tokens.insert(index, element)
+                        index += 1
 
     last_sentence = ""
 
@@ -46,28 +47,33 @@ def resolution_last_message(message):
 
 
 def coreference_resolution(message):
-    if not (message.endswith(".") or message.endswith("?") or message.endswith("!")):
-        message += "."
+    try:
+        if not (message.endswith(".") or message.endswith("?") or message.endswith("!")):
+            message += "."
 
-    if len(history) == MAX_HISTORY_BUFFER_SIZE:
-        del history[0]
+        if len(history) == MAX_HISTORY_BUFFER_SIZE:
+            del history[0]
 
-    res = nlp.annotate(message,
-                       properties={
-                           'annotators': 'coref',
-                           'outputFormat': 'json'
-                       })
+        res = nlp.annotate(message,
+                           properties={
+                               'annotators': 'coref',
+                               'outputFormat': 'json'
+                           })
 
-    sentences = "".join(history)
-    result = ""
+        sentences = "".join(history)
+        result = ""
 
-    for sentence in res["sentences"]:
-        for token in sentence["tokens"]:
-            sentences += (token["originalText"] + " ")
-        resolution = resolution_last_message(sentences)
-        result += resolution
-        sentences += resolution
+        for sentence in res["sentences"]:
+            copy_sentences = sentences
+            for token in sentence["tokens"]:
+                copy_sentences += (token["originalText"] + " ")
+            resolution = resolution_last_message(copy_sentences)
+            result += resolution
+            sentences += resolution
 
-    history.append(result)
+        history.append(result)
+        return result
 
-    return result
+    except Exception:
+        history.append(message)
+        return message
