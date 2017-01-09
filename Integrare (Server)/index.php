@@ -4,7 +4,8 @@
 
 	//Server definitions
 	$textProcessingURL = 'http://localhost:2000';
-	$aiTopic = 'http://localhost:2500/topic';
+	$aiFirst = 'http://localhost:2500/slang_and_coreference';
+	$aiSecond = 'http://localhost:2500/topic_and_end';
 	$databaseURL = 'http://localhost:4000';
 	$outputURL = 'http://localhost:7000';
 
@@ -34,22 +35,26 @@
 
 		//Setting master json
 		$finalJson = array();
-		$finalJson["input"] = $currentInput;
+		$inputJSON = json_encode(array("input" => $currentInput));
+		$finalJson["input"] = json_decode($inputJSON);
+
+		//Call AI for slang_and_coreference
+		$aiResponse1 = post_to($aiFirst, $inputJSON);
+		$finalJson["ai1"] = $aiResponse1;
 
 		//Call text processing
-		$inputJSON = json_encode(array("input" => $currentInput));
 		$textProcessingPath = $textProcessingURL;
-		$textProcessingResponse = post_to($textProcessingPath, $inputJSON);
-		// $overloadedTextProcessingResponse = json_encode(array("sentences" => json_decode($textProcessingResponse), "numberSentences"=>1));
+		$aiResponseJSON1 = json_encode(array("input" => $aiResponse1));
+		$textProcessingResponse = post_to($textProcessingPath, $aiResponseJSON1);
 		$finalJson["text_processing"] = json_decode($textProcessingResponse);
 
-		//Call AI for topic
-		$aiResponse = post_to($aiTopic, $textProcessingResponse);
-		$finalJson["ai"] = json_decode($aiResponse);
+		//Call AI for topic_and_end
+		$aiResponse2 = post_to($aiSecond, $textProcessingResponse);
+		$finalJson["ai2"] = json_decode($aiResponse2);
 
 		// Call database
 		$databasePath = $databaseURL;
-		$databaseResponse = post_to($databasePath, $aiResponse);
+		$databaseResponse = post_to($databasePath, $aiResponse2);
 		$finalJson["database"] = json_decode($databaseResponse);
 
 		// Call output

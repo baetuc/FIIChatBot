@@ -8,6 +8,8 @@ MAX_HISTORY_BUFFER_SIZE = 5
 
 
 def resolution_last_message(message):
+    message = str(message)
+    print('###',message)
     res = nlp.annotate(message,
                        properties={
                            'annotators': 'coref',
@@ -25,7 +27,10 @@ def resolution_last_message(message):
                 # Item is in the last sentence
                 tokens = res["sentences"][-1]["tokens"]
                 for tokens_id in range(item["startIndex"] - 1, item["endIndex"] - 1):
-                    del tokens[tokens_id]
+                    try:
+                        del tokens[tokens_id]
+                    except:
+                        print (tokens_id)
 
                 if representative is not None:
                     tokens.insert(item["startIndex"] - 1, {"originalText": representative})
