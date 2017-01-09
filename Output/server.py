@@ -321,55 +321,6 @@ def lemmatize(words):
     return lemmas
 
 
-def generate_output(text, keywords):
-    sentences = split_into_sentences(text + '.')
-    for sentence in sentences:
-        tokenized_text = nltk.word_tokenize(sentence)
-        tags = nltk.pos_tag(tokenized_text)
-        words_found = [False] * len(keywords)
-        words_found_count = 0
-        for token in tags:
-            wn_tag = penn_to_wn(token[1])
-
-            txt = token[0].lower().replace("'s", "")
-            try:
-                if not wn_tag:
-                    lemma = lemmatzr.lemmatize(txt)
-                else:
-                    lemma = lemmatzr.lemmatize(txt, pos=wn_tag)
-                ok = True
-            except Exception:
-                lemma = txt
-                ok = False
-
-            if lemma in keywords:
-                index = keywords.index(lemma)
-                if words_found[index] is False:
-                    words_found_count += 1
-                    words_found[index] = True
-                    if words_found_count == len(keywords):
-                        sentence = replace_with_synonyms(sentence)
-                        while random.random() < 0.1:
-                            sentence = typo(sentence)
-                        return sentence
-            elif ok:
-                for meaning in wn.synsets(lemma, pos=wn_tag):
-                    for word in meaning.lemma_names():
-                        if word in keywords:
-                            index = keywords.index(word)
-                            if words_found[index] is False:
-                                words_found_count += 1
-                                words_found[index] = True
-                                if words_found_count == len(keywords):
-                                    sentence = replace_with_synonyms(sentence)
-                                    while random.random() < 0.2:
-                                        sentence = typo(sentence)
-                                    return sentence
-    text = replace_with_synonyms(text)
-    while random.random() < 0.1:
-        text = typo(text)
-    return text
-
 def generate_output(text):
     keywords = get_keywords(text)
     sentences = split_into_sentences(text + '.')
@@ -427,24 +378,49 @@ def generate_output(text):
     #return text
 
 
+listaMea = r"""Is it worse to fail at something or never attempt it in the first place?
+If you could choose just one thing to change about the world, what would it be?
+To what extent do you shape your own destiny, and how much is down to fate?
+Does nature shape our personalities more than nurture?
+Should people care more about doing the right thing, or doing things right?
+What one piece of advice would you offer to a newborn infant?
+Where is the line between insanity and creativity?"""
+
+def addTopic(topicText):
+    if topicText and random.random()< 0.10 :
+        return topicText
+    return ""
+
+
 def parseJson(data):
-    response = data[u'response']
-    ret_text = ""
-    if response:
-        for dict in response:
-            print dict
-            if dict[u'AIML']:
-                ret_text += generate_output(dict[u'AIML']) + ". "
-            if dict[u'WEB']:
-                ret_text += generate_output(dict[u'WEB']) + ". "
-    response = data[u'ontologii']
-    if response:
-        ret_text = generate_question(response[u'noun'][0])
-    response = data[u'topic']
-    if response:
-        ret_text += " " + response
+    global listaMea
+
+    ret_text = None
+
+    topicText = data[u'topic']
+
+    output = data[u'response']
+    if output:
+        for value in output:
+            if value[u'AIML']:
+                ret_text = generate_output(value[u'AIML']) + addTopic(topicText)
+            elif value[u'WEB']:
+                ret_text = generate_output(value[u'WEB']) + addTopic(topicText)
+
+    #response = data[u'ontologii']
+    #if response:
+    #    for keys in response.keys():
+    #        ret_text += generate_question(response[keys][0]) + "? "
+    #        break
+
+
+    if ret_text is None and topicText:
+        ret_text = topicText
+    elif ret_text is None:
+        ret_text = random.choice(re.split('\n',listaMea))
+
     return ret_text
-    #print dict(data)
+
 
 @route('/',method = 'POST')
 def process():
@@ -453,4 +429,4 @@ def process():
     raspuns = parseJson(data)
     return raspuns
 
-run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=7000, debug=True)
