@@ -75,6 +75,7 @@ def generate_question(cuvant):
         print i
         req = urllib2.Request(url, headers=hdr2)
         response = urllib2.urlopen(req)
+        time.sleep(3)
         html = response.read()
 
         stop = """<h2 id="prepositions" data-magellan-destination="prepositions" class="text-center"><strong>.*?</strong> <strong id="prepositions-heading-count" class="text-cta">.*?</strong> Prepositions</h2>"""
