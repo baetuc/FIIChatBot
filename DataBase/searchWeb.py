@@ -74,17 +74,6 @@ def get_google_answer(question):
     if len(answer) > 0:
         return (html_to_text(answer[0]))
     return None
-    
-def get_google_citeations(question):
-    question=question.replace('+','%2B')
-    url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
-    r = requests.get(url)
-    content = r.text.encode('UTF-8')
-    cites=re.findall('<cite>.*?<[/]cite>',content)
-    urls =[]
-    for cite in cites:
-        urls.append(html_to_text(cite))
-    return urls
 
 def Wiki(text):
     try:
@@ -92,4 +81,3 @@ def Wiki(text):
     except:
         response = None
     return response
-

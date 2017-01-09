@@ -3,8 +3,75 @@ import json
 import searchWeb
 import AIML
 import Ontologii
+from what_why import FavoriteHandler
+
+# my_data = {
+#     "number_of_sentences": "1",
+#     "sentences": [
+#       {
+#         "is_negation": "false",
+#         "topic": "Arts & Entertainment",
+#         "words": [
+#           {
+#             "part_of_speech": "WP",
+#             "synonyms": [
+#               "World Health Organization"
+#             ],
+#             "word": "who"
+#           },
+#           {
+#             "part_of_speech": "N",
+#             "synonyms": [
+#               "Jackson",
+#               "Michael Joe Jackson"
+#             ],
+#             "word": "michael jackson"
+#           }
+#         ],
+#         "subtopic": "music",
+#         "sentence": "Tell me a joke with chuck norris",
+#         "type": "question"
+#       }
+#     ],
+#     "is_end": "False"
+#   }
+#
+# my_data2 = {
+#     "number_of_sentences": "1",
+#     "sentences": [
+#       {
+#         "is_negation": "false",
+#         "topic": "Arts & Entertainment",
+#         "words": [
+#           {
+#             "part_of_speech": "WP",
+#             "synonyms": [
+#               "World Health Organization"
+#             ],
+#             "word": "who"
+#           },
+#           {
+#             "part_of_speech": "N",
+#             "synonyms": [
+#               "Jackson",
+#               "Michael Joe Jackson"
+#             ],
+#             "word": "michael jackson"
+#           }
+#         ],
+#         "subtopic": "music",
+#         "sentence": "why is red your favourite color?",
+#         "type": "question"
+#       }
+#     ],
+#     "is_end": "False"
+#   }
+
+handler = FavoriteHandler()
 
 def init(data):
+    global handler
+
     response= []
     numberS = int(data["number_of_sentences"])
     responsServ = " "
@@ -20,14 +87,24 @@ def init(data):
         Ontologii.jsonConverterAndInserter(data)
         
         print 'AIML'
-        responseAIMLsentence = AIML.getResponse(sentence)
+
+        responseAIML = None
+        if handler.is_why_question(sentence):
+            responseAIML = handler.answer_why(sentence)
+
+        elif handler.is_favorite_question(sentence):
+            responseAIML = handler.answer_what(sentence)
+
+        if responseAIML is None:
+            responseAIMLsentence = AIML.getResponse(sentence)
+        else:
+            responseAIMLsentence = 'I have no answer for that.'
+
 
         print 'AIML topic'
 
         if responseAIMLsentence != 'I have no answer for that.':
             responseAIML = responseAIMLsentence
-        else:
-            responseAIML = None
             
         responsetopic=None
         
@@ -81,3 +158,6 @@ def init(data):
     dictionaryToJson = json.dumps({"response":response, "ontologii": responseOntologii, "topic": responsetopic})
 
     return dictionaryToJson
+
+print(init(my_data))
+# print(init(my_data2))
