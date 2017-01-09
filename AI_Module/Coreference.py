@@ -24,7 +24,7 @@ def resolution_last_message(message):
 
         for item in coreferences:
             if item["sentNum"] == len(res["sentences"]):
-                if item["text"].lower() in ["you", "i"]:
+                if item["text"].lower() in ["you", "i", "me", "my", "myself", "mine", "yourself", "yours", "your"]:
                     continue
                 # Item is in the last sentence
                 tokens = res["sentences"][-1]["tokens"]
@@ -78,5 +78,13 @@ def coreference_resolution(message):
         history.append(message)
         return message
 
-print(coreference_resolution("Do you like Michael Jackson? I like him."))
-print(coreference_resolution("Do you like Michael Jackson? I like him."))
+# print(coreference_resolution("Do you like Michael Jackson? I like him."))
+# print(coreference_resolution("He always gives me ice cream."))
+# print(coreference_resolution("Also he likes girls"))
+# print(coreference_resolution("They are hot"))
+# print(coreference_resolution("I remember World War II."))
+# print(coreference_resolution("It was cruel."))
+
+# print(coreference_resolution("Who is the president of Romania?"))
+# print(coreference_resolution("He is Klaus Johannis"))
+# print(coreference_resolution("And how old is he?"))
