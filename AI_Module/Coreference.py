@@ -24,7 +24,7 @@ def resolution_last_message(message):
 
         for item in coreferences:
             if item["sentNum"] == len(res["sentences"]):
-                if item["text"] == "you":
+                if item["text"].lower() in ["you", "i"]:
                     continue
                 # Item is in the last sentence
                 tokens = res["sentences"][-1]["tokens"]
@@ -77,3 +77,6 @@ def coreference_resolution(message):
     except Exception:
         history.append(message)
         return message
+
+print(coreference_resolution("Do you like Michael Jackson? I like him."))
+print(coreference_resolution("Do you like Michael Jackson? I like him."))
