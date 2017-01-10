@@ -1,4 +1,5 @@
 # encoding: utf-8
+from pattern.en import conjugate,pluralize
 import subprocess
 from bottle import run, post, request, response, get, route
 import json
@@ -329,7 +330,6 @@ def generate_output(text):
         text = replace_with_synonyms(sentence)
         while random.random() < 0.1:
             text = typo(text)
-        return text
 
         tokenized_text = nltk.word_tokenize(sentence)
         tags = nltk.pos_tag(tokenized_text)
@@ -415,9 +415,9 @@ def parseJson(data):
 
 
     if ret_text is None and topicText:
-        ret_text = topicText
+        ret_text = generate_output(topicText)
     elif ret_text is None:
-        ret_text = random.choice(re.split('\n',listaMea))
+        ret_text = generate_output(random.choice(re.split('\n',listaMea)))
 
     return ret_text
 
