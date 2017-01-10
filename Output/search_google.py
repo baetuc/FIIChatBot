@@ -55,13 +55,19 @@ def get_google_summary(question):
     summary=re.findall('<div class="_o0d">.*<[/]div>',content)
     if len(summary) is not 0:
         return (html_to_text(summary[0]))
+    summary=re.findall('[(noun)(adverb)(verb)(adjective)]<[/]div><ol.*?<[/]li',content)
+    response = ""
+    for i in range(len(summary)):    
+        response+=' ' +summary[i]
+    if len(summary) is not 0:
+        return (html_to_text(response)[1:])
     return(None)
         
 def get_google_answer(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url)
-    content = r.text.encode('UTF-8')
+    content = r.text
     #print(content)
         
     answer=re.findall('<div class="_XWk">.*?<[/]div>',content)       #E.g. What is the president of India
@@ -100,7 +106,7 @@ def get_google_answer2(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url,headers=headers)
-    content = r.text.encode('UTF-8')
+    content = r.text
     #print(content)
         
     answer=re.findall('<div class="_XWk">.*?<[/]div>',content)       #E.g. What is the president of India
@@ -136,7 +142,7 @@ def get_google_correction(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url)
-    content = r.text.encode('UTF-8')
+    content = r.text
     print content
     correction=re.findall('<a class="spell".*?<[/]a>',content)
     if len(correction)>0:
@@ -167,7 +173,6 @@ def get_google_citeations(question):
             urls.append(text)
     return urls
 
-
 print(get_google_answer('who sang johnny be good'))
-print(get_google_citeations('cat'))
-print(get_google_summary('how to make goulash'))
+print(get_google_questions('who is the president of india'))
+print(get_google_summary('pretty definition'))
