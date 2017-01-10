@@ -2,8 +2,8 @@
     Autori: Cip Baetu, Sebastian Ciobanu
 """
 
-from textblob import TextBlob
+from autocorrect import spell
 
 
 def correct(phrase):
-    return str(TextBlob(phrase).correct())
+    return str(spell(phrase))
