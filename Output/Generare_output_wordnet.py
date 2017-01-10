@@ -47,9 +47,10 @@ def split_into_sentences(text):
 
 validChars = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
               'p','q','r','s','t','u','v','w','x','y','z'}
-keyboard = [['q','w','e','r','t','y','u','i','o','p'],
-            ['a','s','d','f','g','h','j','k','l',';',],
-            ['z','x','c','v','b','n','m',',','.','/']]
+keyboard = [['1','2','3','4','5','6','7','8','9','0','-'],
+            ['q','w','e','r','t','y','u','i','o','p',';'],
+            ['a','s','d','f','g','h','j','k','l',';',"'"],
+            ['z','x','c','v','b','n','m',',','.','/','?']]
 
 def typo(text):
     i = random.randrange(len(text))
@@ -69,7 +70,7 @@ def typo(text):
                 j2=keyboard[j].index(text[i])
                 if rand<0.55 and j >0:
                     j-=1
-                elif rand<0.7 and j<9:
+                elif rand<0.7 and j<3:
                     j+=1
                 elif rand<0.85 and j2>0:
                     j2-=1
