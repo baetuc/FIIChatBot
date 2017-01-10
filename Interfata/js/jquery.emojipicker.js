@@ -2,7 +2,7 @@
 
   var pluginName = "emojiPicker",
       defaults = {
-        width: '200',
+        // width: '200',
         height: '350',
         position: 'left',
         fadeTime: 100,
@@ -41,20 +41,21 @@
     this.$container = $(this.settings.container);
 
     // (type) Safety first
-    this.settings.width = parseInt(this.settings.width);
-    this.settings.height = parseInt(this.settings.height);
+    //debugger;
+    // this.settings.width = parseInt(this.settings.width);
+    // this.settings.height = parseInt(this.settings.height);
 
     // Check for valid width/height
-    if(this.settings.width >= MAX_WIDTH) {
-      this.settings.width = MAX_WIDTH;
-    } else if (this.settings.width < MIN_WIDTH) {
-      this.settings.width = MIN_WIDTH;
-    }
-    if (this.settings.height >= MAX_HEIGHT) {
-      this.settings.height = MAX_HEIGHT;
-    } else if (this.settings.height < MIN_HEIGHT) {
-      this.settings.height = MIN_HEIGHT;
-    }
+    // if(this.settings.width >= MAX_WIDTH) {
+    //   this.settings.width = MAX_WIDTH;
+    // } else if (this.settings.width < MIN_WIDTH) {
+    //   this.settings.width = MIN_WIDTH;
+    // }
+    // if (this.settings.height >= MAX_HEIGHT) {
+    //   this.settings.height = MAX_HEIGHT;
+    // } else if (this.settings.height < MIN_HEIGHT) {
+    //   this.settings.height = MIN_HEIGHT;
+    // }
 
     var possiblePositions = [ 'left',
                               'right'
@@ -91,9 +92,9 @@
           elementHeight;
 
         // This can cause issues if the element is not visible when it is initiated
-        var objectWidth = this.$el.width();
+        // var objectWidth = this.$el.width();
 
-        this.$el.width(objectWidth);
+        // this.$el.width(objectWidth);
 
         this.$wrapper = this.$el
           .wrap("<div class='emojiPickerIconWrap'></div>")
@@ -124,9 +125,9 @@
         .height(parseInt(this.settings.height) - 40); // 40 is height of the tabs
 
       // Tab size based on width
-      if (this.settings.width < 240) {
-        this.$picker.find('.emoji').css({'width':'1em', 'height':'1em'});
-      }
+      // if (this.settings.width < 240) {
+      //   this.$picker.find('.emoji').css({'width':'1em', 'height':'1em'});
+      // }
 
     },
 
