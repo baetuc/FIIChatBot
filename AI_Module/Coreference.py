@@ -1,4 +1,5 @@
 from pycorenlp import StanfordCoreNLP
+import re
 
 nlp = StanfordCoreNLP('http://localhost:9000')
 input_sentence = "I like the movies with Johhny Depp. Do you like him?"
@@ -48,7 +49,10 @@ def resolution_last_message(message):
 
 def coreference_resolution(message):
     try:
-        if not (message.endswith(".") or message.endswith("?") or message.endswith("!")):
+        # if not (message.endswith(".") or message.endswith("?") or message.endswith("!")):
+        #     message += ""
+
+        if re.match(".*[\w]$", message):
             message += "."
 
         if len(history) == MAX_HISTORY_BUFFER_SIZE:

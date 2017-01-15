@@ -75,6 +75,9 @@ def init(data):
     response= []
     numberS = int(data["number_of_sentences"])
     responsServ = " "
+    responsetopic=None
+    responseOntologii = None
+
     for index in range(numberS):
         sentences = data["sentences"][index]
         sentence = sentences["sentence"]
@@ -83,9 +86,9 @@ def init(data):
         words = sentences["words"]
         topic = sentences["topic"].lower()
         subtopic = sentences["subtopic"].lower()
-        
+
         Ontologii.jsonConverterAndInserter(data)
-        
+
         print 'AIML'
 
         responseAIML = None
@@ -105,10 +108,10 @@ def init(data):
 
         if responseAIMLsentence != 'I have no answer for that.':
             responseAIML = responseAIMLsentence
-            
+
         responsetopic=None
-        
-        if responseAIML is None:  
+
+        if responseAIML is None:
             responseAIMLtopic = AIML.getResponseForTopic(topic)
             responseAIMLsubtopic = AIML.getResponseForTopic(subtopic)
 
@@ -118,14 +121,14 @@ def init(data):
                 if responseAIMLsubtopic != 'I have no answer for that.':
                     responsetopic = responseAIMLsubtopic
                 else:
-                    responsetopic = None 
+                    responsetopic = None
 
         print 'web'
 
         responseWeb = None
         if responseAIML is None:
             gooAnswer = searchWeb.get_google_answer(sentence)
-            
+
             if gooAnswer is not None:
                 responseWeb = gooAnswer
             else:
@@ -138,12 +141,12 @@ def init(data):
                     except:
                         wikiAnswer = None
 
-                    if wikiAnswer:    
+                    if wikiAnswer:
                         responseWeb = wikiAnswer
                     else:
                         responseWeb  = None
-                        
-            
+
+
         print 'ont'
 
         responseOntologii = None
@@ -159,5 +162,5 @@ def init(data):
 
     return dictionaryToJson
 
-print(init(my_data))
+# print(init(my_data))
 # print(init(my_data2))

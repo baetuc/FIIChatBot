@@ -15,6 +15,7 @@ def get_text_topics(text):
     text = response.text
     resp_json = json.loads(text)
     category_list = resp_json["category_list"]
+    category_list = []
     mini_category_list = []
     for category in category_list:
         cat = category["label"]

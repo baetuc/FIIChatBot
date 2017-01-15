@@ -9,8 +9,10 @@ import DetectEndOfConversation
 @route('/slang_and_coreference', method='POST')
 def handle_slang_and_coreference():
     after_jargon = jargon_expand.jargon_change(request.json["input"])
-    # return Coreference.coreference_resolution(after_jargon)
-    return after_jargon
+    smth = Coreference.coreference_resolution(after_jargon)
+    print('####',smth)
+    return smth
+    # return after_jargon
 
 @route('/topic_and_end', method='POST')
 def handle_topic_and_end():
