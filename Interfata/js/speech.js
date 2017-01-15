@@ -29,7 +29,7 @@ $(document).ready(function(){
 	  recognition.interimResults = true;
 
 	  recognition.onstart = function() {
-		
+		responsiveVoice.cancel();
 		annyang.abort();		
 		recognizing = true;
 				
@@ -93,7 +93,7 @@ $(document).ready(function(){
 		  }
 		}
 		final_transcript = capitalize(final_transcript);
-		inputField.value = linebreak(final_transcript);
+		inputField.value = inputField.value + linebreak(final_transcript);
 		
 		// interim_span.innerHTML = linebreak(interim_transcript);
 		// if (final_transcript || interim_transcript) {
@@ -165,7 +165,7 @@ function startButton(event) {
   recognition.start();
   
   ignore_onend = false;
-  inputField.value = '';
+  //inputField.value = '';
   // interim_span.innerHTML = '';
   start_img.src = 'images/mic-slash.gif';
   // showInfo('info_allow');

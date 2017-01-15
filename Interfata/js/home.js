@@ -23,6 +23,10 @@ function GetBotAnswer(userText){
 }
 
 function SendBotMessage(message){
+		
+	responsiveVoice.setDefaultVoice("US English Male");
+	responsiveVoice.speak(message);
+	
 	var chat = $('.chat');
 				chat.append('\
 					<li class=\"left clearfix\"><span class=\"chat-img pull-left\">\
@@ -46,6 +50,8 @@ function SendBotMessage(message){
 function SendUserMessage(){
 	var inputBox = $('#input-left-position')[0];
 	var message = inputBox.value;
+	if(message=='')
+		return;
 
 	//Adding to frontend
 	 $('.chat').append('<li class=\"right clearfix\"><span class=\"chat-img pull-right\">\
