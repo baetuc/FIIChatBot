@@ -1,5 +1,7 @@
 var localURL = 'http://localhost:1000';
 
+
+
 $( document ).ready(function() {
 	$("#input-left-position").on('keypress', function(e){
 		console.log("fired key");
@@ -80,11 +82,11 @@ function SendUserMessage(){
 			},
 			success: function(result){
 				console.log(result);
-				SendBotMessage(result.database.response[0].AI);
+				SendBotMessage(result.output);
 				// SendBotMessage(result);
 			},
 			error: function(result){
-				console.log('error: '+result);
+				console.log(result);
 			}
 		}
 	);

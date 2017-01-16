@@ -155,7 +155,7 @@ class FavoriteHandler:
         if "why" in question.lower() and ("favorite" in question.lower() or "favourite" in question.lower()):
             return True
         return False
-    
+
     def _get_query_from_what_question(self, question):
         r = ".*why.*is ([a-zA-Z]+).* your (favorite|favourite).*"
         m = re.match(r, question, re.IGNORECASE)
