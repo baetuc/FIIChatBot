@@ -72,6 +72,10 @@ function SendUserMessage(){
 						</li>');
 	inputBox.value = "";
 
+	
+	var randomNr = Math.floor(Math.random()*(50-(-50)+1)+(-50));
+	ApplyEmotion(randomNr);
+	
 	//Send input to server
 	$.ajax(
 		{
@@ -83,12 +87,23 @@ function SendUserMessage(){
 			success: function(result){
 				console.log(result);
 				SendBotMessage(result.output);
-				// SendBotMessage(result);
+				ApplyEmotion(result.emotion_score);
 			},
 			error: function(result){
 				console.log(result);
 			}
 		}
 	);
+}
 
+function ApplyEmotion(scoreAsString){
+	var score = parseInt(scoreAsString);
+	var newBackgroundColor = "white";
+	if(score > 25){
+		newBackgroundColor = "#e4e4e4";
+	}else{
+		newBackgroundColor = "#c5e3ed";
+	}
+		
+	$('#collapseOne').css('background', newBackgroundColor);
 }

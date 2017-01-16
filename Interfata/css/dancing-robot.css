@@ -400,6 +400,7 @@ div {
 #h5 {
 	bottom:64px;
 	background:#76A3C4;
+	color:red;
 	border:1px solid #000;
 	width:2px;
 	height:20px;
@@ -409,12 +410,12 @@ div {
 	-moz-animation:h5 4s ease-in-out infinite;
 }
 @-webkit-keyframes h5 {
-	from {bottom:64px;}
+	from {bottom:64px;background:white;}
 	25%  {bottom:45px;}
 	50%  {bottom:64px;}
 	60%  {bottom:58px;}	
 	70%  {bottom:64px;}
-	to   {bottom:64px;}				
+	to   {bottom:64px;background:black;}				
 }
 @-moz-keyframes h5 {
 	from {bottom:64px;}

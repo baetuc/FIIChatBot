@@ -24,12 +24,19 @@
 }
 
 #collapseOne{
-	background-color:white;
+	/* background-color:white; */
 	margin-top:-20px;
+	background-color:white;
+	transition: background 10s linear;
 }
 
 .emojiPickerIconWrap{
 	width:100%;
+
+}
+
+#emojiPicker{
+	width:250px;
 }
 
 #input-left-position{
@@ -75,6 +82,7 @@
 {
     overflow-y: scroll;
     height: 70vh;
+	border: 1px solid #D3D3D3;
 }
 
 ::-webkit-scrollbar-track
