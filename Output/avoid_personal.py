@@ -21,7 +21,7 @@ global_answers = ["Sorry dude, I have just met you. You will find out more thing
 #@Return - JSON data
 def avoid_personal(data):
 	data = json.loads(data)
-	if random.random() > 1:
+	if random.random() > 0.1:
 		return None
 	sentences = data["text_processing"]["sentences"]
 	for sentence in sentences:
