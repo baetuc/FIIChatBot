@@ -21,6 +21,15 @@ def get_text_topics(text):
         subcat = ""
         if ">" in category["label"]:
             cat, subcat = category["label"].split(">")
+
+        cat = cat.replace(", ", " and ")
+        cat = cat.replace("&", "and")
+        cat = cat.replace("Govt", "Government")
+
+        subcat = subcat.replace(", ", " and ")
+        subcat = subcat.replace("&", "and")
+        subcat = subcat.replace("Govt", "Government")
+
         mini_category_list += [{"score":int(category["relevance"]),
                                 "category":cat,
                                 "subcategory":subcat}]
