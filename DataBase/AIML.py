@@ -30,7 +30,11 @@ def getResponseForTopic(topic):
     if topic is not None:
         response = kernel.respond(eliminaSemne(topic))
     else:
-        response=None;
+        response = kernel.respond("random")
+
+
+    if "I have no answer for that" in response:
+        response = kernel.respond("random")
     return response
 
 
