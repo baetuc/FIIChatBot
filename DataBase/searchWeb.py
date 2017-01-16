@@ -37,8 +37,22 @@ def get_google_summary(question):
     summary=re.findall('<div class="_tXc">.*<[/]div>',content)
     if len(summary) is not 0:
         return (html_to_text(summary[0]))
-    else:
-        return(None)
+    summary=re.findall('<ol class="_l0g">.*?<[/]ol>',content)
+    if len(summary) is not 0:
+        return (html_to_text(summary[0]))
+    summary=re.findall('<div class="_sPg">.*?<[/]div>',content)
+    if len(summary) is not 0:
+        return (html_to_text(summary[0]))
+    summary=re.findall('<div class="_o0d">.*<[/]div>',content)
+    if len(summary) is not 0:
+        return (html_to_text(summary[0]))
+    summary=re.findall('[(noun)(adverb)(verb)(adjective)]<[/]div><ol.*?<[/]li',content)
+    response = ""
+    for i in range(len(summary)):    
+        response+=' ' +summary[i]
+    if len(summary) is not 0:
+        return (html_to_text(response)[1:])
+    return(None)
         
 def get_google_answer(question):
     question=question.replace('+','%2B')
