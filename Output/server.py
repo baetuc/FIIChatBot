@@ -422,15 +422,12 @@ def parseJson(data):
 
     return ret_text
 
-def auxFunctions(data):
-    data = cheer_up.cheer_up(data)
-    data = avoid_personal.avoid_personal(data)
-    return data
-
 @route('/',method = 'POST')
 def process():
     data = request.body.read()
-    data = auxFunctions(data)
+    personal_avoided = avoid_personal.avoid_personal(data)
+    if personal_avoided is not None:
+        return personal_avoided
     data = json.loads(data)
     raspuns = parseJson(data)
     return raspuns

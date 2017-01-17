@@ -6,7 +6,6 @@
 		In cazul depistarii unui sentiment negativ, functia returneaza un raspuns / o intrebare 
 	ce ar putea inveseli utilizatorul (e.g. o incurajare, o mica glumita, o invitatie la bere etc)
 """
-
 import httplib, urllib
 import json, random
 
@@ -24,10 +23,8 @@ global_answers = ["Why aren't you more optimistic? Life is wonderfull.",
 	"You can get over this. Bad feeling are like rocks, you can throw them away.",
 	"Aww, c'mon. You will talk to my hand if continue this way.",
 	"If you think you are the only one with problems, think about mexicans when they heard about the new President of America.",
-	"Do you know what's good? Beer and sex.",
 	"Let's take a break. Do you want to watch American Pie? It's about a smiling pie made in America."]
 
-### get_sentiment(text)
 ### Functie Creata de Moisii Cosmin
 def get_sentiment(text):
     params = urllib.urlencode({'text': text})
