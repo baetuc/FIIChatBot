@@ -145,30 +145,36 @@ keyboard = [['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
 def typo(text):
     i = random.randrange(len(text))
     rand = random.random()
-    if rand < 0.1:
-        return text[0:i] + text[i] + text[i:]  # repeat character
-    elif rand < 0.3:
-        return text[0:i] + text[i + 1:]  # delete character
-    elif rand < 0.5:
-        if i < (len(text) - 1):  # switch 2 characters
-            return text[0:i - 1] + text[i + 1] + text[i] + text[i + 2:]
+    if rand<0.1:
+        print "1"
+        return text[0:i]+text[i]+text[i:] #repeat character
+    elif rand<0.3:
+        print "2"
+        return text[0:i]+text[i+1:]       #delete character
+    elif rand<0.5:
+        if i<(len(text)-1):               #switch 2 characters
+            print "3"
+            return text[0:i-1]+text[i+1]+text[i]+text[i+2:]
         else:
-            return text[0:i - 2] + text[i] + text[i - 1] + text[i + 1:]
+            print "4"
+            return text[0:i-2]+text[i]+text[i-1]+text[i+1:]
     else:
-        for j in range(len(keyboard)):  # replace character with character in close proximity
+        for j in range(len(keyboard)):   #replace character with character in close proximity
             if text[i] in keyboard[j]:
-                j2 = keyboard[j].index(text[i])
-                if rand < 0.55 and j > 0:
-                    j -= 1
-                elif rand < 0.7 and j < 9:
-                    j += 1
-                elif rand < 0.85 and j2 > 0:
-                    j2 -= 1
-                elif j2 < 9:
-                    j2 += 1
+                j2=keyboard[j].index(text[i])
+                if rand<0.55 and j >0:
+                    j-=1
+                elif rand<0.7 and j<3:
+                    j+=1
+                elif rand<0.85 and j2>0:
+                    j2-=1
+                elif j2<9:
+                    j2+=1
                 else:
-                    j2 -= 1
-                return text[0:i] + keyboard[j][j2] + text[i + 1:]
+                    j2-=1
+                print "5"
+                return text[0:i]+keyboard[j][j2]+text[i+1:]
+    return text
 
 
 def penn_to_wn(tag):
@@ -323,15 +329,10 @@ def lemmatize(words):
     return lemmas
 
 
-def generate_output(text):
-    keywords = get_keywords(text)
+def generate_output(text,q):
+    keywords = get_keywords(q)
     sentences = split_into_sentences(text + '.')
     for sentence in sentences:
-        print sentence
-        text = replace_with_synonyms(sentence)
-        while random.random() < 0.1:
-            text = typo(text)
-
         tokenized_text = nltk.word_tokenize(sentence)
         tags = nltk.pos_tag(tokenized_text)
         words_found = [False] * len(keywords)
@@ -376,8 +377,7 @@ def generate_output(text):
     text = replace_with_synonyms(text)
     while random.random() < 0.1:
         text = typo(text)
-    #return text
-
+    return text
 
 listaMea = r"""Is it worse to fail at something or never attempt it in the first place?
 If you could choose just one thing to change about the world, what would it be?
@@ -395,40 +395,40 @@ def addTopic(topicText):
 
 def parseJson(data):
     global listaMea
-
+    split = True
     ret_text = None
 
     topicText = data[u'topic']
 
     output = data[u'response']
+
     if output:
         for value in output:
+            q = value[u'question']
             if value[u'AIML']:
-                ret_text = generate_output(value[u'AIML']) + addTopic(topicText)
+                ret_text = generate_output(value[u'AIML'],q) + addTopic(topicText)
+                split = False
             elif value[u'WEB']:
-                ret_text = generate_output(value[u'WEB']) + addTopic(topicText)
+                ret_text = generate_output(value[u'WEB'].split(".")[0],q) + addTopic(topicText)
 
-    #response = data[u'ontologii']
-    #if response:
-    #    for keys in response.keys():
-    #        ret_text += generate_question(response[keys][0]) + "? "
-    #        break
+    response = data[u'ontologii']
+    if response:
+        ret_text = response
 
-
+    q = topicText
     if ret_text is None and topicText:
-        ret_text = generate_output(topicText)
+        ret_text = generate_output(topicText,q)
     elif ret_text is None:
-        ret_text = generate_output(random.choice(re.split('\n',listaMea)))
-
+        q = random.choice(re.split('\n',listaMea))
+        ret_text = generate_output(q,q)
     return ret_text
+
 
 @route('/',method = 'POST')
 def process():
     data = request.body.read()
-    personal_avoided = avoid_personal.avoid_personal(data)
-    if personal_avoided is not None:
-        return personal_avoided
     data = json.loads(data)
+    print data
     raspuns = parseJson(data)
     return raspuns
 

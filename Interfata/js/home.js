@@ -25,10 +25,10 @@ function GetBotAnswer(userText){
 }
 
 function SendBotMessage(message){
-		
+
 	responsiveVoice.setDefaultVoice("US English Male");
 	responsiveVoice.speak(message);
-	
+
 	var chat = $('.chat');
 				chat.append('\
 					<li class=\"left clearfix\"><span class=\"chat-img pull-left\">\
@@ -37,7 +37,7 @@ function SendBotMessage(message){
 							<div class=\"chat-body clearfix\">\
 								<div class=\"header\">\
 									<strong class=\"primary-font\">Chat Bot</strong> <small class=\"pull-right text-muted\">\
-										<span class=\"glyphicon glyphicon-time\"></span>14 mins ago</small>\
+										<span class=\"glyphicon glyphicon-time\"></span></small>\
 								</div>\
 								<p>'
 									+
@@ -72,10 +72,10 @@ function SendUserMessage(){
 						</li>');
 	inputBox.value = "";
 
-	
+
 	var randomNr = Math.floor(Math.random()*(50-(-50)+1)+(-50));
 	ApplyEmotion(randomNr);
-	
+
 	//Send input to server
 	$.ajax(
 		{
@@ -104,6 +104,6 @@ function ApplyEmotion(scoreAsString){
 	}else{
 		newBackgroundColor = "#c5e3ed";
 	}
-		
+
 	$('#collapseOne').css('background', newBackgroundColor);
 }
