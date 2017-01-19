@@ -53,32 +53,36 @@ keyboard = [['1','2','3','4','5','6','7','8','9','0','-'],
             ['z','x','c','v','b','n','m',',','.','/','?']]
 
 def typo(text):
-    i = random.randrange(len(text))
-    rand = random.random()
-    if rand<0.1:
-        return text[0:i]+text[i]+text[i:] #repeat character
-    elif rand<0.3:
-        return text[0:i]+text[i+1:]       #delete character
-    elif rand<0.5:
-        if i<(len(text)-1):               #switch 2 characters
-            return text[0:i-1]+text[i+1]+text[i]+text[i+2:]
+    try:
+        i = random.randrange(len(text))
+        rand = random.random()
+        if rand<0.1:
+            return text[0:i]+text[i]+text[i:] #repeat character
+        elif rand<0.3:
+            return text[0:i]+text[i+1:]       #delete character
+        elif rand<0.5:
+            if i<(len(text)-1):               #switch 2 characters
+                return text[0:i-1]+text[i+1]+text[i]+text[i+2:]
+            else:
+                return text[0:i-2]+text[i]+text[i-1]+text[i+1:]
         else:
-            return text[0:i-2]+text[i]+text[i-1]+text[i+1:]
-    else:
-        for j in range(len(keyboard)):   #replace character with character in close proximity
-            if text[i] in keyboard[j]:
-                j2=keyboard[j].index(text[i])
-                if rand<0.55 and j >0:
-                    j-=1
-                elif rand<0.7 and j<3:
-                    j+=1
-                elif rand<0.85 and j2>0:
-                    j2-=1
-                elif j2<9:
-                    j2+=1
-                else:
-                    j2-=1
-                return text[0:i]+keyboard[j][j2]+text[i+1:]  
+            for j in range(len(keyboard)):   #replace character with character in close proximity
+                if text[i] in keyboard[j]:
+                    j2=keyboard[j].index(text[i])
+                    if rand<0.55 and j >0:
+                        j-=1
+                    elif rand<0.7 and j<3:
+                        j+=1
+                    elif rand<0.85 and j2>0:
+                        j2-=1
+                    elif j2<9:
+                        j2+=1
+                    else:
+                        j2-=1
+                    return text[0:i]+keyboard[j][j2]+text[i+1:]  
+    except Exception:
+        return text
+        
     
 def penn_to_wn(tag):
     if tag.startswith('J'):
@@ -120,36 +124,38 @@ def untokenize(words):
   
 
 def replace_with_synonyms(sentence,prob=0.4):
-    tokenized_text = nltk.word_tokenize(sentence)
-    tags=nltk.pos_tag(tokenized_text)
-    for i in range(len(tags)):
-        token=tags[i]
-        if(token[1] =="NNP" or token[1] =="VMB"):
-            continue
-        wn_tag = penn_to_wn(token[1])
-        if not wn_tag or token[0].startswith("'"):
-            continue
-        if random.random()>prob:
-            continue
-        try:
-            lemma = lemmatzr.lemmatize(token[0], pos=wn_tag)
-            meanings = (wn.synsets(lemma, pos=wn_tag))
-            if len(meanings)>0:
-                meaning=meanings[0]
-                n=len(meaning.lemma_names())
-                if n>1:
-                    rand=random.randrange(1,n)
-                    word = meaning.lemma_names()[rand]
-                    if token[1].startswith('V'):
-                        word = match_conjugation(token[0],word)
-                    elif token[1].startswith('N'):
-                        if pluralize(token[0]) == token[0]:
-                            word= pluralize(word)         
-                    tokenized_text[i]=word.replace('_',' ')
-        except Exception:
-            pass
-    return untokenize(tokenized_text)
-  
+    try:
+        tokenized_text = nltk.word_tokenize(sentence)
+        tags=nltk.pos_tag(tokenized_text)
+        for i in range(len(tags)):
+            token=tags[i]
+            if(token[1] =="NNP" or token[1] =="VMB"):
+                continue
+            wn_tag = penn_to_wn(token[1])
+            if not wn_tag or token[0].startswith("'"):
+                continue
+            if random.random()>prob:
+                continue
+            try:
+                lemma = lemmatzr.lemmatize(token[0], pos=wn_tag)
+                meanings = (wn.synsets(lemma, pos=wn_tag))
+                if len(meanings)>0:
+                    meaning=meanings[0]
+                    n=len(meaning.lemma_names())
+                    if n>1:
+                        rand=random.randrange(1,n)
+                        word = meaning.lemma_names()[rand]
+                        if token[1].startswith('V'):
+                            word = match_conjugation(token[0],word)
+                        elif token[1].startswith('N'):
+                            if pluralize(token[0]) == token[0]:
+                                word= pluralize(word)         
+                        tokenized_text[i]=word.replace('_',' ')
+            except Exception:
+                pass
+        return untokenize(tokenized_text)
+    except Exception:
+        return sentence  
 
 def replace_with_synonyms2(sentence):
     tokenized_text = nltk.word_tokenize(sentence)
@@ -218,6 +224,239 @@ def get_hypernyms(word,tag=None):
         hypernyms |=get_hypernyms_names(synset)
     return hypernyms
         
+    
+    
+    
+import phonenumbers
+import datefinder
+common_codes = ['RO','GB','US','RU','FR','CN','JP','DE','CA']
+def is_phone_number(number):
+    if number[0]!='+':
+        try: 
+            numobj = phonenumbers.parse('+'+number,None)
+            if phonenumbers.is_valid_number(numobj):
+                return True
+        except Exception:
+            pass
+        for code in common_codes:
+            try:
+                numobj = phonenumbers.parse(number,code)
+                if phonenumbers.is_valid_number(numobj):
+                    return True
+            except Exception:
+                pass            
+        return False
+    else:
+        try: 
+            numobj = phonenumbers.parse(number,None)
+            if phonenumbers.is_valid_number(numobj):
+                return True
+        except Exception:
+            return False
+            
+    
+aproximation_words=['about ',"'round ",'around ','approximately ',"I think it's ","last I checked it was ","I would guess about ","Not sure, around ","last I checked it was approximately ","","","",""]
+    
+def number_round(number,round_to=4,no_decimals=True):
+    if len(number)<=round_to:
+        return number
+    if number.count('.')>0:
+        
+        try:
+            num = round(float(number.replace(',','')),round_to-number.replace(',','').index('.'))
+            
+            if num % 1 == 0 or no_decimals:
+                    num = int(num)
+            
+        except Exception:
+            print number
+            return number
+        return aproximation_words[random.randint(0,len(aproximation_words)-1)] +str(num)
+    try:
+        num = int(number.replace(',',''))
+        
+    except Exception:
+            print number
+            return number
+    return (aproximation_words[random.randint(0,len(aproximation_words)-1)] + str(int(round(num,round_to-len(number.replace(',',''))))))
+    
+def number_error(number):
+    try:
+        num = float(number)
+    except:
+        print number
+        return number
+    zeros = 10
+    while (num % zeros) == 0:
+        zeros*=10
+    zeros/=10
+    return str(((int(num*0.01))*random.randint(0,4))*zeros+num)
+
+    
+def round_numbers(text):
+    if '=' in text:
+        return text
+    tokenized_text = nltk.word_tokenize(text)
+    tags=nltk.pos_tag(tokenized_text)
+    i=0
+    print tags
+    while i<len(tags):
+        token=tags[i]
+        
+        if token[1]=='CD' and token[0][0]!='0':
+                
+                start_i = i
+                number = token[0]
+                while(i<(len(tags)-1) and tags[i+1][1]=='CD'):
+                    not_number = re.match("[a-z/]",tags[i+1][0])
+                    if not_number!=None:
+                        break
+                    number+=tags[i+1][0]
+                    i+=1
+                not_number = re.match("[a-z/]",number.lower())
+                if (not is_phone_number(number)) and number.count('.')<2 and not_number==None and len(number)>3:
+                    number=number_round(number)
+                    for j in range(start_i,i):
+                        del tags[start_i]
+                        del tokenized_text[start_i]
+                    tags[start_i]=(number,'CD')
+                    tokenized_text[start_i]=number
+                    token=tags[start_i]
+                    i = start_i
+                else:
+                    token=(number,'CD')
+        i+=1
+    return untokenize(tokenized_text)
+    
+year_phrases=['in the ']
+def date_round(text,round_years=True):
+    matches = datefinder.find_dates(text,source=True,index=True)
+    offset = 0
+    offset2=0
+    for match in matches:
+        offset+=offset2
+        offset=0
+        tokenized_text = nltk.word_tokenize(match[1])
+        tags=nltk.pos_tag(tokenized_text)
+        i = 0
+        while i<(len(tags)):
+            if tags[i][1]=='CD':
+                is_not_number=re.match('[^0-9]',tags[i][0])
+                if is_not_number==None:
+                    if len(tags[i][0])<3 and i<(len(tags)-1) and ((tags[i+1][1]=='NNP') or (i>0 and tags[i+1][1]=='CD' and tags[i-1][1]=='NNP')):
+                        
+                        if round_years:
+                            if i<(len(tags)-2) and (tags[i+1][1]=='NNP' and tags[i+2][1]=='CD') and len(tags[i+2][0])>2:
+                                i+=2
+                                if random.random()<0.5 and len(tags[i][0])==4:
+                                    tokenized_text[i]="'"+tokenized_text[i][2:]
+                                    offset2+=1
+                                if random.random()<0.7 and tags[i][0][len(tags[i][0])-1]!=0  and tags[i][0][:2]!='20':
+                                    tokenized_text[i]=tokenized_text[i][:len(tokenized_text[i])-1]+'0s'
+                                    offset2-=1
+                                    if tokenized_text[i][0]=="'":
+                                        tokenized_text[i]=" "+tokenized_text[i][1:]
+                                    if random.random()<0.5:
+                                        tokenized_text[i]='in the '+tokenized_text[i]
+                                        offset2-=6
+                                i-=2
+                            elif i<(len(tags)-1) and (tags[i-1][1]=='NNP' and tags[i+1][1]=='CD') and len(tags[i+1][0])>2:
+                                i+=1
+                                if random.random()<0.5 and len(tags[i][0])==4:
+                                    tokenized_text[i]="'"+tokenized_text[i][2:]
+                                    offset2+=0
+                                if random.random()<0.7 and tags[i][0][len(tags[i][0])-1]!=0 and tags[i][0][:2]!='20':
+                                    tokenized_text[i]=tokenized_text[i][:len(tokenized_text[i])-1]+'0s'
+                                    offset2-=1
+                                    if tokenized_text[i][0]=="'":
+                                        tokenized_text[i][0]=' '
+                                        
+                                    if random.random()<0.5:
+                                        tokenized_text[i]='in the '+tokenized_text[i]
+                                        offset2-=6
+                                i-=1
+                        offset2 += len(tags[i][0])
+                        del tags[i]
+                        del tokenized_text[i]
+            i+=1
+        
+        if match[2][0]==0:
+            if (match[2][1]-offset-1)<len(text):
+                text= untokenize(tokenized_text)+' '+text[match[2][1]-offset-1:]
+            else:
+                text = untokenize(tokenized_text)
+        else:
+            if (match[2][1]-offset-1)<len(text):
+                text=text[0:match[2][0]-offset]+' '+untokenize(tokenized_text)+' '+text[match[2][1]-offset:]
+            else:
+                text=text[0:match[2][0]-offset]+' '+untokenize(tokenized_text)
+    return text
+
+def number_and_date_round(text):
+    matches = datefinder.find_dates(text,source=True,index=True)
+    offset = 0
+    offset2=0
+    scan_for_numbers_start=0
+    for match in matches:
+        length = len(text)
+        text = text[0:scan_for_numbers_start]+round_numbers(text[scan_for_numbers_start:match[2][0]-offset])+text[match[2][0]-offset:]
+        offset+=offset2+(length - len(text))
+        offset2=0
+        tokenized_text = nltk.word_tokenize(match[1])
+        tags=nltk.pos_tag(tokenized_text)
+        i = 0
+        while i<(len(tags)):
+            if tags[i][1]=='CD':
+                if len(tags[i][0])<3 and (tags[i+1][1]=='NNP' or (tags[i+1][1]=='CD' and tags[i+1][1]=='NNP')):
+                    offset2 += len(tags[i][0])
+                    del tags[i]
+                    del tokenized_text[i]
+            i+=1
+        
+        if match[2][0]==0:
+            if (match[2][1]-offset-1)<len(text):
+                text= untokenize(tokenized_text)+' '+text[match[2][1]-offset-1:]
+            else:
+                text = untokenize(tokenized_text)
+        else:
+            if (match[2][1]-offset-1)<len(text):
+                text=text[0:match[2][0]-offset]+' '+untokenize(tokenized_text)+' '+text[match[2][1]-offset:]
+            else:
+                text=text[0:match[2][0]-offset]+' '+untokenize(tokenized_text)
+        scan_for_numbers_start=match[2][1]-offset
+    text = text[0:scan_for_numbers_start]+round_numbers(text[scan_for_numbers_start:])
+    return text
+    
+def number_error2(number):
+    trailing_zeros = 0
+    i = len(number)-1
+    while number[i]=='0' or number[i]=='.' or number[i]==',':
+        trailing_zeros+=1
+        i+=1
+    
+    if (len(number)-trailing_zeros)<4:
+        return number
+    if '.' in number:
+        if (len(number)-number.index('.'))<(len(number)-4):
+            del number[number.index('.'):len(number)]
+        else:
+            del number[4:len(number)]
+            if number[3]=='.':
+                del number[3]
+                
+        trailing_zeros = 0
+        i = len(number)-1
+        while number[i]=='0' or number[i]=='.' or number[i]==',':
+            trailing_zeros+=1
+            i+=1
+        if (len(number)-trailing_zeros)<4:
+            return number
+    for i in range(4,len(number)):
+        number[i]='0'
+    return aproximation_words[random.randint(0,len(aproximation_words)-1)] + number
+
+    
+    
 def lemmatize(words):
     lemmas = [lemmatzr.lemmatize(word.lower()) for word in words]
     return lemmas
@@ -250,6 +489,8 @@ def generate_output(text,keywords):
                             words_found_count+=1
                             words_found[index]=True
                             if words_found_count==len(keywords):
+                                sentence=date_round(sentence)
+                                sentence= round_numbers(sentence)
                                 sentence= replace_with_synonyms(sentence)
                                 while random.random()<0.1:
                                     sentence= typo(sentence)
@@ -263,10 +504,14 @@ def generate_output(text,keywords):
                                 words_found_count+=1
                                 words_found[index]=True
                                 if words_found_count==len(keywords):
+                                    sentence=date_round(sentence)
+                                    sentence= round_numbers(sentence)
                                     sentence= replace_with_synonyms(sentence)
                                     while random.random()<0.1:
                                         sentence= typo(sentence)
                                     return sentence
+    text=date_round(text)
+    text= round_numbers(text)
     text=replace_with_synonyms(text)
     while random.random()<0.1:
         text= typo(text)
@@ -307,6 +552,7 @@ def get_google_response(question):
     print(content)
     return (html_to_text(content))
 
+
 def get_google_summary(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
@@ -324,16 +570,22 @@ def get_google_summary(question):
     summary=re.findall('<div class="_o0d">.*<[/]div>',content)
     if len(summary) is not 0:
         return (html_to_text(summary[0]))
+    summary=re.findall('[(noun)(adverb)(verb)(adjective)]<[/]div><ol.*?<[/]li',content)
+    response = ""
+    for i in range(len(summary)):    
+        response+=' ' +summary[i]
+    if len(summary) is not 0:
+        return (html_to_text(response)[1:])
     return(None)
         
 def get_google_answer(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url)
-    content = r.text.encode('UTF-8')
+    content = r.text
     #print(content)
         
-    answer=re.findall('<div class="_XWk">.*?<[/]div>',content)       #E.g. What is the president of India
+    answer=re.findall('<div class="_XWk">.*?<[/]div>',content)       #E.g. Who is the president of India
     answer2=re.findall('<div class="_Tfc _j0k">.*?<[/]div>',content) #How fast is a cheetah?
 
     if len(answer) > 0:
@@ -343,23 +595,39 @@ def get_google_answer(question):
     
     answer=re.findall('<span class="_m3b".*?<[/]span>',content)  #calculator
     if len(answer) > 0:
-        return (html_to_text(answer[0]))    
-        
+        answers=""
+        for ans in answer:
+            answers+=html_to_text(ans)
+        return answers 
+    
     answer=re.findall('<div class="kltat">.*?<[/]div>',content)       #what is the longest river in the world
     answer2=re.findall('<div class="ellip klmeta">.*?<[/]div>',content)
-
+    
     if len(answer) > 0:
         if len(answer2) > 0:
             return (html_to_text(answer[0])+' '+html_to_text(answer2[0]))
         return (html_to_text(answer[0]))
         
-    answer=re.findall('<span class="cwcot".*?<[/]span>',content)  #calculator
+    answer=re.findall('<span class="cwcot".*?<[/]span>',content)  
+    
     if len(answer) > 0:
         return (html_to_text(answer[0]))
         
-    answer=re.findall('<span class="nobr"><h2 class="r".*?<[/]span>',content)  #calculator
+    answer=re.findall('<span class="nobr"><h2 class="r".*?<[/]span>',content)  
     if len(answer) > 0:
         return (html_to_text(answer[0]))
+        
+    answer=re.findall('<span class="_G0d">.*?<[/]span>',content)  
+    if len(answer) > 0:
+        answers=""
+        for ans in answer:
+            answers+=html_to_text(ans)
+        return answers
+        
+    answer=re.findall('<td style="font-size:16px">.*?<[/]td>',content)  
+    if len(answer) > 0:
+        return (html_to_text(answer[0]))
+    
     return None
 
 def get_google_answer2(question):
@@ -369,7 +637,7 @@ def get_google_answer2(question):
     question=question.replace('+','%2B')
     url = 'https://www.google.co.in/search?q='+question.replace(' ','+')
     r = requests.get(url,headers=headers)
-    content = r.text.encode('UTF-8')
+    content = r.text
     #print(content)
         
     answer=re.findall('<div class="_XWk">.*?<[/]div>',content)       #E.g. What is the president of India
