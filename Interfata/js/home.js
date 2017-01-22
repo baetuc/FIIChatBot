@@ -1,5 +1,5 @@
 var localURL = 'http://localhost:1000';
-
+var dictationEnabled = false;
 
 
 $( document ).ready(function() {
@@ -9,6 +9,10 @@ $( document ).ready(function() {
 			console.log("fired");
 			SendUserMessage();
 		}
+	});
+	
+	$('#dictationToggle').on('change', function(){
+		dictationEnabled = $('#dictationToggle')[0].checked;
 	});
 });
 
@@ -25,9 +29,10 @@ function GetBotAnswer(userText){
 }
 
 function SendBotMessage(message){
-
-	responsiveVoice.setDefaultVoice("US English Male");
-	responsiveVoice.speak(message);
+	if(dictationEnabled){
+		responsiveVoice.setDefaultVoice("US English Male");
+		responsiveVoice.speak(message);
+	}
 
 	var chat = $('.chat');
 				chat.append('\
