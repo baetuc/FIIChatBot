@@ -8,7 +8,7 @@
 	$aiSecond = 'http://localhost:2500/topic_and_end';
 	$databaseURL = 'http://localhost:4000';
 	$outputURL = 'http://localhost:7000';
-	$emoticonURL = 'http://localhost:7521/emoticon';
+	$emotionURL = 'http://localhost:7521/emotion';
 
 
 	//POST request function
@@ -64,15 +64,17 @@
 			$outputPath = $outputURL;
 			$outputResponse = post_to($outputPath, $outputInput);
 			$finalJson["output"] = $outputResponse;
+			$finalJson['emotion_score'] = 0;
 
-			//Call emoticon
-			if (rand(0,10)>5){
-				$emoticonPath = $emoticonURL;
-				$emoticonInput = $outputResponse;
-				$emoticonJSON = json_encode(array("text" => $emoticonInput));
-				$emoticonResponse = post_to($emoticonPath, $emoticonJSON);
-				$finalJson["output"] = $emoticonResponse;
-			}
+			//Call emotion
+			$emotionPath = $emotionURL;
+			$emotionInput = $outputResponse;
+			$emotionJSON = json_encode(array("botText" => $emotionInput, "userText" => $finalJson["ai1"]));
+			$emotionResponse = post_to($emotionPath, $emotionJSON);
+			$decodedEmotionResponse = json_decode($emotionResponse);
+			$finalJson["output"] = $decodedEmotionResponse->text;
+			$finalJson["emotion_score"] = $decodedEmotionResponse->emotionScore;
+			$finalJson["TrimmedOutput"] = $decodedEmotionResponse->TrimmedOutput;
 
 			// Final
 			echo json_encode($finalJson);

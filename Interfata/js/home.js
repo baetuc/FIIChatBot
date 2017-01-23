@@ -1,14 +1,17 @@
 var localURL = 'http://localhost:1000';
-
+var dictationEnabled = false;
 
 
 $( document ).ready(function() {
 	$("#input-left-position").on('keypress', function(e){
-		console.log("fired key");
 		if(e.which == 13) {
 			console.log("fired");
 			SendUserMessage();
 		}
+	});
+	
+	$('#dictationToggle').on('change', function(){
+		dictationEnabled = $('#dictationToggle')[0].checked;
 	});
 });
 
@@ -25,10 +28,10 @@ function GetBotAnswer(userText){
 }
 
 function SendBotMessage(message){
-		
-	responsiveVoice.setDefaultVoice("US English Male");
-	responsiveVoice.speak(message);
-	
+	if(dictationEnabled){
+		responsiveVoice.setDefaultVoice("US English Male");
+		responsiveVoice.speak(message);
+	}
 	var chat = $('.chat');
 				chat.append('\
 					<li class=\"left clearfix\"><span class=\"chat-img pull-left\">\
@@ -36,8 +39,8 @@ function SendBotMessage(message){
 						</span>\
 							<div class=\"chat-body clearfix\">\
 								<div class=\"header\">\
-									<strong class=\"primary-font\">Chat Bot</strong> <small class=\"pull-right text-muted\">\
-										<span class=\"glyphicon glyphicon-time\"></span>14 mins ago</small>\
+									<strong class=\"primary-font\">FII Bot</strong> <small class=\"pull-right text-muted\">\
+										<span class=\"glyphicon glyphicon-time\"></span></small>\
 								</div>\
 								<p>'
 									+
@@ -72,10 +75,10 @@ function SendUserMessage(){
 						</li>');
 	inputBox.value = "";
 
-	
-	var randomNr = Math.floor(Math.random()*(50-(-50)+1)+(-50));
-	ApplyEmotion(randomNr);
-	
+
+	// var randomNr = Math.floor(Math.random()*(50-(-50)+1)+(-50));
+	// ApplyEmotion(randomNr);
+	//
 	//Send input to server
 	$.ajax(
 		{
@@ -85,8 +88,12 @@ function SendUserMessage(){
 				'input': message
 			},
 			success: function(result){
-				console.log(result);
+				responsiveVoice.cancel();
 				SendBotMessage(result.output);
+
+				responsiveVoice.setDefaultVoice("US English Male");
+				responsiveVoice.speak(result.TrimmedOutput);
+
 				ApplyEmotion(result.emotion_score);
 			},
 			error: function(result){
@@ -100,10 +107,17 @@ function ApplyEmotion(scoreAsString){
 	var score = parseInt(scoreAsString);
 	var newBackgroundColor = "white";
 	if(score > 25){
-		newBackgroundColor = "#e4e4e4";
-	}else{
 		newBackgroundColor = "#c5e3ed";
+		console.log("emotion: happy");
+	}else{
+		if(score<-25){
+			newBackgroundColor = "#e4e4e4";
+			console.log("emotion: sad");
+		}
 	}
-		
+
+	if(newBackgroundColor == "white")
+		console.log("emotion: neutral");
+
 	$('#collapseOne').css('background', newBackgroundColor);
 }

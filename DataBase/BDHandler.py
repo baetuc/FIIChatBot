@@ -2,9 +2,10 @@ import simplejson
 import json
 import searchWeb
 import AIML
-import Ontologii
+#import Ontologii
+from new_ontologii import Ontologie
 from what_why import FavoriteHandler
-
+MINE_WORDS = ["mine","i","myself","my","me"]
 # my_data = {
 #     "number_of_sentences": "1",
 #     "sentences": [
@@ -77,7 +78,8 @@ def init(data):
     responsServ = " "
     responsetopic=None
     responseOntologii = None
-
+    OntologiiHandler = Ontologie()
+    rasp_ontologie = OntologiiHandler.new_data(data)
     for index in range(numberS):
         sentences = data["sentences"][index]
         sentence = sentences["sentence"]
@@ -85,9 +87,9 @@ def init(data):
         is_negation = sentences["is_negation"]
         words = sentences["words"]
         topic = sentences["topic"].lower()
-        subtopic = sentences["subtopic"].lower()
-
-        Ontologii.jsonConverterAndInserter(data)
+        #subtopic = sentences["subtopic"].lower()
+        subtopic = "dsdas"
+        #Ontologii.jsonConverterAndInserter(data)
 
         print 'AIML'
 
@@ -149,16 +151,16 @@ def init(data):
 
         print 'ont'
 
-        responseOntologii = None
-        responseOntologiiTopic = Ontologii.getWords(topic, subtopic)
-        if responseOntologiiTopic is not None:
-            responseOntologii = responseOntologiiTopic
+        #responseOntologii = None
+        #responseOntologiiTopic = Ontologii.getWords(topic, subtopic)
+        #if responseOntologiiTopic is not None:
+        #    responseOntologii = responseOntologiiTopic
 
         r = {"question":sentence, "AIML":responseAIML, "WEB":responseWeb}
         response.insert(index, r);
 
 
-    dictionaryToJson = json.dumps({"response":response, "ontologii": responseOntologii, "topic": responsetopic})
+    dictionaryToJson = json.dumps({"response":response, "ontologii": rasp_ontologie, "topic": responsetopic})
 
     return dictionaryToJson
 

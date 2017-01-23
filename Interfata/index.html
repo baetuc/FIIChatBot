@@ -51,9 +51,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		   'Hello': function() {
 		   if(firstSalute == 0){
 				SendBotMessage('Welcome dear USER! Let\'s start a conversation!');
-				alert('Hello there! Let\'s start a conversation!');
+				responsiveVoice.setDefaultVoice("US English Male");
+				responsiveVoice.speak('Welcome dear USER! Let\'s start a conversation!');
 		   }else{
-				alert("Hello again!")
+				SendBotMessage('Hello again!');
+				responsiveVoice.speak('Hello again!');
 		   }
 				
 			 firstSalute = 1;
@@ -75,7 +77,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
 	<div class="header" style=" margin-left: 10px; ">
-		<h1><a href="index.html">FII Bot </a></h1>
+		<h1 id="fiiHeader"><a href="index.html">FII Bot </a></h1>
+		<label class="switch"  title="Dictation on/off">
+		  <input type="checkbox" id="dictationToggle">
+		  <div class="slider round"></div>
+		</label>
 	</div>
 	
 	<div class="row" style="display: flex; height:90vh; margin-right: 0px;">
@@ -123,7 +129,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <div class="welcome">
 	<div class="contentContainer">
-		<h3 class="w3ls-title" style="text-align: center;">Welcome!</h3>  
+		<h3 class="w3ls-title" style="text-align: center;">Did you know...?</h3>  
 		<div class="welcome-agile-row">
 			<div class="col-md-6 welcome-grid">
 				<div class="welcome-grid-right">
@@ -150,11 +156,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="welcome-agile-row" style="padding-top: 20px">
 			<div class="col-md-6 welcome-grid">
 				<div class="welcome-grid-right">
-					<img src="images/img3.jpg" alt=" " class="img-responsive" />
+					<img src="images/img3.png" alt=" " class="img-responsive" />
 				</div>
 				<div class="welcome-grid-left">
-					<h4><a href="https://www.facebook.com/dan.nastasa.3?fref=ts">Who is Dan Nastasa? </a></h4>
-					<p>Dan Nastasa is a poor guy without parents. Usually, he stays drunk in snow because he can't open the door of his house. But, despite of that, he's a president, president of ASII.</p>
+					<h4><a href="https://www.microsoft.com/en-us/research/research-area/artificial-intelligence/">Microsoft contribution to AI </a></h4>
+					<p>At Microsoft, researchers in artificial intelligence are harnessing the explosion of digital data and computational power with advanced algorithms to enable collaborative and natural interactions between people and machines.</p>
 				</div> 
 				<div class="clearfix"> </div>
 			</div>
