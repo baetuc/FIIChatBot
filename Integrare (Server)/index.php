@@ -74,6 +74,7 @@
 			$decodedEmotionResponse = json_decode($emotionResponse);
 			$finalJson["output"] = $decodedEmotionResponse->text;
 			$finalJson["emotion_score"] = $decodedEmotionResponse->emotionScore;
+			$finalJson["TrimmedOutput"] = $decodedEmotionResponse->TrimmedOutput;
 
 			// Final
 			echo json_encode($finalJson);

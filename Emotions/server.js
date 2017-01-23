@@ -32,6 +32,7 @@ app.use(bodyParser.json());
 app.post('/emotion', function (request, response) {
 	var botText = request.body.botText;
 	var userText = request.body.userText;
+	console.log(botText + "  " + userText);
 	try{
 		var emoticon = "";
 		var cheerUp = "";
@@ -60,20 +61,25 @@ app.post('/emotion', function (request, response) {
 					}
 				}
 				alchemy.sentiment("text", userText, {}, function (alchemyResponse) {
+					userScore = 0;
 					if (alchemyResponse["docSentiment"]) {
 						userScore = alchemyResponse["docSentiment"]["score"];
 					}
-					if (userScore < -0.5 && Math.random() > 0.3) {
+					if (userScore && userScore < -0.5 && Math.random() > 0.3) {
 						cheerUp = cheerups[Math.floor((Math.random() * cheerups.length))];
 					}
-					response.json({ "text": botText + emoticon + " " + cheerUp, "emotionScore": botScore * 50 });
+					else {
+						cheerUp == "";
+					}
+					response.json({ "text": botText + emoticon + " " + cheerUp, "emotionScore": userScore * 50, "TrimmedOutput": botText+" "+cheerUp });
 				});
 			});
 		}
 	}
 	catch(err) {
-		response.json({ "text": botText, "emotionScore": 0 });
+		response.json({ "text": botText, "emotionScore": 0, "TrimmedOutput": botText });
 	}
+	// response.json({ "text": botText, "emotionScore": 0, "TrimmedOutput": botText });
 });
 
 // start the server

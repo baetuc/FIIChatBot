@@ -65,7 +65,7 @@ class Ontologie():
         return ret
 
     def new_data(self,data):
-        return_data = ""
+        return_data = None
         for sentence in data['sentences']:
             flag = 0
             for mw in self.MINE_WORDS:
@@ -73,13 +73,16 @@ class Ontologie():
                     flag = 1
             if flag == 0:
                 continue
-            if sentence['type'] == 'question':
-                return_data += self._answer_question(sentence)
+            if sentence['type'] == 'question' and flag == 1:
+                if return_data is None:
+                    return_data = self._answer_question(sentence)
+                else:
+                    return_data += self._answer_question(sentence)
+
                 continue
             words = sentence['words']
             for word in words:
                 self._new_word(word['word'],word['synonyms'],word['part_of_speech'])
             self._insert_sentence()
-        if return_data == "":
-            return_data = None
+        print return_data
         return return_data
