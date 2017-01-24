@@ -5,6 +5,9 @@ import Coreference
 import jargon_expand
 import DetectEndOfConversation
 
+from Generate_Question_Based_on_Topic import generate_question_based_on_topic
+topic = None
+subtopic = None
 
 @route('/slang_and_coreference', method='POST')
 def handle_slang_and_coreference():
@@ -31,7 +34,9 @@ def handle_topic_and_end():
 def add_topic(sentence):
     result = Topic.get_text_topics(sentence["sentence"])
     sentence["topic"] = result[0]["category"]
+    topic = result[0]["category"]
     sentence["subtopic"] = result[0]["subcategory"]
+    subtopic = result[0]["subcategory"]
 
 
 run(host="localhost", port=2500)
