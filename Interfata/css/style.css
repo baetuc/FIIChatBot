@@ -91,6 +91,24 @@ input:checked + .slider:before {
 	}
 }
 
+@media (min-width:700px){
+	#resetButton{
+		/* position:absolute; */
+		    position: absolute;
+			top: 20px;
+			right: 47%;
+	}
+}
+
+@media (max-width:700px){
+	#resetButton{
+		/* position:absolute; */
+		    position: absolute;
+			top: 20px;
+			right: 40%;
+	}
+}
+
 @media (max-width:700px){
 	#leRight{
 		/* position:absolute; */
