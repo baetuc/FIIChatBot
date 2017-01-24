@@ -8,7 +8,7 @@
 	$aiSecond = 'http://localhost:2500/topic_and_end';
 	$databaseURL = 'http://localhost:4000';
 	$outputURL = 'http://localhost:7000';
-	$emoticonURL = 'http://localhost:7521/emoticon';
+	$emotionURL = 'http://localhost:7521/emotion';
 
 
 	//POST request function
@@ -28,9 +28,33 @@
 		$result = $parsedResult[1] ? json_decode($parsedResult[1]) : $parsedResult[0];
 		return $result;
 	}
+	
+	function post_question($url){
+		$options = array(
+			'http' => array(
+				'header'  => "Content-type: application/json",
+				'method'  => 'POST',
+				'generate_question' => 'true'
+			)
+		);
+		$context  = stream_context_create($options);
+		$result = file_get_contents($url, false, $context);
+
+		//Removing headers
+		$parsedResult = split("\r\n\r\n", $result, 2);
+		$result = $parsedResult[1] ? json_decode($parsedResult[1]) : $parsedResult[0];
+		return $result;
+	}
 
 	//Parse message
 	try {
+		if ( isset($_REQUEST["generate_question"]) )
+		{
+			$finalJson = array();
+		    $aiResponse2 = post_question($aiSecond);
+			$finalJson["output"] = json_decode($aiResponse2);
+			echo json_encode($finalJson);
+		}
 		if ( isset($_REQUEST["input"]) && $_REQUEST["input"]){
 			//Get message from client
 			$currentInput = $_REQUEST["input"];
@@ -64,15 +88,17 @@
 			$outputPath = $outputURL;
 			$outputResponse = post_to($outputPath, $outputInput);
 			$finalJson["output"] = $outputResponse;
+			$finalJson['emotion_score'] = 0;
 
-			//Call emoticon
-			if (rand(0,10)>5){
-				$emoticonPath = $emoticonURL;
-				$emoticonInput = $outputResponse;
-				$emoticonJSON = json_encode(array("text" => $emoticonInput));
-				$emoticonResponse = post_to($emoticonPath, $emoticonJSON);
-				$finalJson["output"] = $emoticonResponse;
-			}
+			//Call emotion
+			$emotionPath = $emotionURL;
+			$emotionInput = $outputResponse;
+			$emotionJSON = json_encode(array("botText" => $emotionInput, "userText" => $finalJson["ai1"]));
+			$emotionResponse = post_to($emotionPath, $emotionJSON);
+			$decodedEmotionResponse = json_decode($emotionResponse);
+			$finalJson["output"] = $decodedEmotionResponse->text;
+			$finalJson["emotion_score"] = $decodedEmotionResponse->emotionScore;
+			$finalJson["TrimmedOutput"] = $decodedEmotionResponse->TrimmedOutput;
 
 			// Final
 			echo json_encode($finalJson);
