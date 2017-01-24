@@ -69,16 +69,17 @@ MINE_WORDS = ["mine","i","myself","my","me"]
 #   }
 
 handler = FavoriteHandler()
+OntologiiHandler = Ontologie()
 
 def init(data):
     global handler
-
+    global OntologiiHandler
     response= []
     numberS = int(data["number_of_sentences"])
     responsServ = " "
     responsetopic=None
     responseOntologii = None
-    OntologiiHandler = Ontologie()
+
     rasp_ontologie = OntologiiHandler.new_data(data)
     for index in range(numberS):
         sentences = data["sentences"][index]
@@ -166,3 +167,14 @@ def init(data):
 
 # print(init(my_data))
 # print(init(my_data2))
+
+
+
+def resetOntologii():
+    global OntologiiHandler
+    OntologiiHandler = None
+    try:
+        OntologiiHandler = Ontologie()
+        return True
+    except:
+        return None
