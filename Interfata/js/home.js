@@ -21,6 +21,7 @@ $( document ).ready(function() {
 	$('#dictationToggle').on('change', function(){
 		dictationEnabled = $('#dictationToggle')[0].checked;
 	});
+	$('#dictationToggle').attr("checked",true);
 	
 	//Increment the idle time counter every second.
     var idleInterval = setInterval(timerIncrement, 1000); // 1 sec
