@@ -1,5 +1,5 @@
 var localURL = 'http://localhost:1000';
-var dictationEnabled = false;
+var dictationEnabled = true;
 
 var idleTime = 0;
 function timerIncrement() {
@@ -123,21 +123,21 @@ function SendUserMessage(){
 	);
 }
 
-function resetEverything(){
-	$.ajax(
-		{
-			url: localURL + '/reset',
-			type: 'get',
-			success: function(result){
-				alert('Reset process succeded!');
-				window.location.reload();
-			},
-			error: function(result){
-				console.log(result);
-			}
-		}
-	);
-}
+// function resetEverything(){
+	// $.ajax(
+		// {
+			// url: localURL + '/reset',
+			// type: 'get',
+			// success: function(result){
+				// alert('Reset process succeded!');
+				// window.location.reload();
+			// },
+			// error: function(result){
+				// console.log(result);
+			// }
+		// }
+	// );
+// }
 
 function userIsInactive(){
 	$.ajax(

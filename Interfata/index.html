@@ -50,12 +50,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		 var commands = { 
 		   'Hello': function() {
 		   if(firstSalute == 0){
-				SendBotMessage('Welcome dear USER! Let\'s start a conversation!');
-				responsiveVoice.setDefaultVoice("US English Male");
-				responsiveVoice.speak('Welcome dear USER! Let\'s start a conversation!');
+				SendBotMessage('Welcome dear USER! Let\'s start a conversation!');				
 		   }else{
 				SendBotMessage('Hello again!');
-				responsiveVoice.speak('Hello again!');
 		   }
 				
 			 firstSalute = 1;
@@ -82,7 +79,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		  <input type="checkbox" id="dictationToggle">
 		  <div class="slider round"></div>
 		</label>
-		<button type="button" id="resetButton" class="btn btn-danger" onclick="resetEverything()">Reset</button>
+		<!-- <button type="button" id="resetButton" class="btn btn-danger" onclick="resetEverything()">Reset</button> -->
 	</div>
 	
 	<div class="row" style="display: flex; height:90vh; margin-right: 0px;">
