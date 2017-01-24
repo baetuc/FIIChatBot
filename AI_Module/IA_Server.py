@@ -20,6 +20,8 @@ def handle_slang_and_coreference():
 @route('/topic_and_end', method='POST')
 def handle_topic_and_end():
     data = request.json
+    if "generate_question" in data.keys() and data["generate_question"]=='true':
+        return generate_question_based_on_topic(topic,subtopic)
     is_end = False
 
     for sentence in data["sentences"]:
