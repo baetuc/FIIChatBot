@@ -1,6 +1,14 @@
 var localURL = 'http://localhost:1000';
 var dictationEnabled = false;
 
+var idleTime = 0;
+function timerIncrement() {
+    idleTime = idleTime + 1;
+    if (idleTime > 20) { // 20 seconds
+        userIsInactive();
+		idleTime = 0;
+    }
+}
 
 $( document ).ready(function() {
 	$("#input-left-position").on('keypress', function(e){
@@ -13,6 +21,17 @@ $( document ).ready(function() {
 	$('#dictationToggle').on('change', function(){
 		dictationEnabled = $('#dictationToggle')[0].checked;
 	});
+	
+	//Increment the idle time counter every second.
+    var idleInterval = setInterval(timerIncrement, 1000); // 1 sec
+
+    //Zero the idle timer on mouse movement.
+    $(this).mousemove(function (e) {
+        idleTime = 0;
+    });
+    $(this).keypress(function (e) {
+        idleTime = 0;
+    });
 });
 
 function GetBotAnswer(userText){
@@ -87,6 +106,27 @@ function SendUserMessage(){
 			data: {
 				'input': message
 			},
+			success: function(result){
+				responsiveVoice.cancel();
+				SendBotMessage(result.output);
+
+				responsiveVoice.setDefaultVoice("US English Male");
+				responsiveVoice.speak(result.TrimmedOutput);
+
+				ApplyEmotion(result.emotion_score);
+			},
+			error: function(result){
+				console.log(result);
+			}
+		}
+	);
+}
+
+function userIsInactive(){
+	$.ajax(
+		{
+			url: localURL + '/inactivity',
+			type: 'get',
 			success: function(result){
 				responsiveVoice.cancel();
 				SendBotMessage(result.output);
