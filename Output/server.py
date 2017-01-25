@@ -398,18 +398,18 @@ def parseJson(data):
     split = True
     ret_text = None
 
-    topicText = data[u'topic']
+    topicText = data['topic']
 
-    output = data[u'response']
+    output = data['response']
 
     if output:
         for value in output:
-            q = value[u'question']
-            if value[u'AIML']:
-                ret_text = generate_output(value[u'AIML'],q) + addTopic(topicText)
+            q = value['question']
+            if value['AIML']:
+                ret_text = generate_output(value['AIML'],q) + addTopic(topicText)
                 split = False
-            elif value[u'WEB']:
-                ret_text = generate_output(value[u'WEB'].split(".")[0],q) + addTopic(topicText)
+            elif value['WEB']:
+                ret_text = generate_output(value['WEB'].split(".")[0],q) + addTopic(topicText)
 
     response = data[u'ontologii']
     if response:
@@ -428,7 +428,7 @@ def parseJson(data):
 def process():
     data = request.body.read()
     data = json.loads(data)
-    print data
+
     raspuns = parseJson(data)
     return raspuns
 
