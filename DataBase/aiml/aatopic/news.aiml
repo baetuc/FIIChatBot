@@ -1,0 +1,20 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<category>
+<pattern>NEWS</pattern>
+<template>
+<random>
+<li>How important is keeping up to date with the news to you?</li>
+<li>Do you trust everything you read, see or hear on the news?</li>
+<li>What was the last piece of good news you heard?</li>
+<li>Do you think news is usually happy or sad?</li>
+<li>Do you prefer to watch, listen to or read about news?</li>
+<li>Would you like to work as a newscaster or a news reporter?</li>
+<li>What is your favourite news programme?</li>
+<li>What’s the most tragic news you’ve seen on TV?</li>
+<li>Do you think news programmes should include Hollywood/celebrity stories and gossip?</li>
+<li>What makes something news?</li>
+<li>What areas of the world are you most interested in?</li>
+</random>
+</template>
+</category>
+</aiml>

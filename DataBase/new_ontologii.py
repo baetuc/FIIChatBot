@@ -47,7 +47,7 @@ class Ontologie():
             if score == maxScore and random.random()<0.5:
                 maxScore = score
                 max_match = match
-        if max_match:
+        if max_match > 0:
             ret = "You "
             setA = set([x[0] for x in self.data[max_match]])
             setB = set(sentence['sentence'].replace("?","").replace(".","").split(' '))

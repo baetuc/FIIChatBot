@@ -1,0 +1,20 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+<category>
+<pattern>AUTOMOTIVE</pattern>
+<template>
+<random>
+<li>Do you know that with a program two cars can share data to avoid accidents?</li>
+<li>What do you know about the electric cars?</li>
+<li>What laws should we have about cell phone use in cars?</li>
+<li>Do you prefer driving or riding public transportation?</li>
+<li>Have you ever seen a "hybrid" car?</li>
+<li>Do you think that there is a relation between global warming and cars?</li>
+<li>Does the type of car a person drives tell us about the person who drives it?</li>
+<li>Do you have a car?</li>
+<li>Would you like to have a Tesla?</li>
+<li>What is your dream car?</li>
+</random>
+</template>
+</category>
+</aiml>

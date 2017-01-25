@@ -1,0 +1,38 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<category>
+<pattern>HOBBIES</pattern>
+<template>
+<random>
+<li>Do you have a hobby?</li>
+<li>Is hunting a hobby or a sport?</li>
+<li>Did you have any hobbies when you were a child?</li>
+<li>Do you think a hobby is different from a sport?</li>
+<li>Are there any hobbies you would like to try?</li>
+<li>Why do people need hobbies?</li>
+<li>Do you spend money on your hobby?</li>
+<li>Does your hobby influence your choice of friends?</li>
+<li>Can a hobby save a child from bad peer influence?</li>
+<li>Does your hobby interfere with your work or personal life?</li>
+<li>How much time do you think that one can spend on his/her hobby?</li>
+</random>
+</template>
+</category>
+    <category>
+<pattern>HOBBIES AND INTEREST</pattern>
+<template>
+<random>
+<li>Do you have a hobby?</li>
+<li>Is hunting a hobby or a sport?</li>
+<li>Did you have any hobbies when you were a child?</li>
+<li>Do you think a hobby is different from a sport?</li>
+<li>Are there any hobbies you would like to try?</li>
+<li>Why do people need hobbies?</li>
+<li>Do you spend money on your hobby?</li>
+<li>Does your hobby influence your choice of friends?</li>
+<li>Can a hobby save a child from bad peer influence?</li>
+<li>Does your hobby interfere with your work or personal life?</li>
+<li>How much time do you think that one can spend on his/her hobby?</li>
+</random>
+</template>
+</category>
+</aiml>

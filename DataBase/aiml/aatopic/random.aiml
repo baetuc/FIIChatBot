@@ -1,0 +1,17 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<category>
+<pattern>RANDOM</pattern>
+<template>
+<random>
+    <li>We must let go of the life we have planned, so as to accept the one that is waiting for us.</li>
+    <li>There is only one happiness in this life, to love and be loved.</li>
+    <li>Do not take life too seriously. You will never get out of it alive.</li>
+    <li>Laugh and the world laughs with you, snore and you sleep alone.</li>
+    <li>Everything is funny, as long as it's happening to somebody else.</li>
+    <li>A day without sunshine is like, you know, night.</li>
+    <li>I always wanted to be somebody, but now I realize I should have been more specific.</li>
+    <li>Happiness is not something you postpone for the future; it is something you design for the present.</li>
+</random>
+</template>
+</category>
+</aiml>

@@ -1,0 +1,23 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+<category>
+<pattern>HUMOR</pattern>
+<template>
+<random>
+<li>Do models walk like cats?</li>
+<li>If an orange is orange, why isn’t a lime called a green or a lemon called a yellow?</li>
+<li>Why does your nose run, and your feet smell?</li>
+<li>If you had amnesia and then were cured, would you remember that you forgot?</li>
+<li>Is it true that cannibals won’t eat clowns because they taste funny?</li>
+<li>When you have your picture taken with Mickey Mouse at Disneyland, does the guy inside the costume smile for the camera?</li>
+<li>“I am” is reportedly the shortest sentence in the English language. Could it be that “I do” is the longest sentence?</li>
+<li>Why is it that if someone tells you that there are 1 billion stars in the universe you will believe them but if they tell you a wall has wet paint you will have to touch it to be sure?</li>
+<li>What happens if you get scared half to death twice?</li>
+<li>If Barbie is so popular, why do you have to buy her friends?</li>
+<li>No one ever says “It’s only a game,” when their team is winning.</li>
+<li>If a cow laughed, would milk come out her nose?</li>
+<li>What is a “free” gift? Aren’t all gifts free?</li>
+</random>
+</template>
+</category>
+</aiml>

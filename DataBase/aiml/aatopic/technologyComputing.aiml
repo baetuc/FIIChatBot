@@ -1,0 +1,42 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<category>
+<pattern>TECHNOLOGY</pattern>
+<template>
+<random>
+<li>What is the best thing about a computer?</li>
+<li>What would life be like without your computer?</li>
+<li>What would happen if all of the world’s computers suddenly stopped forever?</li>
+<li>Do you know a lot about computers?</li>
+<li>Do you think computers will always look similar to the way they do now ( a screen with a keyboard)?</li>
+<li>Would you like to take a course in computer science?</li>
+<li>Are you interested in new technology?</li>
+<li>Would you like an ipad?</li>
+<li>Do you think every house will have a robot in the future?</li>
+<li>Do you think the Internet was a good invention?</li>
+<li>Would you feel comfortable having a robot?</li>
+<li> Do you have a DSLR camera?</li>
+<li>Do you have an ipod or an iphone?</li>
+</random>
+</template>
+</category>
+    <category>
+<pattern>TECHNOLOGY AND COMPUTING</pattern>
+<template>
+<random>
+<li>What is the best thing about a computer?</li>
+<li>What would life be like without your computer?</li>
+<li>What would happen if all of the world’s computers suddenly stopped forever?</li>
+<li>Do you know a lot about computers?</li>
+<li>Do you think computers will always look similar to the way they do now ( a screen with a keyboard)?</li>
+<li>Would you like to take a course in computer science?</li>
+<li>Are you interested in new technology?</li>
+<li>Would you like an ipad?</li>
+<li>Do you think every house will have a robot in the future?</li>
+<li>Do you think the Internet was a good invention?</li>
+<li>Would you feel comfortable having a robot?</li>
+<li> Do you have a DSLR camera?</li>
+<li>Do you have an ipod or an iphone?</li>
+</random>
+</template>
+</category>
+</aiml>

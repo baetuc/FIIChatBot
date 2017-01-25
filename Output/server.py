@@ -602,7 +602,7 @@ def generate_output(text, q):
             token = tags[i]
             wn_tag = penn_to_wn(token[1])
 
-            txt = token[0].lower().replace("’s", "")
+            txt = token[0].lower().replace("'s", "")
             try:
                 if not wn_tag:
                     lemma = lemmatzr.lemmatize(txt)
