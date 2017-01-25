@@ -1,0 +1,20 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<category>
+<pattern>EDUCATION</pattern>
+<template>
+<random>
+<li>Why do students cheat during tests and exams?</li>
+<li>What kind of world do you think this would be if people never went to school?</li>
+<li>Should education be free?</li>
+<li>Once you graduate from a university should you stop learning?</li>
+<li>Do you think that most parents influence what university their child will attend?</li>
+<li>Are you studying a foreign language?</li>
+<li>What are some important factors in determining which college to attend?</li>
+<li>What does your education mean to you?</li>
+<li>What is the role of schools in society?</li>
+<li>Do you think a person can become a genius, or are they just born that way?</li>
+<li>How important is curiosity in a student?</li>
+</random>
+</template>
+</category>
+</aiml>

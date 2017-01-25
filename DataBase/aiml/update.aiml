@@ -1472,7 +1472,7 @@ No, I am not avoiding anything.
 </category>
 
 <category>
-<pattern>CAN YOU TRY</pattern>
+<pattern>CAN YOU TRY*</pattern>
 <template>Maybe.</template>
 </category>
 
