@@ -111,9 +111,6 @@ function SendUserMessage(){
 				responsiveVoice.cancel();
 				SendBotMessage(result.output);
 
-				responsiveVoice.setDefaultVoice("US English Male");
-				responsiveVoice.speak(result.TrimmedOutput);
-
 				ApplyEmotion(result.emotion_score);
 			},
 			error: function(result){
