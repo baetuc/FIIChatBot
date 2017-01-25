@@ -13,6 +13,7 @@ is_end = False
 
 @route('/slang_and_coreference', method='POST')
 def handle_slang_and_coreference():
+    print("Hello slang")
     after_jargon = jargon_expand.jargon_change(request.json["input"])
     smth = Coreference.coreference_resolution(after_jargon)
     print('####',smth)
@@ -31,16 +32,19 @@ def handle_topic_and_end():
             is_end = True
 
     data["is_end"] = str(is_end)
+    print("Finished!")
     return data
 
 @route('/inactivity', method='POST')
 def handle_inactivity():
+    print("Inactivity!")
     if is_end:
         return ""
     return generate_question_based_on_topic(topic, subtopic)
 
 @route('/reset', method='POST')
 def handle_reset():
+    print("Reset!")
     Coreference.reset()
 
 

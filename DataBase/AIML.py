@@ -72,7 +72,12 @@ def getResponseForTopic(topic):
 # print(getResponse("Hi"));
 # print(getResponse("Who are you?"));
 #
-# print(getResponse("When is your birthday?"))
+print(getResponse("Hi hi hi hi hi"))
+print(getResponse("Hi"))
+print(getResponse("Hi"))
+print(getResponse("Hi"))
+print(getResponse("Hi"))
+print(getResponse("Hi"))
 
 
 

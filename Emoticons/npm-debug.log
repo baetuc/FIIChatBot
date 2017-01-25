@@ -1,0 +1,1000 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'alchemyapi' ]
+2 info using npm@2.14.20
+3 info using node@v4.4.1
+4 verbose install initial load of D:\An 3\Proiect_IA\Emoticons\package.json
+5 warn package.json node-api@ No description
+6 warn package.json node-api@ No repository field.
+7 warn package.json node-api@ No README data
+8 warn package.json node-api@ No license field.
+9 verbose installManyTop reading scoped package data from D:\An 3\Proiect_IA\Emoticons\node_modules\body-parser\package.json
+10 verbose installManyTop reading scoped package data from D:\An 3\Proiect_IA\Emoticons\node_modules\express\package.json
+11 verbose installManyTop reading scoped package data from D:\An 3\Proiect_IA\Emoticons\node_modules\mongoose\package.json
+12 verbose installManyTop reading scoped package data from D:\An 3\Proiect_IA\Emoticons\node_modules\request\package.json
+13 info package.json mongoose@3.6.20 No license field.
+14 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\package.json
+15 silly cache add args [ 'alchemyapi', null ]
+16 verbose cache add spec alchemyapi
+17 silly cache add parsed spec Result {
+17 silly cache add   raw: 'alchemyapi',
+17 silly cache add   scope: null,
+17 silly cache add   name: 'alchemyapi',
+17 silly cache add   rawSpec: '',
+17 silly cache add   spec: 'latest',
+17 silly cache add   type: 'tag' }
+18 silly addNamed alchemyapi@latest
+19 verbose addNamed "latest" is being treated as a dist-tag for alchemyapi
+20 info addNameTag [ 'alchemyapi', 'latest' ]
+21 silly mapToRegistry name alchemyapi
+22 silly mapToRegistry using default registry
+23 silly mapToRegistry registry https://registry.npmjs.org/
+24 silly mapToRegistry uri https://registry.npmjs.org/alchemyapi
+25 verbose addNameTag registry:https://registry.npmjs.org/alchemyapi not in flight; fetching
+26 verbose request uri https://registry.npmjs.org/alchemyapi
+27 verbose request no auth needed
+28 info attempt registry request try #1 at 6:08:52 PM
+29 verbose request id 71214a8f4323e45f
+30 http request GET https://registry.npmjs.org/alchemyapi
+31 http 200 https://registry.npmjs.org/alchemyapi
+32 verbose headers { server: 'nginx/1.10.1',
+32 verbose headers   'content-type': 'application/json',
+32 verbose headers   'last-modified': 'Tue, 08 Jul 2014 21:17:28 GMT',
+32 verbose headers   etag: 'W/"53bc5fe8-b0c"',
+32 verbose headers   'content-encoding': 'gzip',
+32 verbose headers   'cache-control': 'max-age=300',
+32 verbose headers   'content-length': '783',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Tue, 24 Jan 2017 16:08:54 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   age: '0',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-fra1249-FRA',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1485274134.530556,VS0,VE29',
+32 verbose headers   vary: 'Accept-Encoding' }
+33 silly get cb [ 200,
+33 silly get   { server: 'nginx/1.10.1',
+33 silly get     'content-type': 'application/json',
+33 silly get     'last-modified': 'Tue, 08 Jul 2014 21:17:28 GMT',
+33 silly get     etag: 'W/"53bc5fe8-b0c"',
+33 silly get     'content-encoding': 'gzip',
+33 silly get     'cache-control': 'max-age=300',
+33 silly get     'content-length': '783',
+33 silly get     'accept-ranges': 'bytes',
+33 silly get     date: 'Tue, 24 Jan 2017 16:08:54 GMT',
+33 silly get     via: '1.1 varnish',
+33 silly get     age: '0',
+33 silly get     connection: 'keep-alive',
+33 silly get     'x-served-by': 'cache-fra1249-FRA',
+33 silly get     'x-cache': 'MISS',
+33 silly get     'x-cache-hits': '0',
+33 silly get     'x-timer': 'S1485274134.530556,VS0,VE29',
+33 silly get     vary: 'Accept-Encoding' } ]
+34 verbose get saving alchemyapi to C:\Users\Cip\AppData\Roaming\npm-cache\registry.npmjs.org\alchemyapi\.cache.json
+35 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+36 silly addNameTag next cb for alchemyapi with tag latest
+37 silly addNamed alchemyapi@0.0.3
+38 verbose addNamed "0.0.3" is a plain semver version for alchemyapi
+39 silly mapToRegistry name alchemyapi
+40 silly mapToRegistry using default registry
+41 silly mapToRegistry registry https://registry.npmjs.org/
+42 silly mapToRegistry uri https://registry.npmjs.org/alchemyapi
+43 verbose addRemoteTarball https://registry.npmjs.org/alchemyapi/-/alchemyapi-0.0.3.tgz not in flight; adding
+44 verbose addRemoteTarball [ 'https://registry.npmjs.org/alchemyapi/-/alchemyapi-0.0.3.tgz',
+44 verbose addRemoteTarball   'ed1fcf1897890ae9d0e6ca512a935530d1b17b0d' ]
+45 info retry fetch attempt 1 at 6:08:53 PM
+46 info attempt registry request try #1 at 6:08:53 PM
+47 http fetch GET https://registry.npmjs.org/alchemyapi/-/alchemyapi-0.0.3.tgz
+48 http fetch 200 https://registry.npmjs.org/alchemyapi/-/alchemyapi-0.0.3.tgz
+49 silly fetchAndShaCheck shasum ed1fcf1897890ae9d0e6ca512a935530d1b17b0d
+50 verbose addTmpTarball C:\Users\Cip\AppData\Local\Temp\npm-13648-ed51b68a\registry.npmjs.org\alchemyapi\-\alchemyapi-0.0.3.tgz not in flight; adding
+51 verbose addTmpTarball already have metadata; skipping unpack for alchemyapi@0.0.3
+52 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+53 silly cache afterAdd alchemyapi@0.0.3
+54 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\alchemyapi\0.0.3\package\package.json not in flight; writing
+55 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+56 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\alchemyapi\0.0.3\package\package.json written
+57 silly install resolved [ { name: 'alchemyapi',
+57 silly install resolved     version: '0.0.3',
+57 silly install resolved     dependencies:
+57 silly install resolved      { async: '^0.9.0',
+57 silly install resolved        request: '^2.37',
+57 silly install resolved        'coffee-script': '^1.7.1',
+57 silly install resolved        commander: '^2.2.0' },
+57 silly install resolved     main: './lib/AlchemyAPI.js',
+57 silly install resolved     scripts: { postinstall: 'make' },
+57 silly install resolved     bin: { alchemyapi: './lib/app.js' },
+57 silly install resolved     description: 'AlchemyAPI =============',
+57 silly install resolved     _id: 'alchemyapi@0.0.3',
+57 silly install resolved     _shasum: 'ed1fcf1897890ae9d0e6ca512a935530d1b17b0d',
+57 silly install resolved     _from: 'alchemyapi@latest',
+57 silly install resolved     _npmVersion: '1.4.9',
+57 silly install resolved     _npmUser: { name: 'alchemyapi', email: 'dald8dn+mcecq8@sharklasers.com' },
+57 silly install resolved     maintainers: [ [Object] ],
+57 silly install resolved     dist:
+57 silly install resolved      { shasum: 'ed1fcf1897890ae9d0e6ca512a935530d1b17b0d',
+57 silly install resolved        tarball: 'https://registry.npmjs.org/alchemyapi/-/alchemyapi-0.0.3.tgz' },
+57 silly install resolved     directories: {},
+57 silly install resolved     _resolved: 'https://registry.npmjs.org/alchemyapi/-/alchemyapi-0.0.3.tgz' } ]
+58 info install alchemyapi@0.0.3 into D:\An 3\Proiect_IA\Emoticons
+59 info installOne alchemyapi@0.0.3
+60 verbose installOne of alchemyapi to D:\An 3\Proiect_IA\Emoticons not in flight; installing
+61 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+62 verbose lock using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\alchemyapi-70a55ca7c7ff808e.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+63 silly install write writing alchemyapi 0.0.3 to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+64 verbose unbuild node_modules\alchemyapi
+65 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi is being purged from base D:\An 3\Proiect_IA\Emoticons
+66 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+67 verbose tar unpack C:\Users\Cip\AppData\Roaming\npm-cache\alchemyapi\0.0.3\package.tgz
+68 verbose tar unpacking to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+69 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi is being purged
+70 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+71 silly gunzTarPerm modes [ '777', '666' ]
+72 silly gunzTarPerm extractEntry package.json
+73 silly gunzTarPerm extractEntry .npmignore
+74 silly gunzTarPerm modified mode [ '.npmignore', 436, 438 ]
+75 silly gunzTarPerm extractEntry README.md
+76 silly gunzTarPerm extractEntry Makefile
+77 silly gunzTarPerm modified mode [ 'Makefile', 436, 438 ]
+78 silly gunzTarPerm extractEntry lib/AlchemyAPI.js
+79 silly gunzTarPerm modified mode [ 'lib/AlchemyAPI.js', 436, 438 ]
+80 silly gunzTarPerm extractEntry lib/app.js
+81 silly gunzTarPerm modified mode [ 'lib/app.js', 509, 511 ]
+82 silly gunzTarPerm extractEntry src/AlchemyAPI.coffee
+83 silly gunzTarPerm extractEntry src/app.coffee
+84 verbose write writing to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\package.json
+85 info preinstall alchemyapi@0.0.3
+86 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\package.json
+87 silly prepareForInstallMany adding async@^0.9.0 from alchemyapi dependencies
+88 silly prepareForInstallMany adding coffee-script@^1.7.1 from alchemyapi dependencies
+89 silly prepareForInstallMany adding commander@^2.2.0 from alchemyapi dependencies
+90 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\package.json
+91 silly cache add args [ 'async@^0.9.0', null ]
+92 verbose cache add spec async@^0.9.0
+93 silly cache add args [ 'coffee-script@^1.7.1', null ]
+94 verbose cache add spec coffee-script@^1.7.1
+95 silly cache add parsed spec Result {
+95 silly cache add   raw: 'async@^0.9.0',
+95 silly cache add   scope: null,
+95 silly cache add   name: 'async',
+95 silly cache add   rawSpec: '^0.9.0',
+95 silly cache add   spec: '>=0.9.0 <0.10.0',
+95 silly cache add   type: 'range' }
+96 silly addNamed async@>=0.9.0 <0.10.0
+97 verbose addNamed ">=0.9.0 <0.10.0" is a valid semver range for async
+98 silly addNameRange { name: 'async', range: '>=0.9.0 <0.10.0', hasData: false }
+99 silly mapToRegistry name async
+100 silly mapToRegistry using default registry
+101 silly mapToRegistry registry https://registry.npmjs.org/
+102 silly mapToRegistry uri https://registry.npmjs.org/async
+103 verbose addNameRange registry:https://registry.npmjs.org/async not in flight; fetching
+104 silly cache add parsed spec Result {
+104 silly cache add   raw: 'coffee-script@^1.7.1',
+104 silly cache add   scope: null,
+104 silly cache add   name: 'coffee-script',
+104 silly cache add   rawSpec: '^1.7.1',
+104 silly cache add   spec: '>=1.7.1 <2.0.0',
+104 silly cache add   type: 'range' }
+105 silly addNamed coffee-script@>=1.7.1 <2.0.0
+106 verbose addNamed ">=1.7.1 <2.0.0" is a valid semver range for coffee-script
+107 silly addNameRange { name: 'coffee-script',
+107 silly addNameRange   range: '>=1.7.1 <2.0.0',
+107 silly addNameRange   hasData: false }
+108 silly mapToRegistry name coffee-script
+109 silly mapToRegistry using default registry
+110 silly mapToRegistry registry https://registry.npmjs.org/
+111 silly mapToRegistry uri https://registry.npmjs.org/coffee-script
+112 verbose addNameRange registry:https://registry.npmjs.org/coffee-script not in flight; fetching
+113 silly cache add args [ 'commander@^2.2.0', null ]
+114 verbose cache add spec commander@^2.2.0
+115 silly cache add parsed spec Result {
+115 silly cache add   raw: 'commander@^2.2.0',
+115 silly cache add   scope: null,
+115 silly cache add   name: 'commander',
+115 silly cache add   rawSpec: '^2.2.0',
+115 silly cache add   spec: '>=2.2.0 <3.0.0',
+115 silly cache add   type: 'range' }
+116 silly addNamed commander@>=2.2.0 <3.0.0
+117 verbose addNamed ">=2.2.0 <3.0.0" is a valid semver range for commander
+118 silly addNameRange { name: 'commander', range: '>=2.2.0 <3.0.0', hasData: false }
+119 silly mapToRegistry name commander
+120 silly mapToRegistry using default registry
+121 silly mapToRegistry registry https://registry.npmjs.org/
+122 silly mapToRegistry uri https://registry.npmjs.org/commander
+123 verbose addNameRange registry:https://registry.npmjs.org/commander not in flight; fetching
+124 verbose request uri https://registry.npmjs.org/coffee-script
+125 verbose request no auth needed
+126 info attempt registry request try #1 at 6:08:53 PM
+127 http request GET https://registry.npmjs.org/coffee-script
+128 verbose request uri https://registry.npmjs.org/commander
+129 verbose request no auth needed
+130 info attempt registry request try #1 at 6:08:53 PM
+131 verbose etag W/"58866a35-fe75"
+132 verbose lastModified Mon, 23 Jan 2017 20:40:21 GMT
+133 http request GET https://registry.npmjs.org/commander
+134 verbose request uri https://registry.npmjs.org/async
+135 verbose request no auth needed
+136 info attempt registry request try #1 at 6:08:53 PM
+137 verbose etag "EXWCY22J3WRG25FLWVTH62UR1"
+138 http request GET https://registry.npmjs.org/async
+139 http 304 https://registry.npmjs.org/commander
+140 verbose headers { date: 'Tue, 24 Jan 2017 16:08:55 GMT',
+140 verbose headers   via: '1.1 varnish',
+140 verbose headers   'cache-control': 'max-age=300',
+140 verbose headers   etag: 'W/"58866a35-fe75"',
+140 verbose headers   age: '246',
+140 verbose headers   connection: 'keep-alive',
+140 verbose headers   'x-served-by': 'cache-fra1250-FRA',
+140 verbose headers   'x-cache': 'HIT',
+140 verbose headers   'x-cache-hits': '10',
+140 verbose headers   'x-timer': 'S1485274135.025234,VS0,VE0',
+140 verbose headers   vary: 'Accept-Encoding' }
+141 silly get cb [ 304,
+141 silly get   { date: 'Tue, 24 Jan 2017 16:08:55 GMT',
+141 silly get     via: '1.1 varnish',
+141 silly get     'cache-control': 'max-age=300',
+141 silly get     etag: 'W/"58866a35-fe75"',
+141 silly get     age: '246',
+141 silly get     connection: 'keep-alive',
+141 silly get     'x-served-by': 'cache-fra1250-FRA',
+141 silly get     'x-cache': 'HIT',
+141 silly get     'x-cache-hits': '10',
+141 silly get     'x-timer': 'S1485274135.025234,VS0,VE0',
+141 silly get     vary: 'Accept-Encoding' } ]
+142 verbose etag https://registry.npmjs.org/commander from cache
+143 verbose get saving commander to C:\Users\Cip\AppData\Roaming\npm-cache\registry.npmjs.org\commander\.cache.json
+144 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+145 http 200 https://registry.npmjs.org/coffee-script
+146 verbose headers { server: 'nginx/1.10.1',
+146 verbose headers   'content-type': 'application/json',
+146 verbose headers   'last-modified': 'Fri, 30 Dec 2016 15:53:40 GMT',
+146 verbose headers   etag: 'W/"58668304-c545"',
+146 verbose headers   'content-encoding': 'gzip',
+146 verbose headers   'cache-control': 'max-age=300',
+146 verbose headers   'content-length': '7288',
+146 verbose headers   'accept-ranges': 'bytes',
+146 verbose headers   date: 'Tue, 24 Jan 2017 16:08:55 GMT',
+146 verbose headers   via: '1.1 varnish',
+146 verbose headers   age: '123',
+146 verbose headers   connection: 'keep-alive',
+146 verbose headers   'x-served-by': 'cache-fra1246-FRA',
+146 verbose headers   'x-cache': 'HIT',
+146 verbose headers   'x-cache-hits': '1',
+146 verbose headers   'x-timer': 'S1485274135.026345,VS0,VE0',
+146 verbose headers   vary: 'Accept-Encoding' }
+147 silly get cb [ 200,
+147 silly get   { server: 'nginx/1.10.1',
+147 silly get     'content-type': 'application/json',
+147 silly get     'last-modified': 'Fri, 30 Dec 2016 15:53:40 GMT',
+147 silly get     etag: 'W/"58668304-c545"',
+147 silly get     'content-encoding': 'gzip',
+147 silly get     'cache-control': 'max-age=300',
+147 silly get     'content-length': '7288',
+147 silly get     'accept-ranges': 'bytes',
+147 silly get     date: 'Tue, 24 Jan 2017 16:08:55 GMT',
+147 silly get     via: '1.1 varnish',
+147 silly get     age: '123',
+147 silly get     connection: 'keep-alive',
+147 silly get     'x-served-by': 'cache-fra1246-FRA',
+147 silly get     'x-cache': 'HIT',
+147 silly get     'x-cache-hits': '1',
+147 silly get     'x-timer': 'S1485274135.026345,VS0,VE0',
+147 silly get     vary: 'Accept-Encoding' } ]
+148 verbose get saving coffee-script to C:\Users\Cip\AppData\Roaming\npm-cache\registry.npmjs.org\coffee-script\.cache.json
+149 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+150 silly addNameRange number 2 { name: 'coffee-script', range: '>=1.7.1 <2.0.0', hasData: true }
+151 silly addNameRange versions [ 'coffee-script',
+151 silly addNameRange   [ '0.7.0',
+151 silly addNameRange     '0.7.1',
+151 silly addNameRange     '0.7.2',
+151 silly addNameRange     '0.9.0',
+151 silly addNameRange     '0.9.1',
+151 silly addNameRange     '0.9.2',
+151 silly addNameRange     '0.9.3',
+151 silly addNameRange     '0.9.4',
+151 silly addNameRange     '0.9.5',
+151 silly addNameRange     '0.9.6',
+151 silly addNameRange     '1.0.0',
+151 silly addNameRange     '1.0.1',
+151 silly addNameRange     '1.1.0',
+151 silly addNameRange     '1.1.1',
+151 silly addNameRange     '1.1.2',
+151 silly addNameRange     '1.1.3',
+151 silly addNameRange     '1.2.0',
+151 silly addNameRange     '1.3.0',
+151 silly addNameRange     '1.3.1',
+151 silly addNameRange     '1.3.2',
+151 silly addNameRange     '1.3.3',
+151 silly addNameRange     '1.4.0',
+151 silly addNameRange     '1.5.0',
+151 silly addNameRange     '1.6.0',
+151 silly addNameRange     '1.6.1',
+151 silly addNameRange     '1.6.2',
+151 silly addNameRange     '1.6.3',
+151 silly addNameRange     '1.7.0',
+151 silly addNameRange     '1.7.1',
+151 silly addNameRange     '1.8.0',
+151 silly addNameRange     '1.9.0',
+151 silly addNameRange     '1.9.1',
+151 silly addNameRange     '1.9.2',
+151 silly addNameRange     '1.9.3',
+151 silly addNameRange     '1.10.0',
+151 silly addNameRange     '1.11.0',
+151 silly addNameRange     '1.11.1',
+151 silly addNameRange     '1.12.0',
+151 silly addNameRange     '1.12.1',
+151 silly addNameRange     '1.12.2' ] ]
+152 silly addNamed coffee-script@1.12.2
+153 verbose addNamed "1.12.2" is a plain semver version for coffee-script
+154 silly mapToRegistry name coffee-script
+155 silly mapToRegistry using default registry
+156 silly mapToRegistry registry https://registry.npmjs.org/
+157 silly mapToRegistry uri https://registry.npmjs.org/coffee-script
+158 verbose addRemoteTarball https://registry.npmjs.org/coffee-script/-/coffee-script-1.12.2.tgz not in flight; adding
+159 verbose addRemoteTarball [ 'https://registry.npmjs.org/coffee-script/-/coffee-script-1.12.2.tgz',
+159 verbose addRemoteTarball   '0d4cbdee183f650da95419570c4929d08ef91376' ]
+160 silly addNameRange number 2 { name: 'commander', range: '>=2.2.0 <3.0.0', hasData: true }
+161 silly addNameRange versions [ 'commander',
+161 silly addNameRange   [ '0.0.1',
+161 silly addNameRange     '0.0.3',
+161 silly addNameRange     '0.0.4',
+161 silly addNameRange     '0.0.5',
+161 silly addNameRange     '0.1.0',
+161 silly addNameRange     '0.2.0',
+161 silly addNameRange     '0.2.1',
+161 silly addNameRange     '0.3.0',
+161 silly addNameRange     '0.3.1',
+161 silly addNameRange     '0.3.2',
+161 silly addNameRange     '0.3.3',
+161 silly addNameRange     '0.4.0',
+161 silly addNameRange     '0.4.1',
+161 silly addNameRange     '0.4.2',
+161 silly addNameRange     '0.4.3',
+161 silly addNameRange     '0.5.0',
+161 silly addNameRange     '0.5.1',
+161 silly addNameRange     '0.6.0',
+161 silly addNameRange     '0.6.1',
+161 silly addNameRange     '0.5.2',
+161 silly addNameRange     '1.0.0',
+161 silly addNameRange     '1.0.1',
+161 silly addNameRange     '1.0.2',
+161 silly addNameRange     '1.0.3',
+161 silly addNameRange     '1.0.4',
+161 silly addNameRange     '1.0.5',
+161 silly addNameRange     '1.1.0',
+161 silly addNameRange     '1.1.1',
+161 silly addNameRange     '1.2.0',
+161 silly addNameRange     '1.3.0',
+161 silly addNameRange     '1.3.1',
+161 silly addNameRange     '1.3.2',
+161 silly addNameRange     '2.0.0',
+161 silly addNameRange     '2.1.0',
+161 silly addNameRange     '2.2.0',
+161 silly addNameRange     '2.3.0',
+161 silly addNameRange     '2.4.0',
+161 silly addNameRange     '2.5.0',
+161 silly addNameRange     '2.5.1',
+161 silly addNameRange     '2.6.0',
+161 silly addNameRange     '2.7.0',
+161 silly addNameRange     '2.7.1',
+161 silly addNameRange     '2.8.0',
+161 silly addNameRange     '2.8.1',
+161 silly addNameRange     '2.9.0' ] ]
+162 silly addNamed commander@2.9.0
+163 verbose addNamed "2.9.0" is a plain semver version for commander
+164 info retry fetch attempt 1 at 6:08:53 PM
+165 info attempt registry request try #1 at 6:08:53 PM
+166 http fetch GET https://registry.npmjs.org/coffee-script/-/coffee-script-1.12.2.tgz
+167 silly cache afterAdd commander@2.9.0
+168 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\commander\2.9.0\package\package.json not in flight; writing
+169 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+170 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\commander\2.9.0\package\package.json written
+171 http 200 https://registry.npmjs.org/async
+172 verbose headers { server: 'nginx/1.10.1',
+172 verbose headers   'content-type': 'application/json',
+172 verbose headers   'last-modified': 'Tue, 24 Jan 2017 09:16:27 GMT',
+172 verbose headers   etag: 'W/"58871b6b-1d3ef"',
+172 verbose headers   'content-encoding': 'gzip',
+172 verbose headers   'cache-control': 'max-age=300',
+172 verbose headers   'content-length': '15262',
+172 verbose headers   'accept-ranges': 'bytes',
+172 verbose headers   date: 'Tue, 24 Jan 2017 16:08:55 GMT',
+172 verbose headers   via: '1.1 varnish',
+172 verbose headers   age: '113',
+172 verbose headers   connection: 'keep-alive',
+172 verbose headers   'x-served-by': 'cache-fra1222-FRA',
+172 verbose headers   'x-cache': 'HIT',
+172 verbose headers   'x-cache-hits': '9',
+172 verbose headers   'x-timer': 'S1485274135.026305,VS0,VE0',
+172 verbose headers   vary: 'Accept-Encoding' }
+173 silly get cb [ 200,
+173 silly get   { server: 'nginx/1.10.1',
+173 silly get     'content-type': 'application/json',
+173 silly get     'last-modified': 'Tue, 24 Jan 2017 09:16:27 GMT',
+173 silly get     etag: 'W/"58871b6b-1d3ef"',
+173 silly get     'content-encoding': 'gzip',
+173 silly get     'cache-control': 'max-age=300',
+173 silly get     'content-length': '15262',
+173 silly get     'accept-ranges': 'bytes',
+173 silly get     date: 'Tue, 24 Jan 2017 16:08:55 GMT',
+173 silly get     via: '1.1 varnish',
+173 silly get     age: '113',
+173 silly get     connection: 'keep-alive',
+173 silly get     'x-served-by': 'cache-fra1222-FRA',
+173 silly get     'x-cache': 'HIT',
+173 silly get     'x-cache-hits': '9',
+173 silly get     'x-timer': 'S1485274135.026305,VS0,VE0',
+173 silly get     vary: 'Accept-Encoding' } ]
+174 verbose get saving async to C:\Users\Cip\AppData\Roaming\npm-cache\registry.npmjs.org\async\.cache.json
+175 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+176 silly addNameRange number 2 { name: 'async', range: '>=0.9.0 <0.10.0', hasData: true }
+177 silly addNameRange versions [ 'async',
+177 silly addNameRange   [ '0.1.0',
+177 silly addNameRange     '0.1.1',
+177 silly addNameRange     '0.1.2',
+177 silly addNameRange     '0.1.3',
+177 silly addNameRange     '0.1.4',
+177 silly addNameRange     '0.1.5',
+177 silly addNameRange     '0.1.6',
+177 silly addNameRange     '0.1.7',
+177 silly addNameRange     '0.1.8',
+177 silly addNameRange     '0.1.9',
+177 silly addNameRange     '0.1.10',
+177 silly addNameRange     '0.1.11',
+177 silly addNameRange     '0.1.12',
+177 silly addNameRange     '0.1.13',
+177 silly addNameRange     '0.1.14',
+177 silly addNameRange     '0.1.15',
+177 silly addNameRange     '0.1.16',
+177 silly addNameRange     '0.1.17',
+177 silly addNameRange     '0.1.18',
+177 silly addNameRange     '0.1.19',
+177 silly addNameRange     '0.1.20',
+177 silly addNameRange     '0.1.21',
+177 silly addNameRange     '0.1.22',
+177 silly addNameRange     '0.2.0',
+177 silly addNameRange     '0.2.1',
+177 silly addNameRange     '0.2.2',
+177 silly addNameRange     '0.2.3',
+177 silly addNameRange     '0.2.4',
+177 silly addNameRange     '0.2.5',
+177 silly addNameRange     '0.2.6',
+177 silly addNameRange     '0.2.7',
+177 silly addNameRange     '0.2.8',
+177 silly addNameRange     '0.2.9',
+177 silly addNameRange     '0.2.10',
+177 silly addNameRange     '0.3.0',
+177 silly addNameRange     '0.4.0',
+177 silly addNameRange     '0.4.1',
+177 silly addNameRange     '0.5.0',
+177 silly addNameRange     '0.6.0',
+177 silly addNameRange     '0.6.1',
+177 silly addNameRange     '0.6.2',
+177 silly addNameRange     '0.7.0',
+177 silly addNameRange     '0.8.0',
+177 silly addNameRange     '0.9.0',
+177 silly addNameRange     '0.9.2',
+177 silly addNameRange     '1.0.0',
+177 silly addNameRange     '1.1.0',
+177 silly addNameRange     '1.2.0',
+177 silly addNameRange     '1.1.1',
+177 silly addNameRange     '1.2.1',
+177 silly addNameRange     '1.3.0',
+177 silly addNameRange     '1.4.0',
+177 silly addNameRange     '1.4.1',
+177 silly addNameRange     '1.4.2',
+177 silly addNameRange     '1.5.0',
+177 silly addNameRange     '1.5.1',
+177 silly addNameRange     '1.5.2',
+177 silly addNameRange     '2.0.0-alpha.0',
+177 silly addNameRange     '2.0.0-rc.1',
+177 silly addNameRange     '2.0.0-rc.2',
+177 silly addNameRange     '2.0.0-rc.3',
+177 silly addNameRange     '2.0.0-rc.4',
+177 silly addNameRange     '2.0.0-rc.5',
+177 silly addNameRange     '2.0.0-rc.6',
+177 silly addNameRange     '2.0.0',
+177 silly addNameRange     '2.0.1',
+177 silly addNameRange     '2.1.0',
+177 silly addNameRange     '2.1.1',
+177 silly addNameRange     '2.1.2',
+177 silly addNameRange     '2.1.4' ] ]
+178 silly addNamed async@0.9.2
+179 verbose addNamed "0.9.2" is a plain semver version for async
+180 silly mapToRegistry name async
+181 silly mapToRegistry using default registry
+182 silly mapToRegistry registry https://registry.npmjs.org/
+183 silly mapToRegistry uri https://registry.npmjs.org/async
+184 verbose addRemoteTarball https://registry.npmjs.org/async/-/async-0.9.2.tgz not in flight; adding
+185 verbose addRemoteTarball [ 'https://registry.npmjs.org/async/-/async-0.9.2.tgz',
+185 verbose addRemoteTarball   'aea74d5e61c1f899613bf64bda66d4c78f2fd17d' ]
+186 info retry fetch attempt 1 at 6:08:53 PM
+187 info attempt registry request try #1 at 6:08:53 PM
+188 http fetch GET https://registry.npmjs.org/async/-/async-0.9.2.tgz
+189 http fetch 200 https://registry.npmjs.org/coffee-script/-/coffee-script-1.12.2.tgz
+190 http fetch 200 https://registry.npmjs.org/async/-/async-0.9.2.tgz
+191 silly fetchAndShaCheck shasum aea74d5e61c1f899613bf64bda66d4c78f2fd17d
+192 verbose addTmpTarball C:\Users\Cip\AppData\Local\Temp\npm-13648-ed51b68a\registry.npmjs.org\async\-\async-0.9.2.tgz not in flight; adding
+193 verbose addTmpTarball already have metadata; skipping unpack for async@0.9.2
+194 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+195 silly cache afterAdd async@0.9.2
+196 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\async\0.9.2\package\package.json not in flight; writing
+197 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+198 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\async\0.9.2\package\package.json written
+199 silly fetchAndShaCheck shasum 0d4cbdee183f650da95419570c4929d08ef91376
+200 verbose addTmpTarball C:\Users\Cip\AppData\Local\Temp\npm-13648-ed51b68a\registry.npmjs.org\coffee-script\-\coffee-script-1.12.2.tgz not in flight; adding
+201 verbose addTmpTarball already have metadata; skipping unpack for coffee-script@1.12.2
+202 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+203 silly cache afterAdd coffee-script@1.12.2
+204 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\coffee-script\1.12.2\package\package.json not in flight; writing
+205 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+206 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\coffee-script\1.12.2\package\package.json written
+207 silly install resolved [ { name: 'commander',
+207 silly install resolved     version: '2.9.0',
+207 silly install resolved     description: 'the complete solution for node.js command-line programs',
+207 silly install resolved     keywords: [ 'command', 'option', 'parser' ],
+207 silly install resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+207 silly install resolved     license: 'MIT',
+207 silly install resolved     repository:
+207 silly install resolved      { type: 'git',
+207 silly install resolved        url: 'git+https://github.com/tj/commander.js.git' },
+207 silly install resolved     devDependencies: { should: '>= 0.0.1', sinon: '>=1.17.1' },
+207 silly install resolved     scripts: { test: 'make test' },
+207 silly install resolved     main: 'index',
+207 silly install resolved     engines: { node: '>= 0.6.x' },
+207 silly install resolved     files: [ 'index.js' ],
+207 silly install resolved     dependencies: { 'graceful-readlink': '>= 1.0.0' },
+207 silly install resolved     gitHead: 'b2aad7a8471d434593a85306aa73777a526e9f75',
+207 silly install resolved     bugs: { url: 'https://github.com/tj/commander.js/issues' },
+207 silly install resolved     homepage: 'https://github.com/tj/commander.js#readme',
+207 silly install resolved     _id: 'commander@2.9.0',
+207 silly install resolved     _shasum: '9c99094176e12240cb22d6c5146098400fe0f7d4',
+207 silly install resolved     _from: 'commander@>=2.2.0 <3.0.0',
+207 silly install resolved     _npmVersion: '2.11.3',
+207 silly install resolved     _nodeVersion: '0.12.7',
+207 silly install resolved     _npmUser: { name: 'zhiyelee', email: 'zhiyelee@gmail.com' },
+207 silly install resolved     dist:
+207 silly install resolved      { shasum: '9c99094176e12240cb22d6c5146098400fe0f7d4',
+207 silly install resolved        tarball: 'https://registry.npmjs.org/commander/-/commander-2.9.0.tgz' },
+207 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+207 silly install resolved     directories: {},
+207 silly install resolved     _resolved: 'https://registry.npmjs.org/commander/-/commander-2.9.0.tgz',
+207 silly install resolved     readme: 'ERROR: No README data found!' },
+207 silly install resolved   { name: 'async',
+207 silly install resolved     description: 'Higher-order functions and common patterns for asynchronous code',
+207 silly install resolved     main: 'lib/async.js',
+207 silly install resolved     author: { name: 'Caolan McMahon' },
+207 silly install resolved     version: '0.9.2',
+207 silly install resolved     keywords: [ 'async', 'callback', 'utility', 'module' ],
+207 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/caolan/async.git' },
+207 silly install resolved     bugs: { url: 'https://github.com/caolan/async/issues' },
+207 silly install resolved     license: 'MIT',
+207 silly install resolved     devDependencies:
+207 silly install resolved      { nodeunit: '>0.0.0',
+207 silly install resolved        'uglify-js': '1.2.x',
+207 silly install resolved        nodelint: '>0.0.0',
+207 silly install resolved        lodash: '>=2.4.1' },
+207 silly install resolved     jam: { main: 'lib/async.js', include: [Object], categories: [Object] },
+207 silly install resolved     scripts: { test: 'nodeunit test/test-async.js' },
+207 silly install resolved     spm: { main: 'lib/async.js' },
+207 silly install resolved     volo: { main: 'lib/async.js', ignore: [Object] },
+207 silly install resolved     gitHead: 'de3a16091d5125384eff4a54deb3998b13c3814c',
+207 silly install resolved     homepage: 'https://github.com/caolan/async#readme',
+207 silly install resolved     _id: 'async@0.9.2',
+207 silly install resolved     _shasum: 'aea74d5e61c1f899613bf64bda66d4c78f2fd17d',
+207 silly install resolved     _from: 'async@>=0.9.0 <0.10.0',
+207 silly install resolved     _npmVersion: '2.9.0',
+207 silly install resolved     _nodeVersion: '2.0.1',
+207 silly install resolved     _npmUser: { name: 'beaugunderson', email: 'beau@beaugunderson.com' },
+207 silly install resolved     maintainers: [ [Object], [Object] ],
+207 silly install resolved     dist:
+207 silly install resolved      { shasum: 'aea74d5e61c1f899613bf64bda66d4c78f2fd17d',
+207 silly install resolved        tarball: 'https://registry.npmjs.org/async/-/async-0.9.2.tgz' },
+207 silly install resolved     directories: {},
+207 silly install resolved     _resolved: 'https://registry.npmjs.org/async/-/async-0.9.2.tgz' },
+207 silly install resolved   { name: 'coffee-script',
+207 silly install resolved     description: 'Unfancy JavaScript',
+207 silly install resolved     keywords: [ 'javascript', 'language', 'coffeescript', 'compiler' ],
+207 silly install resolved     author: { name: 'Jeremy Ashkenas' },
+207 silly install resolved     version: '1.12.2',
+207 silly install resolved     license: 'MIT',
+207 silly install resolved     engines: { node: '>=0.8.0' },
+207 silly install resolved     directories: { lib: './lib/coffee-script' },
+207 silly install resolved     main: './lib/coffee-script/coffee-script',
+207 silly install resolved     bin: { coffee: './bin/coffee', cake: './bin/cake' },
+207 silly install resolved     files: [ 'bin', 'lib', 'register.js', 'repl.js' ],
+207 silly install resolved     preferGlobal: true,
+207 silly install resolved     scripts:
+207 silly install resolved      { test: 'node ./bin/cake test',
+207 silly install resolved        'test-harmony': 'node --harmony ./bin/cake test' },
+207 silly install resolved     homepage: 'http://coffeescript.org',
+207 silly install resolved     bugs: { url: 'https://github.com/jashkenas/coffeescript/issues' },
+207 silly install resolved     repository:
+207 silly install resolved      { type: 'git',
+207 silly install resolved        url: 'git://github.com/jashkenas/coffeescript.git' },
+207 silly install resolved     devDependencies:
+207 silly install resolved      { docco: '~0.7.0',
+207 silly install resolved        'google-closure-compiler-js': '^20161201.0.0',
+207 silly install resolved        'highlight.js': '~9.9.0',
+207 silly install resolved        jison: '>=0.4.17',
+207 silly install resolved        marked: '^0.3.6',
+207 silly install resolved        underscore: '~1.8.3' },
+207 silly install resolved     gitHead: 'de180dc81ab138127bdf40ed775a10f8cf870e85',
+207 silly install resolved     _id: 'coffee-script@1.12.2',
+207 silly install resolved     _shasum: '0d4cbdee183f650da95419570c4929d08ef91376',
+207 silly install resolved     _from: 'coffee-script@>=1.7.1 <2.0.0',
+207 silly install resolved     _npmVersion: '3.10.9',
+207 silly install resolved     _nodeVersion: '7.2.0',
+207 silly install resolved     _npmUser: { name: 'lydell', email: 'simon.lydell@gmail.com' },
+207 silly install resolved     dist:
+207 silly install resolved      { shasum: '0d4cbdee183f650da95419570c4929d08ef91376',
+207 silly install resolved        tarball: 'https://registry.npmjs.org/coffee-script/-/coffee-script-1.12.2.tgz' },
+207 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+207 silly install resolved     _npmOperationalInternal:
+207 silly install resolved      { host: 'packages-12-west.internal.npmjs.com',
+207 silly install resolved        tmp: 'tmp/coffee-script-1.12.2.tgz_1481878079602_0.06988411536440253' },
+207 silly install resolved     _resolved: 'https://registry.npmjs.org/coffee-script/-/coffee-script-1.12.2.tgz' } ]
+208 info install commander@2.9.0 into D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+209 info install async@0.9.2 into D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+210 info install coffee-script@1.12.2 into D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+211 info installOne commander@2.9.0
+212 verbose installOne of commander to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi not in flight; installing
+213 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+214 info installOne async@0.9.2
+215 verbose installOne of async to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi not in flight; installing
+216 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+217 info installOne coffee-script@1.12.2
+218 verbose installOne of coffee-script to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi not in flight; installing
+219 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+220 verbose lock using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\commander-33eb3fa60e259cc0.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander
+221 verbose lock using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\async-60feff4365c5da72.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async
+222 verbose lock using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\coffee-script-c1bd39c588b902cf.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script
+223 silly install write writing commander 2.9.0 to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander
+224 silly install write writing async 0.9.2 to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async
+225 silly install write writing coffee-script 1.12.2 to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script
+226 verbose unbuild node_modules\alchemyapi\node_modules\async
+227 verbose unbuild node_modules\alchemyapi\node_modules\commander
+228 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async is being purged from base D:\An 3\Proiect_IA\Emoticons
+229 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async
+230 verbose unbuild node_modules\alchemyapi\node_modules\coffee-script
+231 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander is being purged from base D:\An 3\Proiect_IA\Emoticons
+232 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander
+233 verbose tar unpack C:\Users\Cip\AppData\Roaming\npm-cache\async\0.9.2\package.tgz
+234 verbose tar unpacking to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async
+235 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async is being purged
+236 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async
+237 verbose tar unpack C:\Users\Cip\AppData\Roaming\npm-cache\commander\2.9.0\package.tgz
+238 verbose tar unpacking to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander
+239 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander is being purged
+240 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander
+241 silly gunzTarPerm modes [ '777', '666' ]
+242 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script is being purged from base D:\An 3\Proiect_IA\Emoticons
+243 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script
+244 silly gunzTarPerm modes [ '777', '666' ]
+245 verbose tar unpack C:\Users\Cip\AppData\Roaming\npm-cache\coffee-script\1.12.2\package.tgz
+246 verbose tar unpacking to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script
+247 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script is being purged
+248 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script
+249 silly gunzTarPerm modes [ '777', '666' ]
+250 silly gunzTarPerm extractEntry package.json
+251 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+252 silly gunzTarPerm extractEntry package.json
+253 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+254 silly gunzTarPerm extractEntry package.json
+255 silly gunzTarPerm modified mode [ 'package.json', 436, 438 ]
+256 silly gunzTarPerm extractEntry README.md
+257 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+258 silly gunzTarPerm extractEntry LICENSE
+259 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+260 silly gunzTarPerm extractEntry component.json
+261 silly gunzTarPerm modified mode [ 'component.json', 420, 438 ]
+262 silly gunzTarPerm extractEntry .travis.yml
+263 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+264 silly gunzTarPerm extractEntry bower.json
+265 silly gunzTarPerm modified mode [ 'bower.json', 420, 438 ]
+266 silly gunzTarPerm extractEntry lib/async.js
+267 silly gunzTarPerm modified mode [ 'lib/async.js', 420, 438 ]
+268 silly gunzTarPerm extractEntry support/sync-package-managers.js
+269 silly gunzTarPerm modified mode [ 'support/sync-package-managers.js', 493, 511 ]
+270 silly gunzTarPerm extractEntry LICENSE
+271 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+272 silly gunzTarPerm extractEntry index.js
+273 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+274 silly gunzTarPerm extractEntry README.md
+275 silly gunzTarPerm modified mode [ 'README.md', 436, 438 ]
+276 silly gunzTarPerm extractEntry LICENSE
+277 silly gunzTarPerm modified mode [ 'LICENSE', 436, 438 ]
+278 silly gunzTarPerm extractEntry Readme.md
+279 silly gunzTarPerm modified mode [ 'Readme.md', 420, 438 ]
+280 silly gunzTarPerm extractEntry register.js
+281 silly gunzTarPerm modified mode [ 'register.js', 436, 438 ]
+282 silly gunzTarPerm extractEntry repl.js
+283 silly gunzTarPerm modified mode [ 'repl.js', 436, 438 ]
+284 silly gunzTarPerm extractEntry bin/cake
+285 silly gunzTarPerm modified mode [ 'bin/cake', 509, 511 ]
+286 silly gunzTarPerm extractEntry bin/coffee
+287 silly gunzTarPerm modified mode [ 'bin/coffee', 509, 511 ]
+288 silly gunzTarPerm extractEntry History.md
+289 silly gunzTarPerm modified mode [ 'History.md', 420, 438 ]
+290 silly gunzTarPerm extractEntry lib/coffee-script/browser.js
+291 silly gunzTarPerm modified mode [ 'lib/coffee-script/browser.js', 436, 438 ]
+292 silly gunzTarPerm extractEntry lib/coffee-script/grammar.js
+293 silly gunzTarPerm modified mode [ 'lib/coffee-script/grammar.js', 436, 438 ]
+294 silly gunzTarPerm extractEntry lib/coffee-script/helpers.js
+295 silly gunzTarPerm modified mode [ 'lib/coffee-script/helpers.js', 436, 438 ]
+296 silly gunzTarPerm extractEntry lib/coffee-script/index.js
+297 silly gunzTarPerm modified mode [ 'lib/coffee-script/index.js', 436, 438 ]
+298 silly gunzTarPerm extractEntry lib/coffee-script/lexer.js
+299 silly gunzTarPerm modified mode [ 'lib/coffee-script/lexer.js', 436, 438 ]
+300 silly gunzTarPerm extractEntry lib/coffee-script/command.js
+301 silly gunzTarPerm modified mode [ 'lib/coffee-script/command.js', 436, 438 ]
+302 silly gunzTarPerm extractEntry lib/coffee-script/optparse.js
+303 silly gunzTarPerm modified mode [ 'lib/coffee-script/optparse.js', 436, 438 ]
+304 silly gunzTarPerm extractEntry lib/coffee-script/parser.js
+305 silly gunzTarPerm modified mode [ 'lib/coffee-script/parser.js', 509, 511 ]
+306 silly gunzTarPerm extractEntry lib/coffee-script/register.js
+307 silly gunzTarPerm modified mode [ 'lib/coffee-script/register.js', 436, 438 ]
+308 verbose write writing to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\package.json
+309 silly gunzTarPerm extractEntry lib/coffee-script/repl.js
+310 silly gunzTarPerm modified mode [ 'lib/coffee-script/repl.js', 436, 438 ]
+311 silly gunzTarPerm extractEntry lib/coffee-script/rewriter.js
+312 silly gunzTarPerm modified mode [ 'lib/coffee-script/rewriter.js', 436, 438 ]
+313 silly gunzTarPerm extractEntry lib/coffee-script/coffee-script.js
+314 silly gunzTarPerm modified mode [ 'lib/coffee-script/coffee-script.js', 436, 438 ]
+315 silly gunzTarPerm extractEntry lib/coffee-script/scope.js
+316 silly gunzTarPerm modified mode [ 'lib/coffee-script/scope.js', 436, 438 ]
+317 info preinstall commander@2.9.0
+318 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\package.json
+319 silly prepareForInstallMany adding graceful-readlink@>= 1.0.0 from commander dependencies
+320 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\package.json
+321 silly cache add args [ 'graceful-readlink@>= 1.0.0', null ]
+322 verbose cache add spec graceful-readlink@>= 1.0.0
+323 silly cache add parsed spec Result {
+323 silly cache add   raw: 'graceful-readlink@>= 1.0.0',
+323 silly cache add   scope: null,
+323 silly cache add   name: 'graceful-readlink',
+323 silly cache add   rawSpec: '>= 1.0.0',
+323 silly cache add   spec: '>=1.0.0',
+323 silly cache add   type: 'range' }
+324 silly addNamed graceful-readlink@>=1.0.0
+325 verbose addNamed ">=1.0.0" is a valid semver range for graceful-readlink
+326 silly addNameRange { name: 'graceful-readlink', range: '>=1.0.0', hasData: false }
+327 silly mapToRegistry name graceful-readlink
+328 silly mapToRegistry using default registry
+329 silly mapToRegistry registry https://registry.npmjs.org/
+330 silly mapToRegistry uri https://registry.npmjs.org/graceful-readlink
+331 verbose addNameRange registry:https://registry.npmjs.org/graceful-readlink not in flight; fetching
+332 silly gunzTarPerm extractEntry lib/coffee-script/cake.js
+333 silly gunzTarPerm modified mode [ 'lib/coffee-script/cake.js', 436, 438 ]
+334 silly gunzTarPerm extractEntry lib/coffee-script/sourcemap.js
+335 silly gunzTarPerm modified mode [ 'lib/coffee-script/sourcemap.js', 436, 438 ]
+336 verbose request uri https://registry.npmjs.org/graceful-readlink
+337 verbose request no auth needed
+338 info attempt registry request try #1 at 6:08:53 PM
+339 verbose etag W/"585ef90e-c1b"
+340 verbose lastModified Sat, 24 Dec 2016 22:39:10 GMT
+341 http request GET https://registry.npmjs.org/graceful-readlink
+342 verbose write writing to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async\package.json
+343 silly gunzTarPerm extractEntry lib/coffee-script/nodes.js
+344 silly gunzTarPerm modified mode [ 'lib/coffee-script/nodes.js', 436, 438 ]
+345 info preinstall async@0.9.2
+346 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async\package.json
+347 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async\package.json
+348 silly install resolved []
+349 verbose about to build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async
+350 info build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async
+351 info linkStuff async@0.9.2
+352 silly linkStuff async@0.9.2 has D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules as its parent node_modules
+353 verbose linkBins async@0.9.2
+354 verbose linkMans async@0.9.2
+355 verbose rebuildBundles async@0.9.2
+356 info install async@0.9.2
+357 info postinstall async@0.9.2
+358 verbose unlock done using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\async-60feff4365c5da72.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\async
+359 verbose write writing to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script\package.json
+360 info preinstall coffee-script@1.12.2
+361 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script\package.json
+362 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script\package.json
+363 silly install resolved []
+364 verbose about to build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script
+365 info build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script
+366 info linkStuff coffee-script@1.12.2
+367 silly linkStuff coffee-script@1.12.2 has D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules as its parent node_modules
+368 verbose linkBins coffee-script@1.12.2
+369 verbose link bins [ { coffee: './bin/coffee', cake: './bin/cake' },
+369 verbose link bins   'D:\\An 3\\Proiect_IA\\Emoticons\\node_modules\\alchemyapi\\node_modules\\.bin',
+369 verbose link bins   false ]
+370 verbose linkMans coffee-script@1.12.2
+371 verbose rebuildBundles coffee-script@1.12.2
+372 info install coffee-script@1.12.2
+373 info postinstall coffee-script@1.12.2
+374 verbose unlock done using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\coffee-script-c1bd39c588b902cf.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\coffee-script
+375 http 304 https://registry.npmjs.org/graceful-readlink
+376 verbose headers { date: 'Tue, 24 Jan 2017 16:08:55 GMT',
+376 verbose headers   via: '1.1 varnish',
+376 verbose headers   'cache-control': 'max-age=300',
+376 verbose headers   etag: 'W/"585ef90e-c1b"',
+376 verbose headers   age: '251',
+376 verbose headers   connection: 'keep-alive',
+376 verbose headers   'x-served-by': 'cache-fra1232-FRA',
+376 verbose headers   'x-cache': 'HIT',
+376 verbose headers   'x-cache-hits': '13',
+376 verbose headers   'x-timer': 'S1485274135.601341,VS0,VE0',
+376 verbose headers   vary: 'Accept-Encoding' }
+377 silly get cb [ 304,
+377 silly get   { date: 'Tue, 24 Jan 2017 16:08:55 GMT',
+377 silly get     via: '1.1 varnish',
+377 silly get     'cache-control': 'max-age=300',
+377 silly get     etag: 'W/"585ef90e-c1b"',
+377 silly get     age: '251',
+377 silly get     connection: 'keep-alive',
+377 silly get     'x-served-by': 'cache-fra1232-FRA',
+377 silly get     'x-cache': 'HIT',
+377 silly get     'x-cache-hits': '13',
+377 silly get     'x-timer': 'S1485274135.601341,VS0,VE0',
+377 silly get     vary: 'Accept-Encoding' } ]
+378 verbose etag https://registry.npmjs.org/graceful-readlink from cache
+379 verbose get saving graceful-readlink to C:\Users\Cip\AppData\Roaming\npm-cache\registry.npmjs.org\graceful-readlink\.cache.json
+380 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+381 silly addNameRange number 2 { name: 'graceful-readlink', range: '>=1.0.0', hasData: true }
+382 silly addNameRange versions [ 'graceful-readlink', [ '1.0.0', '1.0.1' ] ]
+383 silly addNamed graceful-readlink@1.0.1
+384 verbose addNamed "1.0.1" is a plain semver version for graceful-readlink
+385 silly cache afterAdd graceful-readlink@1.0.1
+386 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\graceful-readlink\1.0.1\package\package.json not in flight; writing
+387 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+388 verbose afterAdd C:\Users\Cip\AppData\Roaming\npm-cache\graceful-readlink\1.0.1\package\package.json written
+389 silly install resolved [ { name: 'graceful-readlink',
+389 silly install resolved     version: '1.0.1',
+389 silly install resolved     description: 'graceful fs.readlink',
+389 silly install resolved     main: 'index.js',
+389 silly install resolved     repository:
+389 silly install resolved      { type: 'git',
+389 silly install resolved        url: 'git://github.com/zhiyelee/graceful-readlink.git' },
+389 silly install resolved     homepage: 'https://github.com/zhiyelee/graceful-readlink',
+389 silly install resolved     bugs: { url: 'https://github.com/zhiyelee/graceful-readlink/issues' },
+389 silly install resolved     keywords: [ 'fs.readlink', 'readlink' ],
+389 silly install resolved     author: { name: 'zhiyelee' },
+389 silly install resolved     license: 'MIT',
+389 silly install resolved     scripts: { test: 'echo "Error: no test specified" && exit 1' },
+389 silly install resolved     gitHead: 'f6655275bebef706fb63fd01b5f062a7052419a5',
+389 silly install resolved     _id: 'graceful-readlink@1.0.1',
+389 silly install resolved     _shasum: '4cafad76bc62f02fa039b2f94e9a3dd3a391a725',
+389 silly install resolved     _from: 'graceful-readlink@>=1.0.0',
+389 silly install resolved     _npmVersion: '2.1.17',
+389 silly install resolved     _nodeVersion: '0.11.14',
+389 silly install resolved     _npmUser: { name: 'zhiyelee', email: 'zhiyelee@gmail.com' },
+389 silly install resolved     maintainers: [ [Object] ],
+389 silly install resolved     dist:
+389 silly install resolved      { shasum: '4cafad76bc62f02fa039b2f94e9a3dd3a391a725',
+389 silly install resolved        tarball: 'https://registry.npmjs.org/graceful-readlink/-/graceful-readlink-1.0.1.tgz' },
+389 silly install resolved     directories: {},
+389 silly install resolved     _resolved: 'https://registry.npmjs.org/graceful-readlink/-/graceful-readlink-1.0.1.tgz',
+389 silly install resolved     readme: 'ERROR: No README data found!' } ]
+390 info install graceful-readlink@1.0.1 into D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander
+391 info installOne graceful-readlink@1.0.1
+392 verbose installOne of graceful-readlink to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander not in flight; installing
+393 verbose correctMkdir C:\Users\Cip\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+394 verbose lock using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\graceful-readlink-fec19c88271cc130.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink
+395 silly install write writing graceful-readlink 1.0.1 to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink
+396 verbose unbuild node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink
+397 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink is being purged from base D:\An 3\Proiect_IA\Emoticons
+398 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink
+399 verbose tar unpack C:\Users\Cip\AppData\Roaming\npm-cache\graceful-readlink\1.0.1\package.tgz
+400 verbose tar unpacking to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink
+401 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink is being purged
+402 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink
+403 silly gunzTarPerm modes [ '777', '666' ]
+404 silly gunzTarPerm extractEntry package.json
+405 silly gunzTarPerm modified mode [ 'package.json', 436, 438 ]
+406 silly gunzTarPerm extractEntry .npmignore
+407 silly gunzTarPerm modified mode [ '.npmignore', 436, 438 ]
+408 silly gunzTarPerm extractEntry README.md
+409 silly gunzTarPerm modified mode [ 'README.md', 436, 438 ]
+410 silly gunzTarPerm extractEntry LICENSE
+411 silly gunzTarPerm modified mode [ 'LICENSE', 436, 438 ]
+412 silly gunzTarPerm extractEntry index.js
+413 silly gunzTarPerm modified mode [ 'index.js', 436, 438 ]
+414 silly gunzTarPerm extractEntry .travis.yml
+415 silly gunzTarPerm modified mode [ '.travis.yml', 436, 438 ]
+416 verbose write writing to D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink\package.json
+417 info preinstall graceful-readlink@1.0.1
+418 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink\package.json
+419 verbose readDependencies loading dependencies from D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink\package.json
+420 silly install resolved []
+421 verbose about to build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink
+422 info build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink
+423 info linkStuff graceful-readlink@1.0.1
+424 silly linkStuff graceful-readlink@1.0.1 has D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules as its parent node_modules
+425 verbose linkBins graceful-readlink@1.0.1
+426 verbose linkMans graceful-readlink@1.0.1
+427 verbose rebuildBundles graceful-readlink@1.0.1
+428 info install graceful-readlink@1.0.1
+429 info postinstall graceful-readlink@1.0.1
+430 verbose unlock done using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\graceful-readlink-fec19c88271cc130.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander\node_modules\graceful-readlink
+431 verbose about to build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander
+432 info build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander
+433 info linkStuff commander@2.9.0
+434 silly linkStuff commander@2.9.0 has D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules as its parent node_modules
+435 verbose linkBins commander@2.9.0
+436 verbose linkMans commander@2.9.0
+437 verbose rebuildBundles commander@2.9.0
+438 verbose rebuildBundles [ 'graceful-readlink' ]
+439 info install commander@2.9.0
+440 info postinstall commander@2.9.0
+441 verbose unlock done using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\commander-33eb3fa60e259cc0.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi\node_modules\commander
+442 verbose about to build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+443 info build D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+444 info linkStuff alchemyapi@0.0.3
+445 silly linkStuff alchemyapi@0.0.3 has D:\An 3\Proiect_IA\Emoticons\node_modules as its parent node_modules
+446 verbose linkBins alchemyapi@0.0.3
+447 verbose link bins [ { alchemyapi: './lib/app.js' },
+447 verbose link bins   'D:\\An 3\\Proiect_IA\\Emoticons\\node_modules\\.bin',
+447 verbose link bins   false ]
+448 verbose linkMans alchemyapi@0.0.3
+449 verbose rebuildBundles alchemyapi@0.0.3
+450 verbose rebuildBundles [ '.bin', 'async', 'coffee-script', 'commander' ]
+451 info install alchemyapi@0.0.3
+452 info postinstall alchemyapi@0.0.3
+453 verbose unsafe-perm in lifecycle true
+454 info alchemyapi@0.0.3 Failed to exec postinstall script
+455 verbose unlock done using C:\Users\Cip\AppData\Roaming\npm-cache\_locks\alchemyapi-70a55ca7c7ff808e.lock for D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+456 verbose stack Error: alchemyapi@0.0.3 postinstall: `make`
+456 verbose stack Exit status 1
+456 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:214:16)
+456 verbose stack     at emitTwo (events.js:87:13)
+456 verbose stack     at EventEmitter.emit (events.js:172:7)
+456 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+456 verbose stack     at emitTwo (events.js:87:13)
+456 verbose stack     at ChildProcess.emit (events.js:172:7)
+456 verbose stack     at maybeClose (internal/child_process.js:827:16)
+456 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+457 verbose pkgid alchemyapi@0.0.3
+458 verbose cwd D:\An 3\Proiect_IA\Emoticons
+459 error Windows_NT 10.0.14393
+460 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "alchemyapi"
+461 error node v4.4.1
+462 error npm  v2.14.20
+463 error code ELIFECYCLE
+464 error alchemyapi@0.0.3 postinstall: `make`
+464 error Exit status 1
+465 error Failed at the alchemyapi@0.0.3 postinstall script 'make'.
+465 error This is most likely a problem with the alchemyapi package,
+465 error not with npm itself.
+465 error Tell the author that this fails on your system:
+465 error     make
+465 error You can get information on how to open an issue for this project with:
+465 error     npm bugs alchemyapi
+465 error Or if that isn't available, you can get their info via:
+465 error
+465 error     npm owner ls alchemyapi
+465 error There is likely additional logging output above.
+466 verbose exit [ 1, true ]
+467 verbose unbuild node_modules\alchemyapi
+468 info preuninstall alchemyapi@0.0.3
+469 info uninstall alchemyapi@0.0.3
+470 verbose unbuild rmStuff alchemyapi@0.0.3 from D:\An 3\Proiect_IA\Emoticons\node_modules
+471 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\.bin\alchemyapi.cmd is being gently removed
+472 silly gentlyRm verifying D:\An 3\Proiect_IA\Emoticons is an npm working directory
+473 silly gentlyRm containing path D:\An 3\Proiect_IA\Emoticons is under npm's control, in D:\An 3\Proiect_IA\Emoticons
+474 silly gentlyRm deletion target D:\An 3\Proiect_IA\Emoticons\node_modules\.bin\alchemyapi.cmd is under D:\An 3\Proiect_IA\Emoticons
+475 verbose gentlyRm vacuuming from D:\An 3\Proiect_IA\Emoticons\node_modules\.bin\alchemyapi.cmd up to D:\An 3\Proiect_IA\Emoticons
+476 silly vacuum-fs removing D:\An 3\Proiect_IA\Emoticons\node_modules\.bin\alchemyapi.cmd
+477 silly vacuum-fs quitting because other entries in D:\An 3\Proiect_IA\Emoticons\node_modules\.bin
+478 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\.bin\alchemyapi is being gently removed
+479 silly gentlyRm verifying D:\An 3\Proiect_IA\Emoticons is an npm working directory
+480 silly gentlyRm containing path D:\An 3\Proiect_IA\Emoticons is under npm's control, in D:\An 3\Proiect_IA\Emoticons
+481 silly gentlyRm deletion target D:\An 3\Proiect_IA\Emoticons\node_modules\.bin\alchemyapi is under D:\An 3\Proiect_IA\Emoticons
+482 verbose gentlyRm vacuuming from D:\An 3\Proiect_IA\Emoticons\node_modules\.bin\alchemyapi up to D:\An 3\Proiect_IA\Emoticons
+483 silly vacuum-fs removing D:\An 3\Proiect_IA\Emoticons\node_modules\.bin\alchemyapi
+484 silly vacuum-fs removing D:\An 3\Proiect_IA\Emoticons\node_modules\.bin
+485 silly vacuum-fs quitting because other entries in D:\An 3\Proiect_IA\Emoticons\node_modules
+486 info postuninstall alchemyapi@0.0.3
+487 silly gentlyRm D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi is being purged from base D:\An 3\Proiect_IA\Emoticons
+488 verbose gentlyRm don't care about contents; nuking D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+489 silly vacuum-fs purging D:\An 3\Proiect_IA\Emoticons\node_modules\alchemyapi
+490 silly vacuum-fs quitting because other entries in D:\An 3\Proiect_IA\Emoticons\node_modules

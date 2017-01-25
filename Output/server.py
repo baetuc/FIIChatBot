@@ -700,6 +700,7 @@ def process():
     data = json.loads(data)
 
     raspuns = parseJson(data)
+    print(raspuns)
     return raspuns
 
 run(host='localhost', port=7000, debug=True)

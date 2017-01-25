@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
 	header('Content-Type: application/json');
 	header('Access-Control-Allow-Origin: *');
 	set_time_limit(9999);
@@ -57,6 +58,7 @@
 
 		//Removing headers
 		$parsedResult = split("\r\n\r\n", $result, 2);
+        //echo $parsedResult;
 		$result = $parsedResult[1] ? json_decode($parsedResult[1]) : $parsedResult[0];
 		return $result;
 	}
@@ -75,7 +77,6 @@
 			if ( isset($_REQUEST["input"]) && $_REQUEST["input"]){
 				//Get message from client
 				$currentInput = $_REQUEST["input"];
-
 				//Setting master json
 				$finalJson = array();
 				$inputJSON = json_encode(array("input" => $currentInput));

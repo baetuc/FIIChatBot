@@ -60,17 +60,17 @@ app.post('/emotion', function (request, response) {
 						botScore = 0;
 					}
 				}
-				alchemy.sentiment("text", userText, {}, function (alchemyResponse) {
+				alchemy.sentiment("text", userText, {}, function (alchemyResponse2) {
 					userScore = 0;
-					if (alchemyResponse["docSentiment"]) {
-						userScore = alchemyResponse["docSentiment"]["score"];
+					if (alchemyResponse2["docSentiment"]) {
+                        console.log("Got in IF.");
+						userScore = alchemyResponse2["docSentiment"]["score"];
 					}
 					if (userScore && userScore < -0.5 && Math.random() > 0.3) {
 						cheerUp = cheerups[Math.floor((Math.random() * cheerups.length))];
 					}
 					else {
 						cheerUp = "";
-						userScore = 0;
 					}
 					response.json({ "text": botText + emoticon + " " + cheerUp, "emotionScore": userScore * 50, "TrimmedOutput": botText + " " + cheerUp });
 				});

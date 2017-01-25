@@ -4,6 +4,7 @@ import text_processing
 
 @route('/', method='POST')
 def handle_processing():
+    print("Processing")
     return text_processing.process_text(request.json["input"])
 
 

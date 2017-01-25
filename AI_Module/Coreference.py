@@ -51,7 +51,7 @@ def coreference_resolution(message):
     try:
         # if not (message.endswith(".") or message.endswith("?") or message.endswith("!")):
         #     message += ""
-
+        message = message.strip()
         if re.match(".*[\w]$", message):
             message += "."
 
