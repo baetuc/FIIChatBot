@@ -682,6 +682,7 @@ def parseJson(data):
                 ret_text = generate_output(value['WEB'].split(".")[0],q) + addTopic(topicText)
 
     response = data[u'ontologii']
+
     if response:
         ret_text = response
 

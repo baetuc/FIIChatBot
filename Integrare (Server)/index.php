@@ -67,7 +67,12 @@
 	try {
 		if (isset($routes[1]) && $routes[1]=='inactivity'){
 			$inactivityResponse = post_to($inactivityURL, "");
-			echo $inactivityResponse;
+			$finalJson = array();
+			$finalJson["output"] = $inactivityResponse;
+			$finalJson["emotion_score"] = 0;
+			$finalJson["TrimmedOutput"] = $inactivityResponse;
+			// Final
+			echo json_encode($finalJson);
 		} else if (isset($routes[1]) && $routes[1]=='reset'){
 			$resetDBResponse = post_to($resetDBUrl, "");
 			$resetAIResponse = post_to($resetAIUrl, "");
