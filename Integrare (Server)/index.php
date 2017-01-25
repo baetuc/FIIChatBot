@@ -3,15 +3,16 @@
 	header('Access-Control-Allow-Origin: *');
 	set_time_limit(9999);
 	session_start();
-	$_SESSION["is_end"] = 'False';
+
 
 	//Server definitions
 	$textProcessingURL = 'http://localhost:2000';
 	$aiFirst = 'http://localhost:2500/slang_and_coreference';
 	$aiSecond = 'http://localhost:2500/topic_and_end';
 	$inactivityURL = 'http://localhost:2500/inactivity';
+	$resetAIUrl = 'http://localhost:2500/reset';
 	$databaseURL = 'http://localhost:4000';
-	$resetUrl = 'http://localhost:4000/reset';
+	$resetDBUrl = 'http://localhost:4000/reset';
 	$outputURL = 'http://localhost:7000';
 	$emotionURL = 'http://localhost:7521/emotion';
 
@@ -62,18 +63,21 @@
 
 	//Parse message
 	try {
-		if (isset($routes[1]) && $routes[1]=='inactivity' && $_SESSION["is_end"]=='False'){
+		if (isset($routes[1]) && $routes[1]=='inactivity'){
 			$inactivityResponse = post_to($inactivityURL, "");
-			$inactivityQuestion = $inactivityResponse;
-			echo $inactivityResponse;
+			$finalJson = array();
+			$finalJson["output"] = $inactivityResponse;
+			$finalJson["emotion_score"] = 0;
+			$finalJson["TrimmedOutput"] = $inactivityResponse;
+			// Final
+			echo json_encode($finalJson);
 		} else if (isset($routes[1]) && $routes[1]=='reset'){
-			echo $routes[1];
-		} else if ($_SESSION["is_end"]=='True'){
-			$resetResponse = post_to($resetURL, "");
+			$resetDBResponse = post_to($resetDBUrl, "");
+			$resetAIResponse = post_to($resetAIUrl, "");
+			echo "";
 		}
 		else {
 			if ( isset($_REQUEST["input"]) && $_REQUEST["input"]){
-				$_SESSION["is_end"]='False';
 				//Get message from client
 				$currentInput = $_REQUEST["input"];
 
@@ -96,9 +100,7 @@
 				$aiResponse2 = post_to($aiSecond, $textProcessingResponse);
 				$decodedAiResponse2 = json_decode($aiResponse2);
 				$finalJson["ai2"] = $decodedAiResponse2;
-				if ($decodedAiResponse2->is_end == 'True'){
-					$_SESSION["is_end"] = "True";
-				}
+
 
 				// Call database
 				$databasePath = $databaseURL;

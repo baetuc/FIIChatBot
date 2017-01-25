@@ -33,7 +33,7 @@ app.post('/emotion', function (request, response) {
 	var botText = request.body.botText;
 	var userText = request.body.userText;
 	console.log(botText + "  " + userText);
-	try{
+	try {
 		var emoticon = "";
 		var cheerUp = "";
 		var botScore = 0;
@@ -69,11 +69,15 @@ app.post('/emotion', function (request, response) {
 						cheerUp = cheerups[Math.floor((Math.random() * cheerups.length))];
 					}
 					else {
-						cheerUp == "";
+						cheerUp = "";
+						userScore = 0;
 					}
-					response.json({ "text": botText + emoticon + " " + cheerUp, "emotionScore": userScore * 50, "TrimmedOutput": botText+" "+cheerUp });
+					response.json({ "text": botText + emoticon + " " + cheerUp, "emotionScore": userScore * 50, "TrimmedOutput": botText + " " + cheerUp });
 				});
 			});
+		}
+		else {
+			response.json({ "text": botText, "emotionScore": 0, "TrimmedOutput": botText });
 		}
 	}
 	catch(err) {
