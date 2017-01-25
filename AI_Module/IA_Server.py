@@ -5,6 +5,11 @@ import Coreference
 import jargon_expand
 import DetectEndOfConversation
 
+from Generate_Question_Based_on_Topic import generate_question_based_on_topic
+topic = None
+subtopic = None
+is_end = False
+
 
 @route('/slang_and_coreference', method='POST')
 def handle_slang_and_coreference():
@@ -16,6 +21,7 @@ def handle_slang_and_coreference():
 
 @route('/topic_and_end', method='POST')
 def handle_topic_and_end():
+    global is_end
     data = request.json
     is_end = False
 
@@ -27,11 +33,28 @@ def handle_topic_and_end():
     data["is_end"] = str(is_end)
     return data
 
+@route('/inactivity', method='POST')
+def handle_inactivity():
+    if is_end:
+        return ""
+    return generate_question_based_on_topic(topic, subtopic)
+
+@route('/reset', method='POST')
+def handle_reset():
+    Coreference.reset()
+
 
 def add_topic(sentence):
+    global topic
+    global subtopic
+
     result = Topic.get_text_topics(sentence["sentence"])
     sentence["topic"] = result[0]["category"]
+    topic = result[0]["category"]
     sentence["subtopic"] = result[0]["subcategory"]
+    subtopic = result[0]["subcategory"]
+
+
 
 
 run(host="localhost", port=2500)

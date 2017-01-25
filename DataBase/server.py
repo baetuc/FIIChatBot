@@ -7,7 +7,7 @@ def process():
     data = request.body.read()
     data = simplejson.loads(data)
     responseBDH = BDHandler.init(data)
-    return simplejson.dumps(responseBDH)
+    return responseBDH
 
 
 @route('/reset',method = 'POST')

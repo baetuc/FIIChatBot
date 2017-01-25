@@ -50,12 +50,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		 var commands = { 
 		   'Hello': function() {
 		   if(firstSalute == 0){
-				SendBotMessage('Welcome dear USER! Let\'s start a conversation!');
-				responsiveVoice.setDefaultVoice("US English Male");
-				responsiveVoice.speak('Welcome dear USER! Let\'s start a conversation!');
+				SendBotMessage('Welcome dear USER! Let\'s start a conversation!');				
 		   }else{
 				SendBotMessage('Hello again!');
-				responsiveVoice.speak('Hello again!');
 		   }
 				
 			 firstSalute = 1;

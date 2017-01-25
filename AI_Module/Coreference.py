@@ -82,6 +82,12 @@ def coreference_resolution(message):
         history.append(message)
         return message
 
+def reset():
+    global  history
+    history = []
+
+
+
 # print(coreference_resolution("Do you like Michael Jackson? I like him."))
 # print(coreference_resolution("He always gives me ice cream."))
 # print(coreference_resolution("Also he likes girls"))

@@ -1,5 +1,5 @@
 var localURL = 'http://localhost:1000';
-var dictationEnabled = false;
+var dictationEnabled = true;
 
 var idleTime = 0;
 function timerIncrement() {
