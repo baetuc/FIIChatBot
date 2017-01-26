@@ -39,15 +39,16 @@ class Ontologie():
                 for word2 in words:
                     if word2['word'] == word[0]:
                         score+=2
+                    if word2['word'] in self.synonyms.keys():
                         if word[0] in self.synonyms[word2['word']]:
                             score+=1
             if score > maxScore:
                 maxScore = score
                 max_match = match
-            if score == maxScore and random.random()<0.5:
+            if score == maxScore and random.random()<0.1:
                 maxScore = score
                 max_match = match
-        if max_match>0:
+        if max_match:
             ret = "You "
             setA = set([x[0] for x in self.data[max_match]])
             setB = set(sentence['sentence'].replace("?","").replace(".","").split(' '))
@@ -68,8 +69,8 @@ class Ontologie():
         return_data = None
         for sentence in data['sentences']:
             flag = 0
-            for mw in self.MINE_WORDS:
-                if mw in sentence['sentence']:
+            for mw in sentence['words']:
+                if mw['word'] in self.MINE_WORDS:
                     flag = 1
             if flag == 0:
                 continue
