@@ -10902,65 +10902,6 @@
         </template>
     </category>
 
-    <category>
-        <pattern>_ ELIZA ALGORITHM</pattern>
-        <template>
-            <srai>
-                <star/>
-                ELIZA
-            </srai>
-        </template>
-    </category>
-
-    <category>
-        <pattern>_ ELIZA CLONE</pattern>
-        <template>
-            <srai>
-                <star/>
-                ELIZA
-            </srai>
-        </template>
-    </category>
-
-    <category>
-        <pattern>_ ELIZA CLONES</pattern>
-        <template>
-            <srai>
-                <star/>
-                ELIZA
-            </srai>
-        </template>
-    </category>
-
-    <category>
-        <pattern>_ ELIZA PROGRAM</pattern>
-        <template>
-            <srai>
-                <star/>
-                ELIZA
-            </srai>
-        </template>
-    </category>
-
-    <category>
-        <pattern>_ ELIZA RIP OFF</pattern>
-        <template>
-            <srai>
-                <star/>
-                ELIZA
-            </srai>
-        </template>
-    </category>
-
-    <category>
-        <pattern>_ ELIZA RIPOFF</pattern>
-        <template>
-            <srai>
-                <star/>
-                ELIZA
-            </srai>
-        </template>
-    </category>
 
     <category>
         <pattern>_ HOW DO I DOWNLOAD YOU</pattern>
