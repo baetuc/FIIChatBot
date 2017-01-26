@@ -4,7 +4,7 @@ var dictationEnabled = true;
 var idleTime = 0;
 function timerIncrement() {
     idleTime = idleTime + 1;
-    if (idleTime > 20) { // 20 seconds
+    if (idleTime > 50) { // 50 seconds
         userIsInactive();
 		idleTime = 0;
     }
