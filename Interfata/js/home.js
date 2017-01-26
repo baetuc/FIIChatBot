@@ -35,23 +35,7 @@ $( document ).ready(function() {
     });
 });
 
-function GetBotAnswer(userText){
-	$.ajax(
-		{
-			url: localURL+'getMessage',
-			data: userText,
-			success: function(result){
-				SendBotMessage(result);
-			}
-		}
-	);
-}
-
 function SendBotMessage(message){
-	if(dictationEnabled){
-		responsiveVoice.setDefaultVoice("US English Male");
-		responsiveVoice.speak(message);
-	}
 	var chat = $('.chat');
 				chat.append('\
 					<li class=\"left clearfix\"><span class=\"chat-img pull-left\">\
@@ -70,6 +54,14 @@ function SendBotMessage(message){
 							</div>\
 						</li>\
 				');
+}
+
+function DictateAnswer(message){
+	if(dictationEnabled){
+		responsiveVoice.cancel();
+		responsiveVoice.setDefaultVoice("US English Male");
+		responsiveVoice.speak(message);
+	}
 }
 
 function SendUserMessage(){
@@ -110,6 +102,7 @@ function SendUserMessage(){
 			success: function(result){
 				responsiveVoice.cancel();
 				SendBotMessage(result.output);
+				DictateAnswer(result.TrimmedOutput);
 
 				ApplyEmotion(result.emotion_score);
 			},
@@ -144,10 +137,8 @@ function userIsInactive(){
 			success: function(result){
 				responsiveVoice.cancel();
 				SendBotMessage(result.output);
-
-				responsiveVoice.setDefaultVoice("US English Male");
-				responsiveVoice.speak(result.TrimmedOutput);
-
+				DictateAnswer(result.TrimmedOutput);
+				
 				ApplyEmotion(result.emotion_score);
 			},
 			error: function(result){

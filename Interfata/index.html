@@ -50,9 +50,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		 var commands = { 
 		   'Hello': function() {
 		   if(firstSalute == 0){
-				SendBotMessage('Welcome dear USER! Let\'s start a conversation!');				
+				SendBotMessage('Welcome dear USER! Let\'s start a conversation!');			
+				DictateAnswer('Welcome dear USER! Let\'s start a conversation!');				
 		   }else{
 				SendBotMessage('Hello again!');
+				DictateAnswer('Hello again!');
 		   }
 				
 			 firstSalute = 1;
